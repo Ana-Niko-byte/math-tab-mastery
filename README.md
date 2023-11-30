@@ -1,110 +1,85 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Revise Maths
+This maths game is designed as a fun and engaging way of helping young kids study and get better at mental arithmetic. This game was created purely for educational purposes. 
 
-Welcome USER_NAME,
+# Business/Social Goals
+- Create a fun and engaging platform for young kids to learn arithmetic and help them develop an interest in mathematics and logical thinking. 
+- Add a competitive edge to the game by using a timer for each arithmetic session - this will allow the user to either compete against peers or themselves in the amount of questions they answer correctly within a set timeframe. 
+- Create an intuitive interface for young users to increase comfort with using the program, and encourage them to use it repeatedly - drive traffic onto the website. 
+- Encourage the idea that games can be used as an additional tool in learning, and not as a form of distraction.
+- Allow users to take their time revising any errors in their own time following each timed arithmetic session.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+# UX Goals
+- Create a simple and intuitive user interface for young and first time users to foster a sense of comfort and reassurance. 
+- To allow the user as much control over their learning enviornments as possible and appropriate - ensure they can pick what kind of arithmetic they want (addition&subtraction, multiplication, division, or random), include 'Skip' and 'Exit' buttons for each session in case the user becomes overwhelmed.
+- Add a filtering system for the incorrectly answered questions if user is using the 'random' category, and colour differentiate to mark the different categories in the tabs side of the revision panel. 
+- Make sure the UI maintains its focus on content by excluding all unnecessary information. 
+- Where colours are used, they are to be used for the purpose of highlighting or differentiating one element from another. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+# Structure 
+The structure of the 'Revise Maths' game is as follows: 
 
-## Gitpod Reminders
+## Page 1
+- Intro
+    - Title of game
+    - Subtitle
+    - Name Input field
+- Arithmetic category selection 
+    - addition&subtraction, 
+    - multiplication,
+    - division
+- Footer
+    - Copyright
+    - Terms and Conditions
+    - Socials 
+        - LinkedIn
+        - GitHub
+        - Instagram
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Page 2 (from left to right, top to bottom)
+- Intro
+    - Title of game
+    - User greeting
+- Game area
+- Buttons for user control
+- Score tracking
+    - right answers
+    - wrong answers -> + revision area for all answers answered incorrectly with filtering system. 
+- 'Exit' button for returning to home page. 
+- Footer (same content as _Page 1_). 
 
-`python3 -m http.server`
+# Scope of Application
 
-A blue button should appear to click: _Make Public_,
+The scope of this application is as follows: 
+1. This is a front end application, created to help young users with mental arithmetic and logical thinking. 
+2. A heading with the name of the application and a short description on the first 'login' page. Wording is kept to the bare minimum after this to ensure attention is directed towards necessary fields only - the game field, and later the revision field. 
+3. Category selection - so users can pick the type of arithmetic they would like to practice. This works as a type of difficulty selection. 
+4. The game field contains a small introduction with the user's name and the task they are to solve. 
+5. 'Submit' and 'Skip' buttons below the field. Additional logic is implemented to handle 'Enter' keypress instead of 'Submit'. 'Skip' skips one question. 
+6. Score tracking for answered questions. 
+7. A revision field for incorrectly answered questions. Tabs at the edge of this field record the incorrectly answered questions for revision later. 
+8. 'Exit' button to end the session. 
+9. Footer containing copyright, t&c, and links to social platforms (LinkedIn, GitHub, and Instagram). 
 
-Another blue button should appear to click: _Open Browser_.
+# Strategy
+It is the goal of this application to create a dynamic, intuitive, and simple interface to help young users study, improve and speed up their mental arithmetic and logical thinking. To design the application, aspects like target audience, key information deliverables, visual simplicity, and data transfer were key considerations: 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Target Audience
+- Young users (6 - 12 yrs)
 
-A blue button should appear to click: _Make Public_,
+## Key Information Deliverables
+- Category Selection
+- Game field with relevant information
+- Visual score tracking 
+- Revision Field with tabs
 
-Another blue button should appear to click: _Open Browser_.
+## Visual Simplicity
+- Minimise distraction by avoiding images and icons within the main fields, but use colours to engage young users and emphasise information containers and user interactions where appropriate. 
+- White Space in main fields (gaming and revision) to minimise distraction of cintent around + 'clear' space for thinking + place emphasis on task inside these fields. 
+- Minimum and concise wording - Clear headings, short description + greeting, recognisable, one-word buttons describing purpose (with caution of avoiding 'Quit' on the exit button to avoid negative conotation). 
+- Visual score tracking system using red for wrong answers and green for correct answers + large numbers for amount of wrong/right answers recorded. 
+- Recognisable tab system (often used in school folders) for recording incorrect answers for easy recognition. 
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+This application is intended to be used primarily on laptop, but actively considers visual appeal and usability on phones through media queries and content placement/spacing. 
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+# Wireframes
+![application wireframe](docs/images/wireframe.png)

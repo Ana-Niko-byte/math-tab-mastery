@@ -29,3 +29,83 @@ a{
 }
 
 /* _____ end of common-across-all-sections styling */
+
+/* _____ start of first page styling */
+#first-section{
+    border: 3px solid orange;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+.headings{
+    border: 1px solid red;
+    text-align: center;
+}
+
+.main-heading{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 20px 0;
+}
+
+.main-heading h1{
+    font-size: 2.2rem;
+}
+
+.sub-heading{
+    font-size: 1.4rem;
+}
+
+/* _____ start of name input styling */
+
+.name-input-field{
+    margin: 40px 0;
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+
+.name-input-field label{
+    font-size: 0.8rem;
+}
+
+#name{
+    padding: 5px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    outline: none;
+    border: 1px solid white;
+    transition: all 0.1s ease;
+}
+
+#name:hover{
+    border: 1px solid pink;
+}
+
+#name:focus{
+    border: 1px solid red;
+}
+
+/* _____ end of name input styling */
+/* _____ start of button category styling */
+.categories{
+    border: 2px solid purple;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.category{
+    padding: 40px;
+    border: 1px solid red;
+}
+
+.category button{
+    width: 75px;
+    height: 40px;
+    border-radius: 5px;
+}
+/* _____end of button category styling */
+/* _____ end of first page styling */

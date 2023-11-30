@@ -9,6 +9,49 @@
 </head>
 <body>
     <!-- First page containing title, small description, name input and category selection -->
+    <!-- first page html starts here -->
+    <div class="page first-page">
+        <main id="first-main">
+            <div class="headings">
+                <div class="main-heading">
+                    <img src="" alt="math tab mastery logo" class="logo">
+                    <h1>Math Tab Mastery</h1>
+                </div>
+                <div class="sub-heading">
+                    <p class="sub-heading">
+                        A better way to get better at maths!
+                    </p>
+                </div>
+            </div>
+            <div class="name-input-field">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Christopher" required>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <button data-type="add-subtract" id="add-subtract">
+                        <i class="fa-solid fa-plus-minus"></i>
+                    </button>
+                </div>
+                <div class="category">
+                    <button data-type="multiplication" id="multiply">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="category">
+                    <button data-type="division" id="divide">
+                        <i class="fa-solid fa-divide"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- first page html ends here -->
+
+    <!-- scripts section: 
+    - first script belongs to fontawesome for all icons used
+    - second is the application javascript file, placed after the icons to ensure they load first -->
+    <script src="https://kit.fontawesome.com/f39b89d411.js" crossorigin="anonymous"></script>
     <script src="assets/js/script.js" type="text/javascript"></script>
 </body>
 </html>

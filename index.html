@@ -8,140 +8,129 @@
     <title>Math Tab Mastery</title>
 </head>
 <body>
-    <!-- First page containing title, small description, name input and category selection -->
-    <!-- first page html starts here -->
-    <div class="page first-page">
-        <main id="first-main">
-            <div class="headings">
+    <!-- main section of the website containing the two 'pages' of the application -->
+    <main>
+        <!-- First page containing title, small description, name input and category selection -->
+        <!-- first page html starts here -->
+        <div class="page first-page">
+            <section id="first-section">
+                <div class="headings">
+                    <div class="main-heading">
+                        <img src="/" alt="math tab mastery logo" class="logo">
+                        <h1>Math Tab Mastery</h1>
+                    </div>
+                    <div class="sub-heading">
+                        <p class="sub-heading">
+                            A better way to get better at maths!
+                        </p>
+                    </div>
+                </div>
+                <div class="name-input-field">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Christopher" required>
+                </div>
+                <div class="categories">
+                    <div class="category">
+                        <button data-type="add-subtract" id="add-subtract">
+                            <i class="fa-solid fa-plus-minus"></i>
+                        </button>
+                    </div>
+                    <div class="category">
+                        <button data-type="multiplication" id="multiply">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="category">
+                        <button data-type="division" id="divide">
+                            <i class="fa-solid fa-divide"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- first page html ends here -->
+        <!-- second page html starts here -->
+        <div class="page second-page">
+            <section id="second-section">
                 <div class="main-heading">
-                    <img src="" alt="math tab mastery logo" class="logo">
+                    <img src="/" alt="math tab mastery logo" class="logo">
                     <h1>Math Tab Mastery</h1>
                 </div>
-                <div class="sub-heading">
-                    <p class="sub-heading">
-                        A better way to get better at maths!
-                    </p>
-                </div>
-            </div>
-            <div class="name-input-field">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" placeholder="Christopher" required>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <button data-type="add-subtract" id="add-subtract">
-                        <i class="fa-solid fa-plus-minus"></i>
-                    </button>
-                </div>
-                <div class="category">
-                    <button data-type="multiplication" id="multiply">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="category">
-                    <button data-type="division" id="divide">
-                        <i class="fa-solid fa-divide"></i>
-                    </button>
-                </div>
-            </div>
-        </main>
-    </div>
-    <!-- first page html ends here -->
-        <!-- second page html starts here -->
-    <div class="page second-page">
-        <main id="second page">
-            <div class="main-heading">
-                <img src="" alt="math tab mastery logo" class="logo">
-                <h1>Math Tab Mastery</h1>
-            </div>
-            <div class="content">
-                <div class="field game-field">
-                    <h3><span id="name"></span>, let's play!</h3>
-                    <div class="game-panel">
-                        <div class="task">
-                            <div class="question-area">
-                                <span id="first-operand">0</span>
-                                <span id="operator">x</span>
-                                <span id="second-operand">0</span>
-                                <span>=</span>
-                                <input id="answer-box" type="number" placeholder="your answer..." required>
-                            </div>
-                        </div>
-                        <div class="time-bar"></div>
-                    </div>
-                    <div class="user-controls user-controls-game">
-                        <button data-type="skip">Skip</button>
-                        <button data-type="submit">Submit</button>
-                    </div>
-                </div>
-                <div class="field revision-field"></div>
-            </div>
-        </main>
-    </div>
-    <!-- second page html ends here -->
-    <!-- second page html starts here -->
-    <div class="page second-page">
-        <main id="second page">
-            <div class="main-heading">
-                <img src="" alt="math tab mastery logo" class="logo">
-                <h1>Math Tab Mastery</h1>
-            </div>
-            <div class="content">
-                <div class="field game-field">
-                    <h3><span id="name"></span>, let's play!</h3>
-                    <div class="game-panel">
-                        <div class="task game-task">
-                            <div class="question-area">
-                                <span id="first-operand">0</span>
-                                <span id="operator">x</span>
-                                <span id="second-operand">0</span>
-                                <span>=</span>
-                                <input id="answer-box" type="number" placeholder="your answer..." required>
-                            </div>
-                        </div>
-                        <div class="time-bar"></div>
-                    </div>
-                    <div class="user-controls user-controls-game">
-                        <button data-type="skip">Skip</button>
-                        <button data-type="submit">Submit</button>
-                    </div>
-                </div>
-                <div class="field revision-field">
-                    <div class="score-tracking">
-                        <p class="scores">Correct Answers <span id="right-answer">0</span></p>
-                        <p class="scores">Incorrect Answers <span id="wrong-answer">0</span></p>
-                    </div>
-                    <div class="revision-panel-field">
-                        <div class="revision-tabs"></div>
-                        <div class="revision-panel">
-                            <div class="revision-aids">
-                                <div id="filter"></div>
-                                <div class="help">
-                                    <i class="fa-regular fa-circle-question"></i>
+                <div class="content">
+                    <div class="field game-field">
+                        <h3><span id="user-name"></span>, let's play!</h3>
+                        <div class="game-panel">
+                            <div class="task game-task">
+                                <div class="question-area">
+                                    <span id="first-operand">0</span>
+                                    <span id="operator">x</span>
+                                    <span id="second-operand">0</span>
+                                    <span>=</span>
+                                    <input id="answer-box" type="number" placeholder="your answer..." required>
                                 </div>
                             </div>
-                            <div class="task revision-task">
-                                <span id="revision-first-operand">0</span>
-                                <span id="revision-operator">x</span>
-                                <span id="revision-second-operand">0</span>
-                                <span>=</span>
-                                <input id="revision-answer-box" type="number" placeholder="your answer..." required>
-                            </div>
+                            <div class="time-bar"></div>
+                        </div>
+                        <div class="user-controls user-controls-game">
+                            <button data-type="skip">Skip</button>
+                            <button data-type="submit">Submit</button>
                         </div>
                     </div>
-                    <div class="user-controls user-controls-revision">
-                        <button data-type="exit">Exit Game</button>
+                    <div class="field revision-field">
+                        <div class="score-tracking">
+                            <p class="scores">Correct Answers <span id="right-answer">0</span></p>
+                            <p class="scores">Incorrect Answers <span id="wrong-answer">0</span></p>
+                        </div>
+                        <div class="revision-panel-field">
+                            <div class="revision-tabs"></div>
+                            <div class="revision-panel">
+                                <div class="revision-aids">
+                                    <div id="filter"></div>
+                                    <div class="help">
+                                        <i class="fa-regular fa-circle-question"></i>
+                                    </div>
+                                </div>
+                                <div class="task revision-task">
+                                    <span id="revision-first-operand">0</span>
+                                    <span id="revision-operator">x</span>
+                                    <span id="revision-second-operand">0</span>
+                                    <span>=</span>
+                                    <input id="revision-answer-box" type="number" placeholder="your answer..." required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-controls user-controls-revision">
+                            <button data-type="exit">Exit Game</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
-    <!-- second page html ends here -->
-
+            </section>
+        </div>
+        <!-- second page html ends here -->
+    </main>
+    <footer>
+        <div class="terms-conditions">
+            <a href="/" target="_blank"><h4>Terms & Conditions</h4></a>
+        </div>
+        <div class="copyright">
+            <h4>Copyright &COPY; 2023 Math-Tab-Mastery; DESIGN by Ana Nikolayenia</h4>
+        </div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/ana-nikolayenia-623474212/" target="_blank">
+                <i class="fa-brands fa-linkedin-in fa-l"></i>
+            </a>
+            <a href="https://github.com/Ana-Niko-byte" target="_blank">
+                <i class="fa-brands fa-github fa-l"></i>
+            </a>
+            <a href="https://www.instagram.com/ana_nikolayenia/" target="_blank">
+                <i class="fa-brands fa-instagram fa-l"></i>
+            </a>
+        </div>
+    </footer>
     <!-- scripts section: 
     - first script belongs to fontawesome for all icons used
     - second is the application javascript file, placed after the icons to ensure they load first -->
     <script src="https://kit.fontawesome.com/f39b89d411.js" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js" type="text/javascript"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

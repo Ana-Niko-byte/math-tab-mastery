@@ -109,3 +109,43 @@ a{
 }
 /* _____end of button category styling */
 /* _____ end of first page styling */
+
+/* _____ start of footer styling */
+footer{
+    height: 100vh;
+    background-color: rgb(77, 118, 154);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    color: white;
+}
+
+.terms-conditions{
+    margin-left: 20px;
+    border: 2px solid yellow;
+}
+
+.terms-conditions h4, .copyright h4{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.socials{
+    margin-right: 20px;
+    border: 2px solid yellow;
+}
+
+.socials a{
+    border: 1px solid green;
+    width: 20px;
+    height: 20px;
+    padding: 20px;
+}
+/* _____ end of footer styling */

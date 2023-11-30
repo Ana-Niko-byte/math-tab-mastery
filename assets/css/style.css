@@ -15,3 +15,17 @@ main{
     flex-flow: column nowrap;
     border: 2px solid blue;
 }
+
+/* _____ start of common-across-all-sections styling */
+.page{
+    border: 2px solid red;
+    padding: 30px;
+    min-height: 500px;
+    width: 700px;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* _____ end of common-across-all-sections styling */

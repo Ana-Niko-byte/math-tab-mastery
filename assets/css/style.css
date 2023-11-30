@@ -28,16 +28,17 @@ a{
     text-decoration: none;
 }
 
-/* _____ end of common-across-all-sections styling */
-
-/* _____ start of first page styling */
-#first-section{
+#first-section, #second-section{
     border: 3px solid orange;
     padding: 20px;
     display: flex;
     align-items: center;
     flex-flow: column nowrap;
 }
+
+/* _____ end of common-across-all-sections styling */
+
+/* _____ start of first page styling */
 
 .headings{
     border: 1px solid red;
@@ -109,6 +110,80 @@ a{
 }
 /* _____end of button category styling */
 /* _____ end of first page styling */
+
+/* _____ start of second page styling */
+.content{
+    border: 2px solid navy;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.field{
+    border: 1px solid red;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.game-section{
+    border: 1px solid blue;
+    margin: 20px 0;
+}
+
+.game-intro{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.game-panel{
+    min-height: 250px;
+    width: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.game-task{
+    border: 1px solid purple;
+    margin-left: 10px;
+    margin-top: 95px;
+}
+
+.question-area{
+    font-size: 2rem;
+}
+
+.time-bar{
+    border: 2px solid red;
+    height: 15px;
+}
+
+.user-controls button{
+    padding: 7px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+button[data-type=submit]{
+    margin-left: 30px;
+}
+
+.revision-field{
+    min-width: 200px;
+    border: 1px solid red;
+}
+
+.score-tracking{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.revision-panel-field{
+    border: 2px solid orange;
+    min-height: 150px;
+}
+/* _____ end of second page styling */
 
 /* _____ start of footer styling */
 footer{

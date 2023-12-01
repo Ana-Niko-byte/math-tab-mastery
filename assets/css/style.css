@@ -13,12 +13,12 @@ main{
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
-    border: 2px solid blue;
 }
 
 /* _____ start of common-across-all-sections styling */
 .page{
-    border: 2px solid red;
+    background-color: rgb(154, 176, 196);
+    border-radius: 15px;
     padding: 30px;
     min-height: 500px;
     width: 700px;
@@ -26,10 +26,15 @@ main{
 
 a{
     text-decoration: none;
+    color: white;
+    transition: color 0.2s;
+}
+
+a:hover{
+    color: rgb(0, 0, 47);
 }
 
 #first-section, #second-section{
-    border: 3px solid orange;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -41,7 +46,6 @@ a{
 /* _____ start of first page styling */
 
 .headings{
-    border: 1px solid red;
     text-align: center;
 }
 
@@ -49,6 +53,7 @@ a{
     display: flex;
     flex-flow: row nowrap;
     margin: 20px 0;
+    color: white;
 }
 
 .main-heading h1{
@@ -63,7 +68,6 @@ a{
 
 .name-input-field{
     margin: 40px 0;
-    border: 1px solid green;
     display: flex;
     align-items: center;
     flex-flow: row nowrap;
@@ -93,47 +97,70 @@ a{
 /* _____ end of name input styling */
 /* _____ start of button category styling */
 .categories{
-    border: 2px solid purple;
     display: flex;
     flex-flow: row wrap;
 }
 
 .category{
     padding: 40px;
-    border: 1px solid red;
 }
 
 .category button{
     width: 75px;
     height: 40px;
     border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-category::after{
+    content: attr(id);
+    position: relative;
+    top: 2em;
 }
 /* _____end of button category styling */
 /* _____ end of first page styling */
 
 /* _____ start of second page styling */
+
+.second-page{
+width: 1000px;
+}
+
 .content{
-    border: 2px solid navy;
+    padding: 1%;
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
 }
 
 .field{
-    border: 1px solid red;
     padding: 20px;
     display: flex;
     flex-flow: column nowrap;
 }
 
+.game-field h3{
+    font-size: 1.5rem;
+    color: white;
+}
+
 .game-section{
-    border: 1px solid blue;
     margin: 20px 0;
 }
 
 .game-intro{
     font-size: 1rem;
     font-weight: 600;
+}
+
+.panel{
+    background-color: rgb(255, 255, 244);
+    border-radius: 3px;
+    box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
 }
 
 .game-panel{
@@ -145,18 +172,31 @@ a{
 }
 
 .game-task{
-    border: 1px solid purple;
     margin-left: 10px;
     margin-top: 95px;
 }
 
 .question-area{
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-area-container, .revision-area-container{
+    margin-right: 40px;
+}
+
+.answer-box{
+    padding: 5px;
+    outline: none;
+    border: 1px solid white;
+    border-bottom: 2px solid rgb(37, 37, 37);
 }
 
 .time-bar{
-    border: 2px solid red;
-    height: 15px;
+    background-color: black;
+    height: 25px;
 }
 
 .user-controls button{
@@ -170,24 +210,75 @@ button[data-type=submit]{
 }
 
 .revision-field{
-    min-width: 200px;
-    border: 1px solid red;
+    width: 350px;
 }
 
 .score-tracking{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    width: 100%;
+}
+
+.scores{
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.score-span{
+    font-weight: 600;
+}
+
+.revision-panel{
+    min-height: 200px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .revision-panel-field{
-    border: 2px solid orange;
+    margin-top: 30px;
     min-height: 150px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.revision-tabs{
+    height: 100%;
+}
+
+.tab{
+    background-color: aquamarine;
+    margin: 2px 0;
+    height: 30px;
+    width: 40px;
+    border-top-left-radius: 7px;
+    text-align: center;
+}
+
+.revision-aids{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.revision-task{
+    display: flex;
+    margin-bottom: 80px;
+    font-size: 1.3rem;
+}
+
+.user-controls-revision{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
 }
 /* _____ end of second page styling */
 
 /* _____ start of footer styling */
 footer{
-    height: 100vh;
+    height: 80px;
     background-color: rgb(77, 118, 154);
     display: flex;
     flex-flow: row nowrap;
@@ -198,13 +289,11 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid blue;
     color: white;
 }
 
 .terms-conditions{
     margin-left: 20px;
-    border: 2px solid yellow;
 }
 
 .terms-conditions h4, .copyright h4{
@@ -214,11 +303,9 @@ footer{
 
 .socials{
     margin-right: 20px;
-    border: 2px solid yellow;
 }
 
 .socials a{
-    border: 1px solid green;
     width: 20px;
     height: 20px;
     padding: 20px;

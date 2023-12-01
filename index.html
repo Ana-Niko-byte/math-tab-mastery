@@ -16,7 +16,7 @@
             <section id="first-section">
                 <div class="headings">
                     <div class="main-heading">
-                        <img src="/" alt="math tab mastery logo" class="logo">
+                        <img src="/" alt="logo" class="logo">
                         <h1>Math Tab Mastery</h1>
                     </div>
                     <div class="sub-heading">
@@ -31,17 +31,17 @@
                 </div>
                 <div class="categories">
                     <div class="category">
-                        <button data-type="add-subtract" id="add-subtract">
+                        <button data-type="add-subtract" id="addition/subtraction" class="button-category">
                             <i class="fa-solid fa-plus-minus"></i>
                         </button>
                     </div>
                     <div class="category">
-                        <button data-type="multiplication" id="multiply">
+                        <button data-type="multiplication" id="multiplication" class="button-category">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
                     <div class="category">
-                        <button data-type="division" id="divide">
+                        <button data-type="division" id="division" class="button-category">
                             <i class="fa-solid fa-divide"></i>
                         </button>
                     </div>
@@ -53,20 +53,22 @@
         <div class="page second-page">
             <section id="second-section">
                 <div class="main-heading">
-                    <img src="/" alt="math tab mastery logo" class="logo">
+                    <img src="/" alt="logo" class="logo">
                     <h1>Math Tab Mastery</h1>
                 </div>
                 <div class="content">
                     <div class="field game-field">
-                        <h3 class="game-section game-intro"><span id="user-name"></span>, let's play!</h3>
-                        <div class="game-section game-panel">
+                        <h3 class="game-section game-intro"><span id="user-name">user</span>, let's play!</h3>
+                        <div class="game-section game-panel panel">
                             <div class="task game-task">
                                 <div class="question-area">
-                                    <span id="first-operand">0</span>
-                                    <span id="operator">x</span>
-                                    <span id="second-operand">0</span>
-                                    <span>=</span>
-                                    <input id="answer-box" type="number" placeholder="your answer..." required>
+                                    <div class="question-area-container">
+                                        <span id="first-operand">0</span>
+                                        <span id="operator">x</span>
+                                        <span id="second-operand">0</span>
+                                        <span>=</span>
+                                    </div>
+                                    <input class="answer-box" id="answer-box" type="number" placeholder="your answer..." required>
                                 </div>
                             </div>
                             <div class="time-bar"></div>
@@ -78,24 +80,33 @@
                     </div>
                     <div class="field revision-field">
                         <div class="score-tracking">
-                            <p class="scores">Correct Answers <span id="right-answer">0</span></p>
-                            <p class="scores">Incorrect Answers <span id="wrong-answer">0</span></p>
+                            <p class="scores"><span class="score-span" id="right-answer">0</span> Correct Answers</p>
+                            <p class="scores"><span class="score-span" id="wrong-answer">0</span> Incorrect Answers</p>
                         </div>
                         <div class="revision-panel-field">
-                            <div class="revision-tabs"></div>
-                            <div class="revision-panel">
+                            <div class="revision-tabs">
+                                <div class="tab">z</div>
+                                <div class="tab">z</div>
+                                <div class="tab">z</div>
+                                <div class="tab">z</div>
+                            </div>
+                            <div class="revision-panel panel">
                                 <div class="revision-aids">
-                                    <div id="filter"></div>
+                                    <div id="filter">
+                                        <p>filter by</p>
+                                    </div>
                                     <div class="help">
                                         <i class="fa-regular fa-circle-question"></i>
                                     </div>
                                 </div>
                                 <div class="task revision-task">
-                                    <span id="revision-first-operand">0</span>
-                                    <span id="revision-operator">x</span>
-                                    <span id="revision-second-operand">0</span>
-                                    <span>=</span>
-                                    <input id="revision-answer-box" type="number" placeholder="your answer..." required>
+                                    <div class="revision-area-container">
+                                        <span id="revision-first-operand">0</span>
+                                        <span id="revision-operator">x</span>
+                                        <span id="revision-second-operand">0</span>
+                                        <span>=</span>
+                                    </div>
+                                    <input id="revision-answer-box" class="answer-box" type="number" placeholder="your answer..." required>
                                 </div>
                             </div>
                         </div>

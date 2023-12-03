@@ -5,6 +5,9 @@
 }
 
 html, body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -13,6 +16,8 @@ main{
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
+    position: relative;
+    flex: 1;
 }
 
 /* _____ start of common-across-all-sections styling */
@@ -22,6 +27,11 @@ main{
     padding: 30px;
     min-height: 500px;
     width: 700px;
+}
+
+.first-page{
+    position: absolute;
+    z-index: 10;
 }
 
 a{
@@ -120,6 +130,11 @@ a:hover{
     position: relative;
     top: 2em;
 }
+
+.operator{
+    margin-top: 12px;
+    transform: scale(1.2);
+}
 /* _____end of button category styling */
 /* _____ end of first page styling */
 
@@ -127,6 +142,7 @@ a:hover{
 
 .second-page{
 width: 1000px;
+display: none;
 }
 
 .content{

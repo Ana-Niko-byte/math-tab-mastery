@@ -83,3 +83,41 @@ This application is intended to be used primarily on laptop, but actively consid
 
 # Wireframes
 ![application wireframe](docs/images/wireframe.png)
+
+# Aesthetics
+# Features
+# Technologies
+# Testing & Debugging
+# Accessibility & Performance
+# Deployment
+The application is deployed on Gitpages through github, and is available for viewing in the link at the top of this README.md document. To deploy a github repository, follow the following steps: 
+
+1. Login to your github account
+2. Click on your repository section under your profile icon, and select the repository you want to deploy.
+3. Once you are in your repository, click ' Settings' in the top bar. 
+4. Select 'Pages' from the menu on the left. 
+5. Ensure the 'Source' section is set to 'Deploy from a branch'.
+6. Ensure you deploy from the main branch in your root directory. The screen should look something like this: 
+![github pages]()
+7. The site you want to deploy is given a URL, available above the source section, as in the image above. It might take a while for this link to become visible and active. 
+
+### Forking a Github Repository
+
+If you want to make changes to your repository (or part of it) without affecting it, you can 'fork' it (make a copy of it). This ensures the original repository remains unchanged. To fork a github repository, follow the following steps: 
+
+1. Click into the github repository you want to fork. 
+2. Click 'Fork' in the top right hand side of the top bar, and this should take you to a page titled 'Create a new fork'
+3. You can now work in this copy of your repository without it affecting the original. 
+
+### Cloning a Github Repository
+Cloning a repository essentially means downloading a copy of your repository that can be worked on locally. This method allows for version control and back up of code. To clone a github repository, follow the following steps: 
+
+1. Click into the github repository you want to clone. 
+2. Press the 'Code' button. This should open a section similar to the one below. 
+![Clone Code Button Dropdown]()
+3. Copy the link in this dropdown
+4. Open a terminal within your VSC (or whatever IDE you choose to use). 
+5. In the terminal type 'git clone' and paste the URL. 
+6. Press Enter - you now have a cloned version of your github repository.
+# Credits
+# Acknowledgements

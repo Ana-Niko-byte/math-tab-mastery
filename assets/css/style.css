@@ -79,8 +79,7 @@ a:hover{
 .name-input-field{
     margin: 40px 0;
     display: flex;
-    align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
 }
 
 .name-input-field label{
@@ -102,6 +101,13 @@ a:hover{
 
 #name:focus{
     border: 1px solid red;
+}
+
+.error{
+    font-size: 0.8rem;
+    text-align: end;
+    color: white;
+    margin-top: 5px;
 }
 
 /* _____ end of name input styling */

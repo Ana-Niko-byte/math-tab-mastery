@@ -84,6 +84,15 @@ function beginGame(category){
 
     numOne.innerText = Math.floor(Math.random() * 30) + 1;
     numTwo.innerText = Math.floor(Math.random() * 30) + 1;
+
+    // set logic for the type of game
+    if (category === 'add-subtract'){
+        console.log('we are adding');
+    } else if (category === 'multiplication') {
+        console.log('we are multiplying');
+    } else if (category === 'division'){
+        console.log('we are dividing');
+    }
 }
 
 categorySelection();

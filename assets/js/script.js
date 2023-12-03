@@ -59,7 +59,11 @@ function categorySelection(){
  */
 function beginGame(category){
     // first we need to set the display of the second screen and hide the first.
-    console.log('the game has begun!');
+    let firstPage = document.getElementById('first-page');
+    let secondPage = document.getElementById('second-page');
+    // then we need to set the correct CSS displays to hide the first page and show the second
+    firstPage.style.display = 'none';
+    secondPage.style.display = 'block';
 }
 
 categorySelection();

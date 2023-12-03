@@ -69,6 +69,21 @@ function beginGame(category){
     let user = document.getElementById('name').value;
     let placeholder = document.getElementById('user-name');
     placeholder.innerText = `${user}`;
+
+    // add some comfort in use (code taken from Love Maths by CodeInstitute):
+    // remove any value from the box set previously
+    // set the cursor into the input box to draw attention to it
+    document.getElementById('answer-box').value = '';
+    document.getElementById('answer-box').focus();
+
+
+    // set a range for the operators
+    let numOne = document.getElementById('first-operand');
+    let numTwo = document.getElementById('second-operand');
+    let operator = document.getElementById('operator');
+
+    numOne.innerText = Math.floor(Math.random() * 30) + 1;
+    numTwo.innerText = Math.floor(Math.random() * 30) + 1;
 }
 
 categorySelection();

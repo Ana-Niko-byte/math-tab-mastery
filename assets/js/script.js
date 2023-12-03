@@ -64,6 +64,11 @@ function beginGame(category){
     // then we need to set the correct CSS displays to hide the first page and show the second
     firstPage.style.display = 'none';
     secondPage.style.display = 'block';
+
+    // set the user's inputted name into the greeting
+    let user = document.getElementById('name').value;
+    let placeholder = document.getElementById('user-name');
+    placeholder.innerText = `${user}`;
 }
 
 categorySelection();

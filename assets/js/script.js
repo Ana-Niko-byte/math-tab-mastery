@@ -57,14 +57,6 @@ function categorySelection(){
             if (nameValidated){
                 beginGame(chosenCategory);
             }
-
-            if (chosenCategory === 'add-subtract'){
-                beginGame('add-subtract');
-            } else if (chosenCategory === 'multiplication'){
-                console.log('we are multiplying');
-            } else if (chosenCategory === 'division'){
-                console.log('we are dividing');
-            }
         })
     }
 }
@@ -103,12 +95,9 @@ function beginGame(category){
     // set logic for the type of game
     if (category === 'add-subtract'){
         displayAddSubtract(numOne, numTwo);
-        console.log('we are adding');
     } else if (category === 'multiplication') {
-        console.log('we are multiplying');
         displayMultiplication(numOne, numTwo);
     } else if (category === 'division'){
-        console.log('we are dividing');
         displayDivision(numOne, numTwo);
     }
 }
@@ -192,15 +181,11 @@ function userButtonActions(){
             if (this.getAttribute('data-type') === 'skip'){
                 // need to set condition to check type of game before restarting the game
                 let currentOperator = document.getElementById('operator').innerText;
-                console.log(currentOperator);
                 if ((currentOperator === '+') || (currentOperator === '-')){
                     beginGame('add-subtract');
-                    console.log('restarting add-subtract');
                 } else if (currentOperator === 'x'){
-                    console.log('restarting multiply game');
                     beginGame('multiplication');
                 } else if (currentOperator === '/'){
-                    console.log('restarting divide game');
                     beginGame('division');
                 }
             }
@@ -243,5 +228,23 @@ function displayDivision(operandOne, operandTwo){
     document.getElementById('operator').textContent = '/';
 }
 
+function computeAnswer(){
+    let firstOperand = parseInt(document.getElementById('first-operand').innerText);
+    let secondOperand = parseInt(document.getElementById('second-operand').innerText);
+    let currentOperator = document.getElementById('operator').innerText;
+    console.log(currentOperator);
+
+    if (currentOperator === '+'){
+        return [firstOperand + secondOperand, 'add-subtract'];
+    } else if (currentOperator === '-'){
+        return [firstOperand - secondOperand, 'add-subtract'];
+    } else if (currentOperator === 'x'){
+        return [firstOperand * secondOperand, 'multiplication'];
+    } else if (currentOperator === '/'){
+        return [firstOperand / secondOperand, 'division'];
+    }
+}
+
+computeAnswer();
 userButtonActions();
 categorySelection();

@@ -132,6 +132,9 @@ function displayAddSubtract(operandOne, operandTwo){
     document.getElementById('operator').textContent = (determined === 1) ? '+' :'-';
 }
 
+/**
+ * This function establishes the logic for user actions on the 'skip' and 'submit' buttons.
+ */
 // skip button logic 
 function userButtonActions(){
     // gets user buttons as an array

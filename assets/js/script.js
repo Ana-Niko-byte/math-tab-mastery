@@ -106,6 +106,7 @@ function beginGame(category){
         console.log('we are adding');
     } else if (category === 'multiplication') {
         console.log('we are multiplying');
+        displayMultiplication(numOne, numTwo);
     } else if (category === 'division'){
         console.log('we are dividing');
     }
@@ -133,6 +134,20 @@ function displayAddSubtract(operandOne, operandTwo){
 }
 
 /**
+ * This function handles all necessary logic for HTML for the multiplication question to work. 
+ * This function works alongside the validateAnswer function.
+ */
+function displayMultiplication(operandOne, operandTwo){
+    // set smaller range so sum answers are manageable - (max 13 x 13)
+    operandOne = Math.floor(Math.random() * 12) + 1;
+    operandTwo = Math.floor(Math.random() * 12) + 1;
+
+    document.getElementById('first-operand').textContent = operandOne;
+    document.getElementById('second-operand').textContent = operandTwo;
+    document.getElementById('operator').textContent = 'x';
+}
+
+/**
  * This function establishes the logic for user actions on the 'skip' and 'submit' buttons.
  */
 // skip button logic 
@@ -143,7 +158,15 @@ function userButtonActions(){
     for (let button of buttons){
         button.addEventListener('click', function(){
             if (this.getAttribute('data-type') === 'skip'){
-                beginGame('add-subtract');
+                // need to set condition to check type of game before restarting the game
+                let currentOperator = document.getElementById('operator').innerText;
+                console.log(currentOperator);
+                if ((currentOperator === '+') || (currentOperator === '-')){
+                    beginGame('add-subtract');
+                    console.log('restarting add-subtract');
+                } else if (currentOperator === 'x'){
+                    console.log('restarting multiply game');
+                }
             }
 
             if (this.getAttribute('data-type') === 'submit'){

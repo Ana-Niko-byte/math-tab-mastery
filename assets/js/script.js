@@ -132,4 +132,23 @@ function displayAddSubtract(operandOne, operandTwo){
     document.getElementById('operator').textContent = (determined === 1) ? '+' :'-';
 }
 
+// skip button logic 
+function userButtonActions(){
+    // gets user buttons as an array
+    let buttons = document.getElementsByClassName('user-control-buttons');
+
+    for (let button of buttons){
+        button.addEventListener('click', function(){
+            if (this.getAttribute('data-type') === 'skip'){
+                beginGame('add-subtract');
+            }
+
+            if (this.getAttribute('data-type') === 'submit'){
+                console.log('submit button selected');
+            }
+        })
+    }
+}
+
+userButtonActions();
 categorySelection();

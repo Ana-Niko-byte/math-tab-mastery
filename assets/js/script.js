@@ -50,6 +50,14 @@ function categorySelection(){
                 beginGame(chosenCategory);
             }
         })
+
+        if (chosenCategory === 'add-subtract'){
+            beginGame('add-subtract');
+        } else if (chosenCategory === 'multiplication'){
+            console.log('we are multiplying');
+        } else if (chosenCategory === 'division'){
+            console.log('we are dividing');
+        }
     }
 }
 
@@ -77,22 +85,43 @@ function beginGame(category){
     document.getElementById('answer-box').focus();
 
 
-    // set a range for the operators
-    let numOne = document.getElementById('first-operand');
-    let numTwo = document.getElementById('second-operand');
-    let operator = document.getElementById('operator');
+    // set a range for the operators in the game area
+    let numOne = Math.floor(Math.random() * 30) + 1;
+    let numTwo = Math.floor(Math.random() * 30) + 1;
 
-    numOne.innerText = Math.floor(Math.random() * 30) + 1;
-    numTwo.innerText = Math.floor(Math.random() * 30) + 1;
+    document.getElementById('first-operand').innerText = numOne;
+    document.getElementById('second-operand').innerText = numTwo;
 
     // set logic for the type of game
     if (category === 'add-subtract'){
+        displayAddSubtract(numOne, numTwo);
         console.log('we are adding');
     } else if (category === 'multiplication') {
         console.log('we are multiplying');
     } else if (category === 'division'){
         console.log('we are dividing');
     }
+}
+
+/**
+ * This function handles all necessary logic for HTML for the add-subtract question to work. 
+ * This function works alongside the validateAnswer function.
+ */
+function displayAddSubtract(operandOne, operandTwo){
+    // make sure operands don't give a negative answer during validation
+    if (operandTwo > operandOne){
+        // temporary variable to hold value of operandOne
+        let box = operandOne;
+        operandOne = operandTwo;
+        operandTwo = box;
+    }
+
+    document.getElementById('first-operand').textContent = operandOne;
+    document.getElementById('second-operand').textContent = operandTwo;
+    
+    //logic for determining whether 'operator' will be '+' or '-'
+    let determined = Math.round(Math.random());
+    document.getElementById('operator').textContent = (determined === 1) ? '+' :'-';
 }
 
 categorySelection();

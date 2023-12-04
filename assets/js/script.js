@@ -1,5 +1,14 @@
 // javascript script for the math-tab-mastery game
+document.addEventListener('DOMContentLoaded', function (){
+    // on DOM content load, remove the default error message under name input field
+    let initialMessage = document.getElementsByClassName('error')[0];
+    initialMessage.innerText = '';
 
+    // remove any value (except placeholder) inside the input field
+    document.getElementById('name').value = '';
+    // immediately direct attention to the input field
+    document.getElementById('name').focus();
+})
 /**
  * This function validates the name the user inputs 
  * into the 'name' input field on the first page.
@@ -40,7 +49,6 @@ function categorySelection(){
         // on click, it takes note of the value of the 'data-type' attribute on each of the buttons
         button.addEventListener('click', function(){
             let chosenCategory = this.getAttribute('data-type');
-            console.log(chosenCategory);
 
             // this will return either true or false depending on whether there is a value in the name input field
             let nameValidated = nameValidator();
@@ -49,15 +57,15 @@ function categorySelection(){
             if (nameValidated){
                 beginGame(chosenCategory);
             }
-        })
 
-        if (chosenCategory === 'add-subtract'){
-            beginGame('add-subtract');
-        } else if (chosenCategory === 'multiplication'){
-            console.log('we are multiplying');
-        } else if (chosenCategory === 'division'){
-            console.log('we are dividing');
-        }
+            if (chosenCategory === 'add-subtract'){
+                beginGame('add-subtract');
+            } else if (chosenCategory === 'multiplication'){
+                console.log('we are multiplying');
+            } else if (chosenCategory === 'division'){
+                console.log('we are dividing');
+            }
+        })
     }
 }
 

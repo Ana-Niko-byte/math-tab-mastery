@@ -8,7 +8,15 @@ document.addEventListener('DOMContentLoaded', function (){
     document.getElementById('name').value = '';
     // immediately direct attention to the input field
     document.getElementById('name').focus();
+
+    // allows the user to use the Enter key instead of the submit button
+    document.getElementById('answer-box').addEventListener('keypress', function(event){
+        if (event.key === 'Enter'){
+            validateAnswer();
+        }
+    })
 })
+
 /**
  * This function validates the name the user inputs 
  * into the 'name' input field on the first page.
@@ -38,8 +46,6 @@ function nameValidator(){
  * The selected button (category) displays the type or arithemetic game
  * on the second page.
  */
-nameValidator(); 
-
 function categorySelection(){
     // this returns an array of the category buttons
     let buttons = document.getElementsByClassName('button-category');
@@ -191,7 +197,6 @@ function userButtonActions(){
             }
 
             if (this.getAttribute('data-type') === 'submit'){
-                console.log('submit button selected');
                 validateAnswer();
             }
         })
@@ -229,6 +234,10 @@ function displayDivision(operandOne, operandTwo){
     document.getElementById('operator').textContent = '/';
 }
 
+/**
+ * This function computes the answers for each of the question categories based on the current operator visible in the question
+ * game field. It returns an array that is later used in the validateAnswer function. 
+ */
 function computeAnswer(){
     let firstOperand = parseInt(document.getElementById('first-operand').innerText);
     let secondOperand = parseInt(document.getElementById('second-operand').innerText);
@@ -245,17 +254,33 @@ function computeAnswer(){
     }
 }
 
+/**
+ * This function validates the user's answer against the computed answer in the computeAnswer function. 
+ */
 function validateAnswer(){
     // ensures the value we get from the DOM is a number
     let userAnswer = parseInt(document.getElementById('answer-box').value);
     // variable stores the returned value from computeAnswer() function
     let correctAnswer = computeAnswer();
-    console.log(correctAnswer);
     // sets the value of correctly based on true or false evaluation
     let correctly = userAnswer === correctAnswer[0];
 
     (correctly) ? alert('yes') : alert('no');
     beginGame(correctAnswer[1]);
+}
+
+/**
+ * This function increments the 'Correct Answers' tab in the game if the computed answer matches the user's answer.
+ */
+function addScore(){
+
+}
+
+/**
+ * This function increments the 'Incorrect Answers' tab in the game if the computed answer does not match the user's answer.
+ */
+function addIncorrectScore(){
+
 }
 
 userButtonActions();

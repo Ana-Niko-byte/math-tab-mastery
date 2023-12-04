@@ -212,5 +212,36 @@ function userButtonActions(){
     }
 }
 
+/**
+ * This function handles all necessary logic for HTML for the division question to work. 
+ * This function works alongside the validateAnswer function.
+ */
+function displayDivision(operandOne, operandTwo){
+// logic ensuring operandOne will always be bigger than operandTwo
+    if (operandTwo > operandOne) {
+        let box = operandOne;
+        operandOne = operandTwo;
+        operandTwo = box;
+
+        document.getElementById('second-operand').textContent = operandOne;
+        document.getElementById('first-operand').textContent = operandTwo;
+    }
+
+    // logic for ensuring operandOne is evenly divisible by operandTwo
+    if (operandOne % operandTwo !== 0) {
+        for (let i = 2; i <= operandOne; i++) {
+            if (operandOne % i === 0) {
+                operandTwo = i; //this is a variable
+                document.getElementById('second-operand').textContent = i;
+                break;
+            }
+        }
+    }
+
+    document.getElementById('first-operand').textContent = operandOne;
+    document.getElementById('second-operand').textContent = operandTwo;
+    document.getElementById('operator').textContent = '/';
+}
+
 userButtonActions();
 categorySelection();

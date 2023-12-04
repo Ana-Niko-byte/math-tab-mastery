@@ -192,6 +192,7 @@ function userButtonActions(){
 
             if (this.getAttribute('data-type') === 'submit'){
                 console.log('submit button selected');
+                validateAnswer();
             }
         })
     }
@@ -232,7 +233,6 @@ function computeAnswer(){
     let firstOperand = parseInt(document.getElementById('first-operand').innerText);
     let secondOperand = parseInt(document.getElementById('second-operand').innerText);
     let currentOperator = document.getElementById('operator').innerText;
-    console.log(currentOperator);
 
     if (currentOperator === '+'){
         return [firstOperand + secondOperand, 'add-subtract'];
@@ -245,6 +245,18 @@ function computeAnswer(){
     }
 }
 
-computeAnswer();
+function validateAnswer(){
+    // ensures the value we get from the DOM is a number
+    let userAnswer = parseInt(document.getElementById('answer-box').value);
+    // variable stores the returned value from computeAnswer() function
+    let correctAnswer = computeAnswer();
+    console.log(correctAnswer);
+    // sets the value of correctly based on true or false evaluation
+    let correctly = userAnswer === correctAnswer[0];
+
+    (correctly) ? alert('yes') : alert('no');
+    beginGame(correctAnswer[1]);
+}
+
 userButtonActions();
 categorySelection();

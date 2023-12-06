@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', function (){
             validateAnswer();
         }
     })
+
+    document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
+        if (event.key === 'Enter'){
+            validateRevision();
+        }
+    })
 })
 
 /**
@@ -198,6 +204,7 @@ function userButtonActions(){
 
             if (this.getAttribute('data-type') === 'submit'){
                 validateAnswer();
+                validateRevision();
             }
         })
     }
@@ -208,7 +215,7 @@ function userButtonActions(){
  * This function works alongside the validateAnswer function.
  */
 function displayDivision(operandOne, operandTwo){
-// logic ensuring operandOne will always be bigger than operandTwo
+// logic ensuring operandOne will always be bigger than operandTwo.
     if (operandTwo > operandOne) {
         let box = operandOne;
         operandOne = operandTwo;
@@ -218,11 +225,12 @@ function displayDivision(operandOne, operandTwo){
         document.getElementById('first-operand').textContent = operandTwo;
     }
 
-    // logic for ensuring operandOne is evenly divisible by operandTwo
+    // logic for ensuring operandOne is evenly divisible by operandTwo.
     if (operandOne % operandTwo !== 0) {
         for (let i = 2; i <= operandOne; i++) {
             if (operandOne % i === 0) {
-                operandTwo = i; //this is a variable
+                //this is a variable temporarily storing the value of i. 
+                operandTwo = i;
                 document.getElementById('second-operand').textContent = i;
                 break;
             }
@@ -254,21 +262,37 @@ function computeAnswer(){
     }
 }
 
+function computeRevisionAnswer(){
+    let firstOperand = parseInt(document.getElementById('revision-first-operand').innerText);
+    let secondOperand = parseInt(document.getElementById('revision-second-operand').innerText);
+    let currentOperator = document.getElementById('revision-operator').innerText;
+
+    if (currentOperator === '+'){
+        return firstOperand + secondOperand;
+    } else if (currentOperator === '-'){
+        return firstOperand - secondOperand;
+    } else if (currentOperator === 'x'){
+        return firstOperand * secondOperand;
+    } else if (currentOperator === '/'){
+        return firstOperand / secondOperand;
+    }
+}
+
 /**
  * This function validates the user's answer against the computed answer in the computeAnswer function. 
  */
 function validateAnswer(){
-    // ensures the value we get from the DOM is a number
+    // ensures the value we get from the DOM is a number.
     let userAnswer = parseInt(document.getElementById('answer-box').value);
-    // variable stores the returned value from computeAnswer() function
+    // variable stores the returned value from computeAnswer() function.
     let correctAnswer = computeAnswer();
-    // sets the value of correctly based on true or false evaluation
+    // sets the value of correctly based on true or false evaluation.
     let correctly = userAnswer === correctAnswer[0];
 
     (correctly) ? addScore() : addIncorrectScore();
     beginGame(correctAnswer[1]);
-    // returns a boolean indicating whether the answer was right or wrong (TRUE or FALSE)
-    // this is used in the createTab function
+    // returns a boolean indicating whether the answer was right or wrong (TRUE or FALSE).
+    // this is used in the createTab function.
     return correctly;
 }
 
@@ -295,6 +319,8 @@ function addIncorrectScore(){
     createTab();
 }
 
+// From here starts the javascript code for handling the revision side of the game.
+
 /**
  * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
  */
@@ -305,7 +331,7 @@ function createTab(parameterOne, parameterTwo){
     tab.classList.add('tab');
 
     // logic for storing the incorrectly-answered question parameters.
-    // step 1 : get current operator
+    // step 1 : get current operator.
     let currentOperator = document.getElementById('operator').textContent;
 
     // step 2 : assign the innerHTML of the tab to the operator + styles.
@@ -327,17 +353,33 @@ function createTab(parameterOne, parameterTwo){
             tab.style.backgroundColor = 'lightgrey';
     }
 
-    // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators
-    // question operands
+    // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
+    // question operands.
     parameterOne = document.getElementById('first-operand').textContent;
     parameterTwo = document.getElementById('second-operand').textContent;
 
     // assign to innerText of the revision operands
     document.getElementById('revision-first-operand').innerText = parameterOne;
     document.getElementById('revision-second-operand').innerText = parameterTwo;
+    document.getElementById('revision-operator').innerText = currentOperator;
 
     // step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
+}
+
+/**
+ * This function validates the revision answers stored from the wrongly-answered questions.
+ * If answered correctly, the relative tab changes its colour. If wrong, it turns grey. 
+ */
+function validateRevision(){
+    // ensures the revision value we get from the DOM is a number.
+    let userAnswer = parseInt(document.getElementById('revision-answer-box').value);
+    // variable stores the returned value from computeAnswer() function.
+    let correctAnswer = computeRevisionAnswer();
+    // sets the value of correctly based on true or false evaluation.
+    let correctlyRevised = userAnswer === correctAnswer;
+
+    (correctlyRevised) ? alert('revision correct') : alert('revision wrong');
 }
 
 userButtonActions();

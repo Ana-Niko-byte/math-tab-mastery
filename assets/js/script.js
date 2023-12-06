@@ -296,14 +296,6 @@ function addIncorrectScore(){
 }
 
 /**
- * This fuction keeps track of all incorrect answers, so that they can be displayed in the revision field once the user 
- * clicks on one of the tabs on the side.
- */
-function TabTracker(){
-
-}
-
-/**
  * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
  */
 function createTab(parameterOne, parameterTwo){

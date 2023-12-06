@@ -267,6 +267,9 @@ function validateAnswer(){
 
     (correctly) ? addScore() : addIncorrectScore();
     beginGame(correctAnswer[1]);
+    // returns a boolean indicating whether the answer was right or wrong (TRUE or FALSE)
+    // this is used in the createTab function
+    return correctly;
 }
 
 /**
@@ -285,8 +288,57 @@ function addScore(){
  * The logic for this function was gotten from the Love Maths walkthrough Game on Code Institute.
  */
 function addIncorrectScore(){
+    // incrementing the incorrect answers score 
     let incorrectScoreTrack = parseInt(document.getElementById('wrong-answer').innerText);
     document.getElementById('wrong-answer').innerText = ++incorrectScoreTrack;
+
+    createTab();
+}
+
+/**
+ * This fuction keeps track of all incorrect answers, so that they can be displayed in the revision field once the user 
+ * clicks on one of the tabs on the side.
+ */
+function TabTracker(){
+
+}
+
+/**
+ * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
+ */
+function createTab(parameterOne, parameterTwo){
+    // get the first element of the tabs array + add one tab at a time.
+    let tabs = document.getElementsByClassName('revision-tabs')[0];
+    let tab = document.createElement('div');
+    tab.classList.add('tab');
+
+    // logic for storing the incorrectly-answered question parameters.
+    // step 1 : get current operators
+    let currentOperator = document.getElementById('operator').textContent;
+    parameterOne = parseInt(document.getElementById('first-operand').textContent);
+    parameterTwo = parseInt(document.getElementById('second-operand').textContent);
+
+    // step 2 : assign the innerHTML of the tab to the operator + styles.
+    tab.innerText = `${currentOperator}`;
+    switch (currentOperator){
+        case '+':
+            tab.style.backgroundColor = 'red';
+            break;
+        case '-':
+            tab.style.backgroundColor = 'blue';
+            break;
+        case 'x':
+            tab.style.backgroundColor = 'green';
+            break;
+        case '/':
+            tab.style.backgroundColor = 'yellow';
+            break;
+        default:
+            tab.style.backgroundColor = 'lightgrey';
+    }
+
+    // step 3 : append the new tab to the tabs container.
+    tabs.appendChild(tab);
 }
 
 userButtonActions();

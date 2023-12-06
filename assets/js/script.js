@@ -265,22 +265,28 @@ function validateAnswer(){
     // sets the value of correctly based on true or false evaluation
     let correctly = userAnswer === correctAnswer[0];
 
-    (correctly) ? alert('yes') : alert('no');
+    (correctly) ? addScore() : addIncorrectScore();
     beginGame(correctAnswer[1]);
 }
 
 /**
  * This function increments the 'Correct Answers' tab in the game if the computed answer matches the user's answer.
+ * The logic for this function was gotten from the Love Maths walkthrough Game on Code Institute.
  */
 function addScore(){
-
+    // convert the inner string of text of right-score '0' to a number.
+    let scoreTrack = parseInt(document.getElementById('right-answer').innerText);
+    // get the element again and change its inner text to the scoreTrack number + 1.
+    document.getElementById('right-answer').innerText = ++scoreTrack;
 }
 
 /**
  * This function increments the 'Incorrect Answers' tab in the game if the computed answer does not match the user's answer.
+ * The logic for this function was gotten from the Love Maths walkthrough Game on Code Institute.
  */
 function addIncorrectScore(){
-
+    let incorrectScoreTrack = parseInt(document.getElementById('wrong-answer').innerText);
+    document.getElementById('wrong-answer').innerText = ++incorrectScoreTrack;
 }
 
 userButtonActions();

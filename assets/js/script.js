@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function (){
             validateRevision();
         }
     })
+    // set a timer for 1 minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
+    setTimeout(revisionSwitch, 6000);
+    console.log('timer?');
 })
 
 /**
@@ -112,6 +115,11 @@ function beginGame(category){
     } else if (category === 'division'){
         displayDivision(numOne, numTwo);
     }
+}
+
+function revisionSwitch(){
+    alert('you are done');
+    document.getElementById('game-field').style.opacity = 0.5;
 }
 
 /**

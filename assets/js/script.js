@@ -305,10 +305,8 @@ function createTab(parameterOne, parameterTwo){
     tab.classList.add('tab');
 
     // logic for storing the incorrectly-answered question parameters.
-    // step 1 : get current operators
+    // step 1 : get current operator
     let currentOperator = document.getElementById('operator').textContent;
-    parameterOne = parseInt(document.getElementById('first-operand').textContent);
-    parameterTwo = parseInt(document.getElementById('second-operand').textContent);
 
     // step 2 : assign the innerHTML of the tab to the operator + styles.
     tab.innerText = `${currentOperator}`;
@@ -329,7 +327,16 @@ function createTab(parameterOne, parameterTwo){
             tab.style.backgroundColor = 'lightgrey';
     }
 
-    // step 3 : append the new tab to the tabs container.
+    // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators
+    // question operands
+    parameterOne = document.getElementById('first-operand').textContent;
+    parameterTwo = document.getElementById('second-operand').textContent;
+
+    // assign to innerText of the revision operands
+    document.getElementById('revision-first-operand').innerText = parameterOne;
+    document.getElementById('revision-second-operand').innerText = parameterTwo;
+
+    // step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
 }
 

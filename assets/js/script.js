@@ -368,6 +368,31 @@ function createTab(parameterOne, parameterTwo){
 }
 
 /**
+ * This function stores the values of the operands and operator of the wrongly answered questions so they can be accessed
+ * later on by clicking the tabs.
+ */
+function storeTabValues(){
+    // step 1 : define an empty array to hold the values.
+    let tabValues = [];
+
+    // step 2 : add an event listener to the answer box, which is triggered by the 'Enter' key. 
+    document.getElementById('answer-box').addEventListener('keypress', function(event){
+        if (event.key === 'Enter'){
+    // step 3 : create the tabStore object for storing the values of the wrongly answered question.
+            let tabStore = {
+                revOperandOne : document.getElementById('first-operand').textContent,
+                revOperator : document.getElementById('operator').textContent,
+                revOperandTwo : document.getElementById('second-operand').textContent
+            };
+
+    // step 4 : push this object into the tabValues array.
+            tabValues.push(tabStore);
+            console.log(tabValues);
+        }
+    })
+}
+
+/**
  * This function validates the revision answers stored from the wrongly-answered questions.
  * If answered correctly, the relative tab changes its colour. If wrong, it turns grey. 
  */

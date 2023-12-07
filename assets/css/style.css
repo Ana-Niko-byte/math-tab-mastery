@@ -165,6 +165,11 @@ display: none;
     flex-flow: column nowrap;
 }
 
+/* accessed and modified in javascript */
+#game-field, #revision-field{
+    transition: transform 0.6s ease;
+}
+
 .game-field h3{
     font-size: 1.5rem;
     color: white;

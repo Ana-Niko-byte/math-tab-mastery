@@ -110,6 +110,29 @@ function beginGame(category){
 }
 
 /**
+ * This function handles the logic for the time bar (1 minute). 
+ * This gives an indication to the user on the amount of time they have left to play the game. 
+ */
+// code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
+function timeProgress(){
+    // get the time bar element.
+    let timeBar = document.getElementById('time-progress');
+    // the 1% specified in CSS width.
+    let width = 1;
+    let timed = setInterval(frame, 600);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(timed);
+        i = 0;
+      } else {
+        width++;
+        timeBar.style.width = width + "%";
+      }
+    }
+}
+timeProgress();
+
+/**
  * This function handles the UI side of the game - after 6 seconds, the opacity of the main game section will switch to 0.5.
  * This doesn't work properly for the moment as the game is still accessible, but is here for debugging purposes. 
  */

@@ -114,9 +114,14 @@ function beginGame(category){
  * This doesn't work properly for the moment as the game is still accessible, but is here for debugging purposes. 
  */
 function revisionSwitch(){
-    alert('you are out of time!');
+    // scale elements for visual emphasis of game being finished.
     document.getElementById('game-field').style.transform = 'scale(0.75)';
     document.getElementById('revision-field').style.transform = 'scale(1.25)';
+
+    // add disabled attribute to main game input field.
+    document.getElementById('answer-box').setAttribute('disabled', 'disabled');
+    // disable the attribute in the revision field. 
+    document.getElementById('revision-answer-box').disabled = false;
 }
 
 /**

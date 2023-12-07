@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function (){
     document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
         if (event.key === 'Enter'){
             validateRevision();
-            console.log('validateRevision activated');
         }
     })
     // set a timer for 1 minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
@@ -214,6 +213,18 @@ function userButtonActions(){
             if (this.getAttribute('data-type') === 'submit'){
                 validateAnswer();
             }
+
+            if (this.getAttribute('data-type') === 'exit'){
+                // reset the page displays.
+                let firstPage = document.getElementById('first-page');
+                let secondPage = document.getElementById('second-page');
+                secondPage.style.display = 'none';
+                firstPage.style.display = 'block';
+
+                // remove the user's entered name in the 'name' input field.
+                document.getElementById('name').value = '';
+                document.getElementById('name').focus();
+            }
         })
     }
 }
@@ -397,6 +408,34 @@ function displayTabValues(){
     }
 }
 displayTabValues();
+
+// function validateRevision(){
+//     // ensures the revision value we get from the DOM is a number.
+//     let userAnswer = parseInt(document.getElementById('revision-answer-box').value);
+//     // variable stores the returned value from computeAnswer() function.
+//     let correctAnswer = computeRevisionAnswer();
+//     // sets the value of correctly based on true or false evaluation.
+//     let correctlyRevised = userAnswer === correctAnswer;
+
+//     (correctlyRevised) ? alert('revision correct') : alert('revision wrong');
+//     return correctlyRevised;
+// }
+
+// function displayRevisionQuestion(){
+//     let tabs = storeTabValues();
+//     console.log(tabs);
+//     let actualTabs = document.getElementsByClassName('revision-tabs');
+//     console.log(actualTabs);
+//     for (let tab of actualTabs){
+//         tab.addEventListener('click', function(){
+//             document.getElementById('revision-first-operand').innerText = tab[0];
+//             document.getElementById('revision-operator').innerText = tab[1];
+//             document.getElementById('revision-second-operand').innerText = tab[2];
+//         })
+//     }
+// }
+
+// displayRevisionQuestion();
 
 userButtonActions();
 categorySelection();

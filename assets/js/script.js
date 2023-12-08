@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function (){
         }
     })
     // set a timer for 1 minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
-    // setTimeout(revisionSwitch, 60000);
+    setTimeout(revisionSwitch, 60000);
 })
 
 /**
@@ -63,7 +63,7 @@ function categorySelection(){
             // the game will only begin if the name field is valid
             if (nameValidated){
                 beginGame(chosenCategory);
-                // timeProgress();
+                timeProgress();
             }
         })
     }
@@ -376,13 +376,17 @@ function createTab(parameterOne, parameterTwo){
     parameterOne = document.getElementById('first-operand').textContent;
     parameterTwo = document.getElementById('second-operand').textContent;
 
-    // assign to innerText of the revision operands
-    document.getElementById('revision-first-operand').innerText = parameterOne;
-    document.getElementById('revision-second-operand').innerText = parameterTwo;
-    document.getElementById('revision-operator').innerText = currentOperator;
-
     // step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
+
+    tab.addEventListener('click', function(){
+        this.style.backgroundColor = 'purple';
+
+        // assign to innerText of the revision operands
+        document.getElementById('revision-first-operand').innerText = parameterOne;
+        document.getElementById('revision-second-operand').innerText = parameterTwo;
+        document.getElementById('revision-operator').innerText = currentOperator;
+    })
 }
 
 /**

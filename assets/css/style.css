@@ -160,7 +160,7 @@ a:hover{
 /* _____ start of second page styling */
 
 .second-page{
-min-width: 1000px;
+width: 1200px;
 display: none;
 }
 
@@ -245,6 +245,7 @@ display: none;
     height: 15px;
     background-color: rgb(60, 68, 156);
     border-radius: 3px;
+    transition: width ease;
 }
 
 .user-controls button{
@@ -334,6 +335,10 @@ button[data-type=submit]{
     display: flex;
     justify-content: flex-end;
     margin-top: 40px;
+}
+
+button[data-type = exit]{
+    width: 110px;
 }
 /* _____ end of second page styling */
 
@@ -481,10 +486,6 @@ footer{
 
     .user-controls-revision{
         justify-content: center;
-    }
-
-    button[data-type = exit]{
-        width: 100px;
     }
 
     /* footer styling */

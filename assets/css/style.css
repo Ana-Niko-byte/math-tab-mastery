@@ -26,7 +26,13 @@ main{
     border-radius: 15px;
     padding: 30px;
     min-height: 500px;
-    width: 700px;
+    max-width: 700px;
+    box-shadow: 8px 8px 2px rgb(66, 66, 66);
+    transition: transform 0.4s, max-width 0.3s ease-in;
+}
+
+.page:hover{
+    transform: scale(1.08);
 }
 
 .first-page{
@@ -62,28 +68,27 @@ a:hover{
 .main-heading{
     display: flex;
     flex-flow: row nowrap;
-    margin: 20px 0;
     color: white;
 }
 
-.main-heading h1{
-    font-size: 2.2rem;
+.logo{
+    width: 600px;
 }
 
 .sub-heading{
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 /* _____ start of name input styling */
 
 .name-input-field{
-    margin: 40px 0;
+    margin: 90px 0;
     display: flex;
     flex-flow: column nowrap;
 }
 
 .name-input-field label{
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 #name{
@@ -91,20 +96,17 @@ a:hover{
     margin-left: 10px;
     font-size: 0.8rem;
     outline: none;
-    border: 1px solid white;
-    transition: all 0.1s ease;
-}
-
-#name:hover{
-    border: 1px solid pink;
+    border: 2px solid white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 #name:focus{
-    border: 1px solid red;
+    border: 2px solid rgb(22, 47, 89);
 }
 
 .error{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-align: end;
     color: white;
     margin-top: 5px;
@@ -129,6 +131,17 @@ a:hover{
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    background-color: rgb(235, 235, 235);
+    border: 2px solid transparent;
+    transition: background-color 0.1s ease;
+}
+
+.category button:hover{
+    background-color: rgb(193, 193, 193);
+}
+
+.category button:active{
+    border: 2px solid rgb(154, 176, 196);
 }
 
 .button-category::after{
@@ -344,3 +357,58 @@ footer{
     padding: 20px;
 }
 /* _____ end of footer styling */
+/* _____ start of media queries */
+@media all and (max-width: 770px){
+    .page{
+        max-width: 400px;
+        height: 400px;
+    }
+
+    .logo{
+        width: 400px;
+    }
+
+    .sub-heading{
+        font-size: 1rem;
+    }
+
+    .name-input-field label{
+        font-size: 0.8rem;
+    }
+
+    .name-input-field{
+        margin: 40px 0;
+    }
+
+    .categories{
+        flex-flow: column nowrap;
+        padding: 0;
+    }
+
+    .category{
+        padding: 25px;
+    }
+
+    footer{
+        flex-flow: column nowrap;
+        height: 110px;
+    }
+
+    .terms-conditions{
+        margin-left: 0px;
+    }
+    
+    .terms-conditions h4, .copyright h4{
+        font-size: 0.8rem;
+    }
+
+    .copyright h4{
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    .terms-conditions{
+        margin-top: 10px;
+    }
+}
+/* _____ end of media queries */

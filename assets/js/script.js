@@ -33,7 +33,7 @@ function nameValidator(){
     // if 'name' input has no value, add an error message, 
     // otherwise, remove the text in the error message
     if (!userName){
-        error.innerText = 'name required to continue';
+        error.innerText = 'name required';
     } else if (!userName.match(regex)){
         error.innerText = 'please use letters only'
     } else {
@@ -63,6 +63,7 @@ function categorySelection(){
             // the game will only begin if the name field is valid
             if (nameValidated){
                 beginGame(chosenCategory);
+                // timeProgress();
             }
         })
     }
@@ -80,10 +81,11 @@ function beginGame(category){
     firstPage.style.display = 'none';
     secondPage.style.display = 'block';
 
-    // set the user's inputted name into the greeting
+    // set the user's inputted name into the greeting + change first letter to a capital
     let user = document.getElementById('name').value;
+    let capitalisedUser = user.charAt(0).toUpperCase() + user.slice(1);
     let placeholder = document.getElementById('user-name');
-    placeholder.innerText = `${user}`;
+    placeholder.innerText = `${capitalisedUser}`;
 
     // add some comfort in use (code taken from Love Maths by CodeInstitute):
     // remove any value from the box set previously
@@ -130,7 +132,6 @@ function timeProgress(){
       }
     }
 }
-timeProgress();
 
 /**
  * This function handles the UI side of the game - after 6 seconds, the opacity of the main game section will switch to 0.5.

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function (){
         }
     })
     // set a timer for 1 minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
-    setTimeout(revisionSwitch, 60000);
+    // setTimeout(revisionSwitch, 60000);
 })
 
 /**

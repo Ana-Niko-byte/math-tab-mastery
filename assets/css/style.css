@@ -31,7 +31,7 @@ main{
     transition: transform 0.4s, max-width 0.3s ease-in;
 }
 
-.page:hover{
+.first-page:hover{
     transform: scale(1.08);
 }
 
@@ -101,7 +101,7 @@ a:hover{
     transition: all 0.3s ease;
 }
 
-#name:focus{
+#name:focus, #answer-box:focus, #revision-answer-box:focus{
     border: 2px solid rgb(22, 47, 89);
 }
 
@@ -160,7 +160,7 @@ a:hover{
 /* _____ start of second page styling */
 
 .second-page{
-width: 1000px;
+min-width: 1000px;
 display: none;
 }
 
@@ -204,8 +204,8 @@ display: none;
 }
 
 .game-panel{
-    min-height: 250px;
-    width: 400px;
+    max-height: 300px;
+    width: 350px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -230,22 +230,25 @@ display: none;
 .answer-box{
     padding: 5px;
     outline: none;
-    border: 1px solid white;
+    border: 2px solid white;
     border-bottom: 2px solid rgb(37, 37, 37);
 }
 
 .time-bar{
-    background-color: rgb(169, 169, 169);
-    height: 25px;
+    background-color: rgb(207, 207, 207);
+    height: 15px;
+    border-radius: 3px;
 }
 
 #time-progress{
     width: 1%;
-    height: 25px;
-    background-color: blueviolet;
+    height: 15px;
+    background-color: rgb(60, 68, 156);
+    border-radius: 3px;
 }
 
 .user-controls button{
+    width: 80px;
     padding: 7px 20px;
     border: 1px solid white;
     border-radius: 5px;
@@ -256,17 +259,19 @@ button[data-type=submit]{
 }
 
 .revision-field{
-    width: 350px;
+    width: 300px;
 }
 
 .score-tracking{
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
+    justify-content: center;
     width: 100%;
 }
 
 .scores{
-    margin: 10px 0;
+    margin-top: 40px;
+    padding: 0 20px;
     font-size: 1.2rem;
 }
 
@@ -275,7 +280,7 @@ button[data-type=submit]{
 }
 
 .revision-panel{
-    min-height: 200px;
+    min-height: 100px;
     padding: 10px;
     display: flex;
     flex-flow: column nowrap;
@@ -284,10 +289,19 @@ button[data-type=submit]{
 }
 
 .revision-panel-field{
-    margin-top: 30px;
     min-height: 150px;
+    width: 400px;
     display: flex;
     flex-flow: row nowrap;
+}
+
+.revision-heading h4{
+    margin-left: 40px;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 40px;
 }
 
 .revision-tabs{
@@ -311,6 +325,7 @@ button[data-type=submit]{
 
 .revision-task{
     display: flex;
+    flex-flow: row nowrap;
     margin-bottom: 80px;
     font-size: 1.3rem;
 }
@@ -359,6 +374,7 @@ footer{
 /* _____ end of footer styling */
 /* _____ start of media queries */
 @media all and (max-width: 770px){
+    /* page 1 styling */
     .page{
         max-width: 400px;
         height: 400px;
@@ -388,7 +404,90 @@ footer{
     .category{
         padding: 25px;
     }
+    /* page 2 styling */
+    .second-page{
+        max-width: 400px;
+        height: 100%;
+    }
 
+    .content{
+        padding: 0;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        align-items: center;
+    }
+    .field{
+        padding: 0;
+    }
+
+    .game-field{
+        margin-left: 0;
+    }
+
+    .game-intro{
+        text-align: center;
+    }
+
+    .game-field h3{
+        font-size: 1.4rem;
+    }
+
+    .panel{
+        max-width: 350px;
+    }
+
+    .game-panel{
+        height: 120px;
+        justify-content: space-between;
+    }
+
+    .game-task{
+        margin-left: 0;
+        margin-top: 25px;
+    }
+
+    .user-controls-game{
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    button[data-type = submit]{
+        margin-left: 0;
+    }
+
+    .score-tracking{
+        flex-flow: row nowrap;
+        justify-content: space-around;
+    }
+
+    .scores{
+        font-size: 1.1rem;
+    }
+
+    .revision-panel-field{
+        justify-content: center;
+    }
+    
+    .revision-task{
+        margin-bottom: 0px;
+        font-size: 1.4rem;
+    }
+    
+    .user-controls-revision{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 40px;
+    }
+
+    .user-controls-revision{
+        justify-content: center;
+    }
+
+    button[data-type = exit]{
+        width: 100px;
+    }
+
+    /* footer styling */
     footer{
         flex-flow: column nowrap;
         height: 110px;

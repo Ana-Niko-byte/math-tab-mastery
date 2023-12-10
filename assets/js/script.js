@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function (){
             validateRevision();
         }
     })
-    // set a timer for 1 minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
-    setTimeout(revisionSwitch, 60000);
+    // set a timer for 30secs minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
+    setTimeout(revisionSwitch, 30000);
 })
 
 /**
@@ -121,7 +121,7 @@ function timeProgress(){
     let timeBar = document.getElementById('time-progress');
     // the 1% specified in CSS width.
     let width = 1;
-    let timed = setInterval(frame, 600);
+    let timed = setInterval(frame, 300);
     function frame() {
       if (width >= 100) {
         clearInterval(timed);
@@ -380,7 +380,17 @@ function createTab(parameterOne, parameterTwo){
     tabs.appendChild(tab);
 
     tab.addEventListener('click', function(){
-        this.style.backgroundColor = 'purple';
+        this.style.backgroundColor = 'orange';
+        
+        // class ' selected is added to all elements so we need to remove it first.
+        let allTabs = document.getElementsByClassName('tab');
+        for (let tab of allTabs) {
+            tab.classList.remove('selected');
+        }
+
+
+        // add the class to one element - i.e. the one that has been clicked on.
+        this.classList.add('selected');
 
         // assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
@@ -430,7 +440,6 @@ function storeTabValues(){
 function displayTabValues(){
     let values = storeTabValues();
     let actualTabs = document.getElementsByClassName('revision-tabs')[0];
-    console.log(actualTabs);
 
     for (let value of values){
         value.addEventListener('click', function(){
@@ -441,6 +450,35 @@ function displayTabValues(){
     }
 }
 displayTabValues();
+
+/**
+ * This function handles validation logic for the revision section of the game.
+ */
+function validateRevision(){
+    let computedRevision = computeRevisionAnswer();
+    let userRevision = parseInt(document.getElementById('revision-answer-box').value);
+    let correctRevision = userRevision === computedRevision;
+
+    (correctRevision) ? amendCorrectTabs() : amendIncorrectTabs();
+    return correctRevision;
+}
+
+/**
+ * This function handles logic for tab changes if the revision question was answered correctly.
+ */
+function amendCorrectTabs(){
+    
+    let selectedTab = document.getElementsByClassName('selected')[0];
+    selectedTab.style.backgroundColor = 'green';
+}
+
+/**
+ * This function handles logic for tab changes if the revision question was answered incorrectly.
+ */
+function amendIncorrectTabs(){
+    let selectedTab = document.getElementsByClassName('selected')[0];
+    selectedTab.style.backgroundColor = 'lightgrey';
+}
 
 userButtonActions();
 categorySelection();

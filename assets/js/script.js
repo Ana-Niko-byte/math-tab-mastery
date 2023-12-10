@@ -9,13 +9,8 @@ document.addEventListener('DOMContentLoaded', function (){
     // immediately direct attention to the input field
     document.getElementById('name').focus();
 
-    document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
-        if (event.key === 'Enter'){
-            validateRevision();
-        }
-    })
-    // set a timer for 30secs minute, after which the main game UI gets disabled and focus is shifted to the revision block. 
-    setTimeout(revisionSwitch, 30000);
+    // remove any value (except placeholder) inside the revision input field
+    document.getElementById('revision-answer-box').value = '';
 })
 
 /**
@@ -125,7 +120,8 @@ function timeProgress(){
     function frame() {
       if (width >= 100) {
         clearInterval(timed);
-        i = 0;
+        timeBar.style.width = width + "%";
+        revisionSwitch();
       } else {
         width++;
         timeBar.style.width = width + "%";
@@ -382,15 +378,21 @@ function createTab(parameterOne, parameterTwo){
     tab.addEventListener('click', function(){
         this.style.backgroundColor = 'orange';
         
-        // class ' selected is added to all elements so we need to remove it first.
+        // class 'selected' is added to all elements so we remove it first.
         let allTabs = document.getElementsByClassName('tab');
         for (let tab of allTabs) {
             tab.classList.remove('selected');
         }
 
-
         // add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
+
+        // get an array from the available tabs to use the array method of 'this'.
+        let tabsArray = Array.from(allTabs);
+        // get the index of the tab element with class 'selected'.
+        let selectedIndex = tabsArray.indexOf(this);
+        // get the index number of the item after it. 
+        let nextSelectedIndex = selectedIndex + 1;
 
         // assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
@@ -398,6 +400,12 @@ function createTab(parameterOne, parameterTwo){
         document.getElementById('revision-operator').innerText = currentOperator;
     })
 }
+
+document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+        validateRevision();
+    }
+})
 
 /**
  * This function stores the values of the operands and operator of the wrongly answered questions so they can be accessed
@@ -432,24 +440,7 @@ function storeTabValues(){
     // step 7 : return the tab objects to be used in the displayRevisionQuestion function. 
     return tabValues;
 }
-
-/**
- * This function accesses the values stored in the tabValues array from the storeTabValues function
- * and displays the relevant values based on the tab the user clicks on. 
- */
-function displayTabValues(){
-    let values = storeTabValues();
-    let actualTabs = document.getElementsByClassName('revision-tabs')[0];
-
-    for (let value of values){
-        value.addEventListener('click', function(){
-            document.getElementById('revision-first-operand').innerText = tab[0];
-            document.getElementById('revision-operator').innerText = tab[1];
-            document.getElementById('revision-second-operand').innerText = tab[2];
-        })
-    }
-}
-displayTabValues();
+storeTabValues();
 
 /**
  * This function handles validation logic for the revision section of the game.
@@ -467,7 +458,6 @@ function validateRevision(){
  * This function handles logic for tab changes if the revision question was answered correctly.
  */
 function amendCorrectTabs(){
-    
     let selectedTab = document.getElementsByClassName('selected')[0];
     selectedTab.style.backgroundColor = 'green';
 }

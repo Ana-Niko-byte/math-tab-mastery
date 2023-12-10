@@ -116,6 +116,7 @@ function timeProgress(){
     let timeBar = document.getElementById('time-progress');
     // the 1% specified in CSS width.
     let width = 1;
+    // set interval for 30s.
     let timed = setInterval(frame, 300);
     function frame() {
       if (width >= 100) {
@@ -206,7 +207,7 @@ function displayDivision(operandOne, operandTwo){
                 break;
             }
         }
-    }
+    } 
 
     document.getElementById('first-operand').textContent = operandOne;
     document.getElementById('second-operand').textContent = operandTwo;
@@ -404,8 +405,29 @@ function createTab(parameterOne, parameterTwo){
 document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
     if (event.key === 'Enter'){
         validateRevision();
+        // clear the input field for the next question + user comfort.
+        document.getElementById('revision-answer-box').value = '';
+        nextTab();
     }
-})
+});
+
+function nextTab(){
+    let currentTabs = document.getElementsByClassName('revision-tabs')[0].children;
+    let currentTabsArray = Array.from(currentTabs);
+    console.log(currentTabsArray);
+    for (let tab of currentTabsArray){
+        // check which element has the class 'selected' 
+        // get the index of the element.
+        // get the index of the next element.
+        // remove the class.
+        // add the class to the next element.
+
+        // use the tabValues array to find the parameters stored in the element with class 'selected' (index).
+        // get values as array.
+        // assign values to the revision parrameters visible to user.
+    }
+}
+
 
 /**
  * This function stores the values of the operands and operator of the wrongly answered questions so they can be accessed

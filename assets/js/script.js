@@ -351,22 +351,9 @@ function createTab(parameterOne, parameterTwo){
 
     // step 2 : assign the innerHTML of the tab to the operator + styles.
     tab.innerText = `${currentOperator}`;
-    switch (currentOperator){
-        case '+':
-            tab.style.backgroundColor = 'red';
-            break;
-        case '-':
-            tab.style.backgroundColor = 'blue';
-            break;
-        case 'x':
-            tab.style.backgroundColor = 'green';
-            break;
-        case '/':
-            tab.style.backgroundColor = 'yellow';
-            break;
-        default:
-            tab.style.backgroundColor = 'lightgrey';
-    }
+
+    // sets the background colour as the tab is created.
+    setBackgroundColor(tab, currentOperator);
 
     // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
     // question operands.
@@ -377,13 +364,15 @@ function createTab(parameterOne, parameterTwo){
     tabs.appendChild(tab);
 
     tab.addEventListener('click', function(){
-        this.style.backgroundColor = 'orange';
-        
-        // class 'selected' is added to all elements so we remove it first.
+        // class 'selected' is added to all elements so we need to remove it first.
         let allTabs = document.getElementsByClassName('tab');
         for (let tab of allTabs) {
+            // resets the tab colours so that only one tab is orange on 'click'.
+            // tab.style.backgroundColor = setBackgroundColor(tab, currentOperator);
             tab.classList.remove('selected');
         }
+
+        this.style.backgroundColor = 'orange';
 
         // add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
@@ -403,9 +392,35 @@ document.getElementById('revision-answer-box').addEventListener('keypress', func
         // function will display the next tab values. 
         nextTabIndex();
         changeTabColour();
+        
     }
 });
 
+/**
+ * This function sets the backgroundColor of the newly created tabs based on the operator.
+ */
+function setBackgroundColor(tab, operator){
+    switch (operator){
+        case '+':
+            tab.style.backgroundColor = 'red';
+            break;
+        case '-':
+            tab.style.backgroundColor = 'blue';
+            break;
+        case 'x':
+            tab.style.backgroundColor = 'green';
+            break;
+        case '/':
+            tab.style.backgroundColor = 'yellow';
+            break;
+        default:
+            tab.style.backgroundColor = 'lightgrey';
+    }
+}
+
+/**
+ * This function changes the backgroundColor of the 'clicked' tab. It is used for visual aid.
+ */
 function changeTabColour(){
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
     console.log(tabs);
@@ -420,10 +435,6 @@ function changeTabColour(){
     tabs[currentSelectedIndex].classList.remove('selected');
     // adds the class 'selected' to the next element.
     tabs[nextTabIndex].classList.add('selected');
-    if (nextTabIndex === -1){
-        alert('no more');
-    }
-    tabs[nextTabIndex].style.backgroundColor = 'orange';
 }
 
 function nextTabIndex(){

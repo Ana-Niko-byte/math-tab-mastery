@@ -318,6 +318,10 @@ button[data-type=submit]{
     text-align: center;
 }
 
+.revision-tabs .selected{
+    background-color: orange;
+}
+
 .revision-aids{
     display: flex;
     width: 100%;

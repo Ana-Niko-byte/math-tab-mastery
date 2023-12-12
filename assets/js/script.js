@@ -357,42 +357,47 @@ function createTab(parameterOne, parameterTwo){
 
     // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
     // question operands.
-    parameterOne = document.getElementById('first-operand').textContent;
-    parameterTwo = document.getElementById('second-operand').textContent;
+    // parameterOne = document.getElementById('first-operand').textContent;
+    // parameterTwo = document.getElementById('second-operand').textContent;
 
     // step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
+    tabSelect();
 
-    tab.addEventListener('click', function(){
-        // class 'selected' is added to all elements so we need to remove it first.
-        let allTabs = document.getElementsByClassName('tab');
-        for (let tab of allTabs) {
-            // resets the tab colours so that only one tab is orange on 'click'.
-            // tab.style.backgroundColor = setBackgroundColor(tab, currentOperator);
-            tab.classList.remove('selected');
-        }
+    // assign relevant operators to innerText of the revision operands
+    // document.getElementById('revision-first-operand').innerText = parameterOne;
+    // document.getElementById('revision-second-operand').innerText = parameterTwo;
+    // document.getElementById('revision-operator').innerText = currentOperator;
+}
 
-        this.style.backgroundColor = 'orange';
+function tabSelect(){
+    let tabs = Array.from(document.getElementsByClassName('tab'));
 
-        // add the class to one element - i.e. the one that has been clicked on.
-        this.classList.add('selected');
-
-        // assign to innerText of the revision operands
-        document.getElementById('revision-first-operand').innerText = parameterOne;
-        document.getElementById('revision-second-operand').innerText = parameterTwo;
-        document.getElementById('revision-operator').innerText = currentOperator;
-    });
+    for (let tab of tabs){
+        tab.addEventListener('click', function(){
+            // class 'selected' is added to all elements so we need to remove it first.
+            for (let otherTab of tabs) {
+                // resets the tab colours so that only one tab is orange on 'click'.
+                let operator = otherTab.innerText;
+                otherTab.style.backgroundColor = setBackgroundColor(otherTab, operator);
+                otherTab.classList.remove('selected');
+            }
+    
+            this.style.backgroundColor = 'orange';
+            // add the class to one element - i.e. the one that has been clicked on.
+            this.classList.add('selected');
+        });
+    }
 }
 
 document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
     if (event.key === 'Enter'){
-        validateRevision();
+        let validated = validateRevision();
         // clear the input field for the next question + user comfort.
         document.getElementById('revision-answer-box').value = '';
         // function will display the next tab values. 
-        nextTabIndex();
-        changeTabColour();
-        
+        changeTab();
+        tabSelect(parameterOne, parameterTwo, currentOperator);
     }
 });
 
@@ -419,11 +424,11 @@ function setBackgroundColor(tab, operator){
 }
 
 /**
- * This function changes the backgroundColor of the 'clicked' tab. It is used for visual aid.
+ * This function changes the state of the 'clicked' tab. It is used for visual aid.
  */
-function changeTabColour(){
+function changeTab(){
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
-    console.log(tabs);
+
 
     // selects the first element with class 'selected'.
     let currentSelected = document.getElementsByClassName('selected')[0];
@@ -431,10 +436,13 @@ function changeTabColour(){
     let currentSelectedIndex = tabs.indexOf(currentSelected);
     // gets the next element's index.
     let nextTabIndex = currentSelectedIndex + 1;
+    // gets the HTML element with thenext element's index.
+    let nextElement = tabs[nextTabIndex];
     // removes the class 'selected' from the first element. 
     tabs[currentSelectedIndex].classList.remove('selected');
     // adds the class 'selected' to the next element.
     tabs[nextTabIndex].classList.add('selected');
+    nextElement.style.backgroundColor = 'orange';
 }
 
 function nextTabIndex(){
@@ -495,8 +503,21 @@ function storeTabValues(){
             document.getElementById('revision-second-operand').innerText = nextTabStore.revOperandTwo;
         }
     });
+
+    return function(){
+        return tabValues;
+    }
 }
 storeTabValues();
+displayNextTab();
+
+function displayNextTab(){
+    let operandOne = document.getElementById('revision-first-operand');
+    let operator = document.getElementById('revision-operator');
+    let operandTwo = document.getElementById('revision-second-operand');
+
+    let storedValues = storeTabValues();
+}
 
 /**
  * This function handles validation logic for the revision section of the game.

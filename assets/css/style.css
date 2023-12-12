@@ -316,10 +316,12 @@ button[data-type=submit]{
     width: 40px;
     border-top-left-radius: 7px;
     text-align: center;
+    transition: transform 0.2s, width 0.2s;
 }
 
-.revision-tabs .selected{
-    background-color: orange;
+.selected{
+    transform: translateX(-10px);
+    width: 50px;
 }
 
 .revision-aids{

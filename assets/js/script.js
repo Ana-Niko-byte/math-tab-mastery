@@ -78,7 +78,7 @@ function beginGame(category){
 
     // set the user's inputted name into the greeting + change first letter to a capital
     let user = document.getElementById('name').value;
-    let capitalisedUser = user.charAt(0).toUpperCase() + user.slice(1);
+    let capitalisedUser = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
     let placeholder = document.getElementById('user-name');
     placeholder.innerText = `${capitalisedUser}`;
 
@@ -136,8 +136,8 @@ function timeProgress(){
  */
 function revisionSwitch(){
     // scale elements for visual emphasis of game being finished.
-    document.getElementById('game-field').style.transform = 'scale(0.75)';
-    document.getElementById('revision-field').style.transform = 'scale(1.25)';
+    // document.getElementById('game-field').style.transform = 'scale(0.75)';
+    // document.getElementById('revision-field').style.transform = 'scale(1.25)';
 
     // add disabled attribute to main game input field.
     document.getElementById('answer-box').setAttribute('disabled', 'disabled');

@@ -27,7 +27,7 @@
                 </div>
                 <div class="name-input-field">
                     <div class="name-input">
-                        <label for="name">Your Name:</label>
+                        <label for="name">Name:</label>
                         <input type="text" id="name" name="name" placeholder="Christopher" required>
                     </div>
                     <span class="error">error</span>
@@ -50,6 +50,24 @@
                     </div>
                 </div>
             </section>
+            <section id="instructions">
+                <h3>Instructions</h3>
+                <p>This game is designed to help you get better at mental arithmetic. It has two main sections:</p>
+                <ul>
+                    <li>The Main Game Field</li>
+                    <li>The Revision Field</li>
+                </ul>
+                <h4>To Play the Game:</h4>
+                <ol>
+                    <li>Enter your name to begin.</li>
+                    <li>Choose the category you would like to practice.</li>
+                    <li>You have 30secs to answer as many questions as you can. </li>
+                    <li>Each right answer will be logged above the question field.</li>
+                    <li>Each wrong answer will be logged to the revision field.</li>
+                    <li>After the 30secs, you will have time to revise the questions you got wrong.</li>
+                    <p class="instructions-end">Happy learning!</p>
+                </ol>
+            </section>
         </div>
         <!-- first page html ends here -->
         <!-- second page html starts here -->
@@ -58,13 +76,16 @@
                 <div class="main-heading">
                     <img src="assets/img/title.png" alt="logo" class="logo">
                 </div>
+                <div class="time-bar">
+                    <div id="time-progress"></div>
+                </div>
                 <div class="score-tracking">
                     <p class="scores"><span class="score-span" id="right-answer">0</span> Correct Answers</p>
                     <p class="scores"><span class="score-span" id="wrong-answer">0</span> Incorrect Answers</p>
                 </div>
                 <div class="content">
                     <div class="field game-field" id ="game-field">
-                        <h3 class="game-section game-intro"><span id="user-name">user</span>, let's play!</h3>
+                        <h3 class="game-section game-intro"><span id="user-name">user</span>, you've earned <span class="points">x</span> points!</h3>
                         <div class="game-section game-panel panel">
                             <div class="task game-task">
                                 <div class="question-area">
@@ -77,36 +98,33 @@
                                     <input class="answer-box" id="answer-box" type="number" placeholder="your answer..." required>
                                 </div>
                             </div>
-                            <div class="time-bar">
-                                <div id="time-progress"></div>
-                            </div>
-                        </div>
-                        <div class="game-section user-controls user-controls-game">
-                            <button class="user-control-buttons" data-type="skip">Skip</button>
-                            <button class="user-control-buttons" data-type="submit">Submit</button>
                         </div>
                     </div>
                     <div class="field revision-field" id="revision-field">
-                        <div class="revision-heading">
-                            <h4>Revision Field</h4>
-                        </div>
-                        <div class="revision-panel-field">
-                            <div class="revision-tabs"></div>
-                            <div class="revision-panel panel">
-                                <div class="task revision-task">
-                                    <div class="revision-area-container">
-                                        <span id="revision-first-operand">0</span>
-                                        <span id="revision-operator">x</span>
-                                        <span id="revision-second-operand">0</span>
-                                        <span>=</span>
+                        <div class="revision-game">
+                            <div class="revision-heading">
+                                <h4>Revision Field</h4>
+                            </div>
+                            <div class="revision-panel-field">
+                                <div class="revision-tabs"></div>
+                                <div class="revision-panel panel">
+                                    <div class="task revision-task">
+                                        <div class="revision-area-container">
+                                            <span id="revision-first-operand">0</span>
+                                            <span id="revision-operator">x</span>
+                                            <span id="revision-second-operand">0</span>
+                                            <span>=</span>
+                                        </div>
+                                        <input id="revision-answer-box" class="answer-box" type="number" placeholder="your answer..." required disabled>
                                     </div>
-                                    <input id="revision-answer-box" class="answer-box" type="number" placeholder="your answer..." required disabled>
                                 </div>
                             </div>
                         </div>
-                        <div class="user-controls user-controls-revision">
-                            <button class="user-control-buttons" data-type="exit">Exit Game</button>
-                        </div>
+                    </div>
+                    <div class="game-section user-controls user-controls-game">
+                        <button class="user-control-buttons" data-type="skip">Skip</button>
+                        <button class="user-control-buttons" data-type="submit">Submit</button>
+                        <button class="user-control-buttons" data-type="exit">Exit Game</button>
                     </div>
                 </div>
             </section>

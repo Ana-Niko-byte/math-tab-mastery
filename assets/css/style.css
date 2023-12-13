@@ -21,28 +21,29 @@ main{
 }
 
 /* _____ start of common-across-all-sections styling */
+
 .page{
+    width: 80%;
+    border-radius: 10px;
     background-color: rgb(154, 176, 196);
-    border-radius: 15px;
     padding: 30px;
-    min-height: 500px;
-    max-width: 700px;
-    box-shadow: 8px 8px 2px rgb(66, 66, 66);
-    transition: transform 0.4s, max-width 0.3s ease-in;
+    transition: transform 0.4s, max-width 0.3s ease-in, box-shadow 0.4s;
 }
 
 .first-page:hover{
     transform: scale(1.08);
+    box-shadow: 8px 8px 2px rgb(66, 66, 66);
 }
 
 .first-page{
-    position: absolute;
-    z-index: 10;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 a{
     text-decoration: none;
-    color: white;
+    color: rgb(247, 247, 247);
     transition: color 0.2s;
 }
 
@@ -56,9 +57,7 @@ a:hover{
     align-items: center;
     flex-flow: column nowrap;
 }
-
 /* _____ end of common-across-all-sections styling */
-
 /* _____ start of first page styling */
 
 .headings{
@@ -68,7 +67,7 @@ a:hover{
 .main-heading{
     display: flex;
     flex-flow: row nowrap;
-    color: white;
+    color: rgb(247, 247, 247);
 }
 
 .logo{
@@ -79,6 +78,62 @@ a:hover{
     font-size: 1.3rem;
 }
 
+/* _____ start of instructions section design */
+
+#instructions{
+    background-color: rgb(24, 24, 63);
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-items: center;
+    color: rgb(247, 247, 247);
+}
+
+#instructions h3{
+    margin: 10px 0;
+    font-size: 2rem;
+    text-decoration: underline;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+#instructions h4{
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#instructions p{
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#instructions .instructions-end{
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#instructions ul{
+    padding: 0 20px;
+}
+
+ol{
+    padding: 0 20px;
+}
+
+li{
+    font-size: 0.8rem;
+    margin: 5px 0;
+    padding: 0 5px;
+}
+/* _____ end of instructions section design */
 /* _____ start of name input styling */
 
 .name-input-field{
@@ -87,16 +142,22 @@ a:hover{
     flex-flow: column nowrap;
 }
 
+.name-input{
+    display: flex;
+    align-items: center;
+}
+
 .name-input-field label{
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 #name{
-    padding: 5px;
-    margin-left: 10px;
+    padding: 8px;
+    margin-left: 15px;
     font-size: 0.8rem;
     outline: none;
-    border: 2px solid white;
+    border: 2px solid rgb(247, 247, 247);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -107,13 +168,15 @@ a:hover{
 
 .error{
     font-size: 0.9rem;
+    height: 20px;
     text-align: end;
-    color: white;
+    color: rgb(247, 247, 247);
     margin-top: 5px;
 }
 
 /* _____ end of name input styling */
 /* _____ start of button category styling */
+
 .categories{
     display: flex;
     flex-flow: row wrap;
@@ -124,15 +187,15 @@ a:hover{
 }
 
 .category button{
-    width: 75px;
+    width: 80px;
     height: 40px;
     border-radius: 5px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    background-color: rgb(235, 235, 235);
-    border: 2px solid transparent;
+    background-color: rgb(247, 247, 247);
+    border: 2px solid rgb(24, 24, 63);
     transition: background-color 0.1s ease;
 }
 
@@ -147,29 +210,31 @@ a:hover{
 .button-category::after{
     content: attr(id);
     position: relative;
-    top: 2em;
+    top: 2.2em;
+    font-weight: 500;
+    text-transform: capitalize;
 }
 
 .operator{
     margin-top: 12px;
     transform: scale(1.2);
 }
+
 /* _____end of button category styling */
 /* _____ end of first page styling */
-
 /* _____ start of second page styling */
 
 .second-page{
-width: 1200px;
-display: none;
+    display: none;
+    height: 600px;
 }
 
 .content{
     padding: 1%;
-    width: 100%;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+    flex-flow: column wrap;
+    align-items: center;
+    position: relative;
 }
 
 .field{
@@ -179,52 +244,40 @@ display: none;
 }
 
 /* accessed and modified in javascript */
+
 #game-field, #revision-field{
     transition: transform 0.6s ease;
 }
 
-.game-field h3{
-    font-size: 1.5rem;
-    color: white;
+#game-field{
+    position: absolute;
+}
+
+.game-intro, .revision-field h3{
+    font-size: 1.6rem;
+    font-weight: 600;
 }
 
 .game-section{
     margin: 20px 0;
 }
 
-.game-intro{
-    font-size: 1rem;
-    font-weight: 600;
-}
-
 .panel{
-    background-color: rgb(255, 255, 244);
+    background-color: white;
     border-radius: 3px;
     box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
 }
 
-.game-panel{
-    max-height: 300px;
-    width: 350px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-}
-
 .game-task{
-    margin-left: 10px;
-    margin-top: 95px;
+    padding: 20px;
+    width: 500px;
 }
 
-.question-area{
+.question-area, .revision-task{
     font-size: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.question-area-container, .revision-area-container{
-    margin-right: 40px;
+    justify-content: space-around;
 }
 
 .answer-box{
@@ -235,74 +288,83 @@ display: none;
 }
 
 .time-bar{
-    background-color: rgb(207, 207, 207);
-    height: 15px;
-    border-radius: 3px;
+    margin-top: 30px;
+    background-color: rgb(247, 247, 247);
+    height: 10px;
+    width: 100%;
 }
 
 #time-progress{
     width: 1%;
-    height: 15px;
-    background-color: rgb(60, 68, 156);
-    border-radius: 3px;
-    transition: width ease;
+    height: 10px;
+    background-color: rgb(255, 45, 17);
 }
 
 .user-controls button{
-    width: 80px;
-    padding: 7px 20px;
+    width: 110px;
+    padding: 15px;
     border: 1px solid white;
     border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 200px;
 }
 
-button[data-type=submit]{
+/* submit button styling */
+
+button[data-type = submit], button[data-type = exit]{
     margin-left: 30px;
 }
 
-.revision-field{
-    width: 300px;
-}
-
 .score-tracking{
+    height: 50px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    background-color: white;
 }
 
 .scores{
-    margin-top: 40px;
     padding: 0 20px;
     font-size: 1.2rem;
+}
+
+#right-answer{
+    color: rgb(65, 187, 65);
+}
+
+#wrong-answer{
+    color: rgb(189, 0, 0);
 }
 
 .score-span{
     font-weight: 600;
 }
 
-.revision-panel{
-    min-height: 100px;
-    padding: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-content: space-between;
+/* _____ start of revision area styling */
+
+.revision-game{
+    display: none;
 }
 
 .revision-panel-field{
-    min-height: 150px;
-    width: 400px;
+    width: 500px;
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.revision-panel{
+    padding: 10px;
+    width: 400px;
 }
 
 .revision-heading h4{
-    margin-left: 40px;
-    font-weight: 400;
+    text-align: center;
+    font-weight: 600;
     font-size: 1.2rem;
-    color: white;
-    margin-top: 25px;
-    margin-bottom: 40px;
+    margin: 20px 0;
 }
 
 .revision-tabs{
@@ -310,7 +372,8 @@ button[data-type=submit]{
 }
 
 .tab{
-    background-color: aquamarine;
+    background-color: rgb(38, 67, 57);
+    color: white;
     margin: 2px 0;
     height: 30px;
     width: 40px;
@@ -323,35 +386,13 @@ button[data-type=submit]{
     width: 50px;
     transform: translateX(-10px);
 }
-
-.revision-aids{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.revision-task{
-    display: flex;
-    flex-flow: row nowrap;
-    margin-bottom: 80px;
-    font-size: 1.3rem;
-}
-
-.user-controls-revision{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
-}
-
-button[data-type = exit]{
-    width: 110px;
-}
+/* _____ end of revision area styling */
 /* _____ end of second page styling */
-
 /* _____ start of footer styling */
+
 footer{
     height: 80px;
-    background-color: rgb(77, 118, 154);
+    background-color: rgb(18, 31, 43);
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -361,7 +402,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgb(247, 247, 247);
 }
 
 .terms-conditions{
@@ -384,23 +425,69 @@ footer{
 }
 /* _____ end of footer styling */
 /* _____ start of media queries */
-@media all and (max-width: 770px){
-    /* page 1 styling */
-    .page{
-        max-width: 400px;
-        height: 400px;
+
+@media all and (max-width: 1230px){
+    #first-page{
+        flex-flow: column nowrap;
+        align-items: center;
+        max-width: calc(100% - 50px);
+        margin: 10px;
     }
 
+    #instructions{
+        width: calc(100% - 50px);
+        align-items: center;
+    }
+
+    #instructions h4{
+        margin-top: 35px;
+    }
+}
+
+@media all and (max-width: 950px){
+
+    /* footer styling */
+
+    footer{
+        flex-flow: column nowrap;
+        height: 110px;
+    }
+
+    .terms-conditions{
+        margin-left: 0px;
+    }
+
+    .terms-conditions h4, .copyright h4{
+        font-size: 0.9rem;
+    }
+
+    .copyright h4{
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    .terms-conditions{
+        margin-top: 10px;
+    }
+
+    .socials a{
+        padding: 0 10px;
+    }
+}
+@media all and (max-width: 700px){
+
+    /* page 1 styling */
+
     .logo{
-        width: 400px;
+        width: 300px;
     }
 
     .sub-heading{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .name-input-field label{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .name-input-field{
@@ -415,106 +502,46 @@ footer{
     .category{
         padding: 25px;
     }
+
     /* page 2 styling */
-    .second-page{
-        max-width: 400px;
-        height: 100%;
-    }
 
     .content{
-        padding: 0;
-        flex-flow: column nowrap;
-        align-items: flex-start;
-        align-items: center;
+        justify-content: center;
     }
-    .field{
-        padding: 0;
-    }
-
+    
     .game-field{
-        margin-left: 0;
-    }
-
-    .game-intro{
-        text-align: center;
-    }
-
-    .game-field h3{
-        font-size: 1.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .panel{
-        max-width: 350px;
+        max-width: 300px;
     }
 
-    .game-panel{
-        height: 120px;
-        justify-content: space-between;
-    }
-
-    .game-task{
-        margin-left: 0;
-        margin-top: 25px;
-    }
-
-    .user-controls-game{
+    .game-task, .revision-panel{
+        padding: 5px;
+        width: 300px;
         display: flex;
-        justify-content: space-around;
+        align-items: center;
+        justify-content: center;
     }
-    
-    button[data-type = submit]{
-        margin-left: 0;
+
+    .question-area, .revision-task{
+        max-width: 280px;
+        padding: 5px;
+        font-size: 1rem;
     }
 
     .score-tracking{
-        flex-flow: row nowrap;
+        flex-flow: column nowrap;
+        align-items: center;
         justify-content: space-around;
+        padding: 10px 0;
     }
 
     .scores{
-        font-size: 1.1rem;
-    }
-
-    .revision-panel-field{
-        justify-content: center;
-    }
-    
-    .revision-task{
-        margin-bottom: 0px;
-        font-size: 1.4rem;
-    }
-    
-    .user-controls-revision{
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 40px;
-    }
-
-    .user-controls-revision{
-        justify-content: center;
-    }
-
-    /* footer styling */
-    footer{
-        flex-flow: column nowrap;
-        height: 110px;
-    }
-
-    .terms-conditions{
-        margin-left: 0px;
-    }
-    
-    .terms-conditions h4, .copyright h4{
-        font-size: 0.8rem;
-    }
-
-    .copyright h4{
-        margin-top: 10px;
-        font-weight: 600;
-    }
-
-    .terms-conditions{
-        margin-top: 10px;
+        font-size: 0.9rem;
     }
 }
 /* _____ end of media queries */

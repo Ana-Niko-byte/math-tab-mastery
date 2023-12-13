@@ -316,6 +316,12 @@ button[data-type=submit]{
     width: 40px;
     border-top-left-radius: 7px;
     text-align: center;
+    transition: width 0.2s, transform 0.2s;
+}
+
+.selected{
+    width: 50px;
+    transform: translateX(-10px);
 }
 
 .revision-aids{

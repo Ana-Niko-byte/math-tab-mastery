@@ -258,6 +258,10 @@ li{
     font-weight: 600;
 }
 
+#points{
+    color: rgb(207, 63, 38);
+}
+
 .game-section{
     margin: 20px 0;
 }

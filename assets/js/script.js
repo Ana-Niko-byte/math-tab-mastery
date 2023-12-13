@@ -107,7 +107,7 @@ function beginGame(category){
 }
 
 /**
- * This function handles the logic for the time bar (1 minute). 
+ * This function handles the logic for the time bar (30seconds). 
  * This gives an indication to the user on the amount of time they have left to play the game. 
  */
 // code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
@@ -136,8 +136,8 @@ function timeProgress(){
  */
 function revisionSwitch(){
     // scale elements for visual emphasis of game being finished.
-    // document.getElementById('game-field').style.transform = 'scale(0.75)';
-    // document.getElementById('revision-field').style.transform = 'scale(1.25)';
+    document.getElementById('game-field').style.transform = 'scale(0.75)';
+    document.getElementById('revision-field').style.transform = 'scale(1.25)';
 
     // add disabled attribute to main game input field.
     document.getElementById('answer-box').setAttribute('disabled', 'disabled');
@@ -295,23 +295,29 @@ function validateAnswer(){
 
 /**
  * This function increments the 'Correct Answers' tab in the game if the computed answer matches the user's answer.
- * The logic for this function was gotten from the Love Maths walkthrough Game on Code Institute.
+ * The logic for this function was partially gotten from the Love Maths walkthrough Game on Code Institute.
  */
 function addScore(){
     // convert the inner string of text of right-score '0' to a number.
     let scoreTrack = parseInt(document.getElementById('right-answer').innerText);
+    // convert the inner string of text of points '0' to a number.
+    let points = parseInt(document.getElementById('points').innerText);
     // get the element again and change its inner text to the scoreTrack number + 1.
     document.getElementById('right-answer').innerText = ++scoreTrack;
+    // get the element again and change its inner text to the points number + 100.
+    document.getElementById('points').innerText = points + 100;
 }
 
 /**
  * This function increments the 'Incorrect Answers' tab in the game if the computed answer does not match the user's answer.
- * The logic for this function was gotten from the Love Maths walkthrough Game on Code Institute.
+ * The logic for this function was partially gotten from the Love Maths walkthrough Game on Code Institute.
  */
 function addIncorrectScore(){
     // incrementing the incorrect answers score 
     let incorrectScoreTrack = parseInt(document.getElementById('wrong-answer').innerText);
     document.getElementById('wrong-answer').innerText = ++incorrectScoreTrack;
+    let points = parseInt(document.getElementById('points').innerText);
+    document.getElementById('points').innerText = points - 50;
 
     createTab();
 }

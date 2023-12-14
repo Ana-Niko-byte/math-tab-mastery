@@ -135,6 +135,8 @@ function timeProgress(){
  * This doesn't work properly for the moment as the game is still accessible, but is here for debugging purposes. 
  */
 function revisionSwitch(){
+    document.getElementById('game-field').style.display = 'none';
+    document.getElementById('revision-game').style.display = 'block';
     // scale elements for visual emphasis of game being finished.
     document.getElementById('game-field').style.transform = 'scale(0.75)';
     document.getElementById('revision-field').style.transform = 'scale(1.25)';
@@ -250,6 +252,17 @@ function userButtonActions(){
                 // remove the user's entered name in the 'name' input field.
                 document.getElementById('name').value = '';
                 document.getElementById('name').focus();
+
+                // reset score values to 0.
+                document.getElementById('right-answer').innerText = 0;
+                document.getElementById('wrong-answer').innerText = 0;
+
+                // empty tabs array
+                tabValues = '';
+                // remove any user value from the main game input field.
+                document.getElementById('answer-box').value = '';
+                // remove any user value from the revision input field.
+                document.getElementById('revision-answer-box').value = '';
             }
         });
     }
@@ -323,8 +336,10 @@ function addIncorrectScore(){
 }
 
 // From here starts the javascript code for handling the revision side of the game.
+// an empty global array to hold the values of wrongly answered questions.
+let tabValues = [];
 /**
- * This function calculates the answer for the revision field.
+ * This function calculates the answer for the revision field based on the current operand.
  */
 function computeRevisionAnswer(){
     let firstOperand = parseInt(document.getElementById('revision-first-operand').innerText);
@@ -343,21 +358,10 @@ function computeRevisionAnswer(){
 }
 
 /**
- * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
+ * This function sets the backgroundColor of the newly created tabs based on the operator.
  */
-function createTab(parameterOne, parameterTwo){
-    // get the first element of the tabs array + add one tab at a time.
-    let tabs = document.getElementsByClassName('revision-tabs')[0];
-    let tab = document.createElement('div');
-    tab.classList.add('tab');
-
-    // logic for storing the incorrectly-answered question parameters.
-    // step 1 : get current operator.
-    let currentOperator = document.getElementById('operator').textContent;
-
-    // step 2 : assign the innerHTML of the tab to the operator + styles.
-    tab.innerText = `${currentOperator}`;
-    switch (currentOperator){
+function setBackgroundColor(tab, operator){
+    switch (operator){
         case '+':
             tab.style.backgroundColor = 'red';
             break;
@@ -373,9 +377,26 @@ function createTab(parameterOne, parameterTwo){
         default:
             tab.style.backgroundColor = 'lightgrey';
     }
+}
+
+/**
+ * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
+ */
+function createTab(parameterOne, parameterTwo){
+    // get the first element of the tabs array + add one tab at a time.
+    let tabs = document.getElementsByClassName('revision-tabs')[0];
+    let tab = document.createElement('div');
+    tab.classList.add('tab');
+
+    // logic for storing the incorrectly-answered question parameters.
+    // step 1 : get current operator.
+    let currentOperator = document.getElementById('operator').textContent;
+
+    // step 2 : assign the innerHTML of the tab to the operator + styles.
+    tab.innerText = `${currentOperator}`;
+    setBackgroundColor(tab, currentOperator);
 
     // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
-    // question operands.
     parameterOne = document.getElementById('first-operand').textContent;
     parameterTwo = document.getElementById('second-operand').textContent;
 
@@ -383,16 +404,16 @@ function createTab(parameterOne, parameterTwo){
     tabs.appendChild(tab);
 
     tab.addEventListener('click', function(){
-        this.style.backgroundColor = 'orange';
-        
         // class 'selected' is added to all elements so we remove it first.
         let allTabs = document.getElementsByClassName('tab');
         for (let tab of allTabs) {
             tab.classList.remove('selected');
         }
+        tab.style.backgroundColor = setBackgroundColor(tab, currentOperator);
 
         // add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
+        this.style.backgroundColor = 'orange';
 
         // assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
@@ -401,97 +422,78 @@ function createTab(parameterOne, parameterTwo){
     });
 }
 
-document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
-    if (event.key === 'Enter'){
-        validateRevision();
-        // clear the input field for the next question + user comfort.
-        document.getElementById('revision-answer-box').value = '';
-        // function will display the next tab values. 
-        nextTabIndex();
-        changeTabColour();
-    }
-});
+/**
+ * This function holds event listeners for cleaner code organisation. 
+ */
+function eventListenerSetUp(){
+    document.getElementById('answer-box').addEventListener('keypress', handleFirstAnswers);
+    document.getElementById('revision-answer-box').addEventListener('keypress', handleRevision);
+}
+eventListenerSetUp();
 
+/**
+ * This function handles the main game's input field when a user presses the 'enter' key.
+ * It will set new questions, validate, and push incorrectly answered questions into an array which will 
+ * be used and iterated over in the revision game. 
+ */
+function handleFirstAnswers(event){
+    if (event.key === 'Enter') {
+        let currentOperandOne = document.getElementById('first-operand').textContent;
+        let currentOperator = document.getElementById('operator').textContent;
+        let currentOperandTwo = document.getElementById('second-operand').textContent;
+
+        if (!validateAnswer()) {
+            tabValues.push({
+                revOperandOne: currentOperandOne,
+                revOperator: currentOperator,
+                revOperandTwo: currentOperandTwo
+            });
+        }
+    }
+}
+
+/**
+ * This function changes the current tab to the next tab. It is called in the handleRevision function.
+ */
 function changeTabColour(){
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
-    console.log(tabs);
 
     // selects the first element with class 'selected'.
     let currentSelected = document.getElementsByClassName('selected')[0];
     // gets its index.
     let currentSelectedIndex = tabs.indexOf(currentSelected);
-    // gets the next element's index.
-    let nextTabIndex = currentSelectedIndex + 1;
-    // removes the class 'selected' from the first element. 
-    tabs[currentSelectedIndex].classList.remove('selected');
-    // adds the class 'selected' to the next element.
-    tabs[nextTabIndex].classList.add('selected');
-    if (nextTabIndex === -1){
-        alert('no more');
+
+    if (currentSelectedIndex <= tabs.length - 1){
+            // gets the next element's index.
+            let nextTabIndex = currentSelectedIndex + 1;
+            // removes the class 'selected' from the first element. 
+            tabs[currentSelectedIndex].classList.remove('selected');
+            // adds the class 'selected' to the next element.
+            tabs[nextTabIndex].classList.add('selected');
+            tabs[nextTabIndex].style.backgroundColor = 'orange';
+
+            let nextValues = tabValues[nextTabIndex];
+
+            // assign to innerText of the revision operands
+            document.getElementById('revision-first-operand').innerText = nextValues.revOperandOne;
+            document.getElementById('revision-second-operand').innerText = nextValues.revOperandTwo;
+            document.getElementById('revision-operator').innerText = nextValues.revOperator;
+    } else {
+        alert ('nein');
     }
-    tabs[nextTabIndex].style.backgroundColor = 'orange';
-}
-
-function nextTabIndex(){
-    let tabs = document.getElementsByClassName('revision-tabs')[0].children;
-    let tabsArray = Array.from(tabs);
-
-    // selects the first element with class 'selected'.
-    let currentSelected = document.getElementsByClassName('selected')[0];
-    // gets its index.
-    let currentSelectedIndex = tabsArray.indexOf(currentSelected);
-    // gets the next element's index.
-    let nextTabIndex = currentSelectedIndex + 1;
-
-    return [currentSelectedIndex, nextTabIndex];
 }
 
 /**
- * This function stores the values of the operands and operator of the wrongly answered questions so they can be accessed
- * later on by clicking the tabs.
- * The second half of this function changes the tab values of the revision input field on 'Enter'. 
+ * This function handles the revision input field when a user presses the 'enter' key.
+ * It will validate, clear the revision input field value, and go onto the next tab. 
  */
-function storeTabValues(){
-    // step 1 : define an empty array to hold the values.
-    let tabValues = [];
-
-    // step 2 : add an event listener to the answer box, which is triggered by the 'Enter' key. 
-    document.getElementById('answer-box').addEventListener('keypress', function(event){
-        if (event.key === 'Enter'){
-            // step 3 : capture the values of the current question to be validated. 
-            let currentOperandOne = document.getElementById('first-operand').textContent;
-            let currentOperator = document.getElementById('operator').textContent;
-            let currentOperandTwo = document.getElementById('second-operand').textContent;
-            // step 4 : on keypress, we check if the answer is wrong.
-            let isCorrect = validateAnswer();
-            if (!isCorrect){
-                // step 5 : if wrong, create the tabStore object for storing the values of the wrongly answered question.
-                let tabStore = {
-                    revOperandOne : currentOperandOne,
-                    revOperator : currentOperator,
-                    revOperandTwo : currentOperandTwo
-                };
-
-                // step 6 : push this object into the tabValues array.
-                tabValues.push(tabStore);
-            }
-        }
-    });
-
-    document.getElementById('revision-answer-box').addEventListener('keypress', function(event){
-        if (event.key === 'Enter'){
-            let indexes = nextTabIndex();
-            console.log(indexes);
-            // returns objects with needed values.
-            let nextTabStore = tabValues[indexes[1]];
-
-            document.getElementById('revision-first-operand').innerText = nextTabStore.revOperandOne;
-            document.getElementById('revision-operator').innerText = nextTabStore.revOperator;
-            document.getElementById('revision-second-operand').innerText = nextTabStore.revOperandTwo;
-        }
-    });
+function handleRevision(event){
+    if (event.key === 'Enter') {
+        validateRevision();
+        document.getElementById('revision-answer-box').value = '';
+        changeTabColour();
+    }
 }
-storeTabValues();
 
 /**
  * This function handles validation logic for the revision section of the game.

@@ -256,6 +256,7 @@ li{
 .game-intro, .revision-field h3{
     font-size: 1.6rem;
     font-weight: 600;
+    text-align: center;
 }
 
 #points{
@@ -348,7 +349,7 @@ button[data-type = submit], button[data-type = exit]{
 
 /* _____ start of revision area styling */
 
-.revision-game{
+#revision-game{
     display: none;
 }
 

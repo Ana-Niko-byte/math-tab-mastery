@@ -110,18 +110,25 @@ function beginGame(category){
  * This function handles the logic for the time bar (30seconds). 
  * This gives an indication to the user on the amount of time they have left to play the game. 
  */
+// global variable to store the progress of the bar.
+let timed;
+
 // code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
 function timeProgress(){
+    // clears the interval when the function is called - addressing a bug noticed when setting exit button logic.
+    clearInterval(timed);
     // get the time bar element.
     let timeBar = document.getElementById('time-progress');
     // the 1% specified in CSS width.
     let width = 1;
-    // set interval for 30s.
-    let timed = setInterval(frame, 300);
+    timed = setInterval(frame, 300);
     function frame() {
       if (width >= 100) {
+        // resets the interval if width is at 100% or more.
         clearInterval(timed);
+        // sets the new width.
         timeBar.style.width = width + "%";
+        // starts the revision game. 
         revisionSwitch();
       } else {
         width++;
@@ -149,6 +156,19 @@ function revisionSwitch(){
     document.getElementById('answer-box').setAttribute('disabled', 'disabled');
     // disable the attribute in the revision field. 
     document.getElementById('revision-answer-box').disabled = false;
+
+    // set the first question to be the first wrongly-answered question.
+    let firstWrongQuestion = tabValues[1];
+    let firstTab = document.getElementsByClassName('tab')[0];
+    console.log(firstWrongQuestion);
+
+    firstTab.classList.add('selected');
+    firstTab.style.backgroundColor = 'orange';
+
+    // set the values of the object firstWrongQuestion to the revision field operands.
+    document.getElementById('revision-first-operand').innerText = firstWrongQuestion.revOperandOne;
+    document.getElementById('revision-second-operand').innerText = firstWrongQuestion.revOperandTwo;
+    document.getElementById('revision-operator').innerText = firstWrongQuestion.revOperator;
 }
 
 /**
@@ -228,23 +248,37 @@ function userButtonActions(){
     // gets user buttons as an array
     let buttons = document.getElementsByClassName('user-control-buttons');
 
+    // gets states of current games.
+    let mainGameActive = document.getElementById('game-field').style.display !== 'none';
+    let revisionActive = document.getElementById('revision-game').style.display !== 'none';
+
     for (let button of buttons){
         button.addEventListener('click', function(){
             if (this.getAttribute('data-type') === 'skip'){
-                // need to set condition to check type of game before restarting the game
-                let currentOperator = document.getElementById('operator').innerText;
-                if ((currentOperator === '+') || (currentOperator === '-')){
-                    beginGame('add-subtract');
-                } else if (currentOperator === 'x'){
-                    beginGame('multiplication');
-                } else if (currentOperator === '/'){
-                    beginGame('division');
+                if (mainGameActive){
+                    // need to set condition to check type of game before restarting the game
+                    let currentOperator = document.getElementById('operator').innerText;
+                    let points = parseInt(document.getElementById('points').innerText);
+                    document.getElementById('points').innerText = points - 25;
+                    if ((currentOperator === '+') || (currentOperator === '-')){
+                        beginGame('add-subtract');
+                    } else if (currentOperator === 'x'){
+                        beginGame('multiplication');
+                    } else if (currentOperator === '/'){
+                        beginGame('division');
+                    }
+                } else if (revisionActive){
+                    changeTab();
                 }
-            }
+            };
 
             if (this.getAttribute('data-type') === 'submit'){
-                validateAnswer();
-            }
+                if (mainGameActive){
+                    validateAnswer();
+                } else if (revisionActive){
+                    validateRevision();
+                }
+            };
 
             if (this.getAttribute('data-type') === 'exit'){
                 // reset the page displays.
@@ -256,18 +290,28 @@ function userButtonActions(){
                 // remove the user's entered name in the 'name' input field.
                 document.getElementById('name').value = '';
                 document.getElementById('name').focus();
-
-                // reset score values to 0.
-                document.getElementById('right-answer').innerText = 0;
-                document.getElementById('wrong-answer').innerText = 0;
-
-                // empty tabs array
-                tabValues = '';
                 // remove any user value from the main game input field.
                 document.getElementById('answer-box').value = '';
                 // remove any user value from the revision input field.
                 document.getElementById('revision-answer-box').value = '';
-            }
+
+                // reset score and point values to 0.
+                document.getElementById('right-answer').innerText = 0;
+                document.getElementById('wrong-answer').innerText = 0;
+                document.getElementById('points').innerText = 0;
+
+                // empty tabs array.
+                tabValues = [];
+                // empty tabs appearing in UI side too (live HTML).
+                let tabContainer = document.getElementsByClassName('revision-tabs')[0];
+                while (tabContainer.firstChild){
+                    tabContainer.removeChild(tabContainer.firstChild);
+                }
+
+                // reset timebar width + clear 'timed'.
+                clearInterval(timed);
+                document.getElementById('time-progress').style.width = '1%';
+            };
         });
     }
 }
@@ -459,7 +503,7 @@ function handleFirstAnswers(event){
 /**
  * This function changes the current tab to the next tab. It is called in the handleRevision function.
  */
-function changeTabColour(){
+function changeTab(){
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
 
     // selects the first element with class 'selected'.
@@ -495,7 +539,7 @@ function handleRevision(event){
     if (event.key === 'Enter') {
         validateRevision();
         document.getElementById('revision-answer-box').value = '';
-        changeTabColour();
+        changeTab();
     }
 }
 

@@ -135,11 +135,15 @@ function timeProgress(){
  * This doesn't work properly for the moment as the game is still accessible, but is here for debugging purposes. 
  */
 function revisionSwitch(){
-    document.getElementById('game-field').style.display = 'none';
-    document.getElementById('revision-game').style.display = 'block';
+    let revisionField = document.getElementById('revision-game');
+    let mainField = document.getElementById('game-field');
+
+    mainField.style.display = 'none';
+    revisionField.style.display = 'block';
     // scale elements for visual emphasis of game being finished.
-    document.getElementById('game-field').style.transform = 'scale(0.75)';
-    document.getElementById('revision-field').style.transform = 'scale(1.25)';
+    mainField.style.transform = 'scale(0.75)';
+    revisionField.style.transform = 'scale(1.25)';
+    revisionField.style.zIndex = 99;
 
     // add disabled attribute to main game input field.
     document.getElementById('answer-box').setAttribute('disabled', 'disabled');

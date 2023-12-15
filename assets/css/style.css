@@ -232,7 +232,7 @@ li{
 .content{
     padding: 1%;
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     align-items: center;
     position: relative;
 }
@@ -251,6 +251,7 @@ li{
 
 #game-field{
     position: absolute;
+    z-index: 10;
 }
 
 .game-intro, .revision-field h3{
@@ -305,13 +306,20 @@ li{
     background-color: rgb(255, 45, 17);
 }
 
+.user-controls{
+    height: 250px;
+    display: flex;
+    align-items: end;
+    position: absolute;
+    top: 80px;
+}
+
 .user-controls button{
     width: 110px;
     padding: 15px;
     border: 1px solid white;
     border-radius: 5px;
     font-size: 1rem;
-    margin-top: 200px;
 }
 
 /* submit button styling */
@@ -355,6 +363,7 @@ button[data-type = submit], button[data-type = exit]{
 
 .revision-panel-field{
     width: 500px;
+    max-height: 75px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -363,6 +372,13 @@ button[data-type = submit], button[data-type = exit]{
 .revision-panel{
     padding: 10px;
     width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#revision-answer-box{
+    margin-left: 15px;
 }
 
 .revision-heading h4{
@@ -374,6 +390,7 @@ button[data-type = submit], button[data-type = exit]{
 
 .revision-tabs{
     height: 100%;
+    width: 40px;
 }
 
 .tab{

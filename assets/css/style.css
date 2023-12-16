@@ -1,4 +1,14 @@
 /* _____ override default css margins & paddings + set font-family */
+:root {
+    --white: rgb(249, 249, 249);
+    --hover: #0033366;
+    --main-background: #002347;
+    --instructions: #ffffff;
+    --right-score: rgb(48, 145, 48);
+    --wrong-score: rgb(189, 0, 0);
+    --wrong-revision: rgb(196, 196, 196);
+    --points: rgb(255, 162, 0);
+}
 *{
     margin: 0;
     padding:0;
@@ -25,7 +35,7 @@ main{
 .page{
     width: 80%;
     border-radius: 10px;
-    background-color: rgb(154, 176, 196);
+    background-color: rgb(158, 174, 198);
     padding: 30px;
     transition: transform 0.4s, max-width 0.3s ease-in, box-shadow 0.4s;
 }
@@ -43,7 +53,7 @@ main{
 
 a{
     text-decoration: none;
-    color: rgb(247, 247, 247);
+    color: var(--white);
     transition: color 0.2s;
 }
 
@@ -67,7 +77,7 @@ a:hover{
 .main-heading{
     display: flex;
     flex-flow: row nowrap;
-    color: rgb(247, 247, 247);
+    color: var(--white);
 }
 
 .logo{
@@ -81,7 +91,7 @@ a:hover{
 /* _____ start of instructions section design */
 
 #instructions{
-    background-color: rgb(24, 24, 63);
+    background-color: var(--instructions);
     border-radius: 10px;
     width: 300px;
     padding: 20px;
@@ -89,22 +99,25 @@ a:hover{
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-items: center;
-    color: rgb(247, 247, 247);
+    color: rgb(32, 32, 32);
 }
 
 #instructions h3{
     margin: 10px 0;
     font-size: 2rem;
     text-decoration: underline;
-    font-weight: 500;
+    font-weight: 600;
     width: 100%;
     text-align: center;
 }
 
 #instructions h4{
+    width: 100%;
+    text-align: center;
     margin: 10px 0;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 #instructions p{
@@ -115,7 +128,7 @@ a:hover{
 
 #instructions .instructions-end{
     margin-top: 15px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -157,7 +170,7 @@ li{
     margin-left: 15px;
     font-size: 0.8rem;
     outline: none;
-    border: 2px solid rgb(247, 247, 247);
+    border: 2px solid var(--white);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -170,7 +183,7 @@ li{
     font-size: 0.9rem;
     height: 20px;
     text-align: end;
-    color: rgb(247, 247, 247);
+    color: var(--white);
     margin-top: 5px;
 }
 
@@ -194,7 +207,7 @@ li{
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--white);
     border: 2px solid rgb(24, 24, 63);
     transition: background-color 0.1s ease;
 }
@@ -261,7 +274,7 @@ li{
 }
 
 #points{
-    color: rgb(207, 63, 38);
+    color: var(--points);
 }
 
 .game-section{
@@ -269,7 +282,7 @@ li{
 }
 
 .panel{
-    background-color: white;
+    background-color: var(--white);
     border-radius: 3px;
     box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
 }
@@ -289,13 +302,13 @@ li{
 .answer-box{
     padding: 5px;
     outline: none;
-    border: 2px solid white;
+    border: 2px solid var(--white);
     border-bottom: 2px solid rgb(37, 37, 37);
 }
 
 .time-bar{
     margin-top: 30px;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--white);
     height: 10px;
     width: 100%;
 }
@@ -317,7 +330,7 @@ li{
 .user-controls button{
     width: 110px;
     padding: 15px;
-    border: 1px solid white;
+    border: 1px solid var(--white);
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -335,7 +348,7 @@ button[data-type = submit], button[data-type = exit]{
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .scores{
@@ -344,11 +357,11 @@ button[data-type = submit], button[data-type = exit]{
 }
 
 #right-answer{
-    color: rgb(65, 187, 65);
+    color: var(--right-score);
 }
 
 #wrong-answer{
-    color: rgb(189, 0, 0);
+    color: var(--wrong-score);
 }
 
 .score-span{
@@ -358,27 +371,30 @@ button[data-type = submit], button[data-type = exit]{
 /* _____ start of revision area styling */
 
 #revision-game{
+    display: flex;
     display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .revision-panel-field{
-    width: 500px;
+    width: 400px;
     max-height: 75px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
 
+.revision-task{
+    width: 100%;
+}
+
 .revision-panel{
     padding: 10px;
-    width: 400px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#revision-answer-box{
-    margin-left: 15px;
 }
 
 .revision-heading h4{
@@ -389,24 +405,28 @@ button[data-type = submit], button[data-type = exit]{
 }
 
 .revision-tabs{
-    height: 100%;
-    width: 40px;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin-top: 0.5em;
 }
 
 .tab{
     background-color: rgb(38, 67, 57);
-    color: white;
-    margin: 2px 0;
+    color: var(--white);
+    margin: 2px;
     height: 30px;
-    width: 40px;
-    border-top-left-radius: 7px;
+    width: 30px;
+    flex-grow: 1;
+    border-radius: 7px;
     text-align: center;
-    transition: width 0.2s, transform 0.2s;
+    transition: height 0.2s, transform 0.2s;
 }
 
 .selected{
-    width: 50px;
-    transform: translateX(-10px);
+    height: 40px;
 }
 /* _____ end of revision area styling */
 /* _____ end of second page styling */
@@ -424,7 +444,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(247, 247, 247);
+    color: var(--white);
 }
 
 .terms-conditions{

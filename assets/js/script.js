@@ -160,10 +160,9 @@ function revisionSwitch(){
     // set the first question to be the first wrongly-answered question.
     let firstWrongQuestion = tabValues[1];
     let firstTab = document.getElementsByClassName('tab')[0];
-    console.log(firstWrongQuestion);
 
     firstTab.classList.add('selected');
-    firstTab.style.backgroundColor = 'orange';
+    firstTab.style.backgroundColor = '#EAE2B7';
 
     // set the values of the object firstWrongQuestion to the revision field operands.
     document.getElementById('revision-first-operand').innerText = firstWrongQuestion.revOperandOne;
@@ -411,19 +410,19 @@ function computeRevisionAnswer(){
 function setBackgroundColor(tab, operator){
     switch (operator){
         case '+':
-            tab.style.backgroundColor = 'red';
+            tab.style.backgroundColor = '#FF5003';
             break;
         case '-':
-            tab.style.backgroundColor = 'blue';
+            tab.style.backgroundColor = '#ff1403';
             break;
         case 'x':
-            tab.style.backgroundColor = 'green';
+            tab.style.backgroundColor = '#FD7702';
             break;
         case '/':
-            tab.style.backgroundColor = 'yellow';
+            tab.style.backgroundColor = '#FF8E00';
             break;
         default:
-            tab.style.backgroundColor = 'lightgrey';
+            tab.style.backgroundColor = 'rgb(104, 104, 104)';
     }
 }
 
@@ -461,7 +460,7 @@ function createTab(parameterOne, parameterTwo){
 
         // add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
-        this.style.backgroundColor = 'orange';
+        this.style.backgroundColor = '#EAE2B7';
 
         // assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
@@ -518,7 +517,7 @@ function changeTab(){
             tabs[currentSelectedIndex].classList.remove('selected');
             // adds the class 'selected' to the next element.
             tabs[nextTabIndex].classList.add('selected');
-            tabs[nextTabIndex].style.backgroundColor = 'orange';
+            tabs[nextTabIndex].style.backgroundColor = '#EAE2B7';
 
             let nextValues = tabValues[nextTabIndex];
 
@@ -560,7 +559,7 @@ function validateRevision(){
  */
 function amendCorrectTabs(){
     let selectedTab = document.getElementsByClassName('selected')[0];
-    selectedTab.style.backgroundColor = 'green';
+    selectedTab.style.backgroundColor = 'rgb(48, 145, 48)';
 }
 
 /**
@@ -568,7 +567,7 @@ function amendCorrectTabs(){
  */
 function amendIncorrectTabs(){
     let selectedTab = document.getElementsByClassName('selected')[0];
-    selectedTab.style.backgroundColor = 'lightgrey';
+    selectedTab.style.backgroundColor = 'rgb(166, 166, 166)';
 }
 
 userButtonActions();

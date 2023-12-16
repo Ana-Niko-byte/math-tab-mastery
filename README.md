@@ -3,15 +3,15 @@ This maths game is designed as a fun and engaging way of helping young kids stud
 
 # Business/Social Goals
 - Create a fun and engaging platform for young kids to learn arithmetic and help them develop an interest in mathematics and logical thinking. 
-- Add a competitive edge to the game by using a timer for each arithmetic session - this will allow the user to either compete against peers or themselves in the amount of questions they answer correctly within a set timeframe. 
+- Add a competitive edge to the game by using a timer for each arithmetic session - this will allow the user to either compete against peers or themselves in the amount of questions they answer correctly within 30 seconds. 
 - Create an intuitive interface for young users to increase comfort with using the program, and encourage them to use it repeatedly - drive traffic onto the website. 
 - Encourage the idea that games can be used as an additional tool in learning, and not as a form of distraction.
 - Allow users to take their time revising any errors in their own time following each timed arithmetic session.
 
 # UX Goals
 - Create a simple and intuitive user interface for young and first time users to foster a sense of comfort and reassurance. 
-- To allow the user as much control over their learning enviornments as possible and appropriate - ensure they can pick what kind of arithmetic they want (addition&subtraction, multiplication, division, or random), include 'Skip' and 'Exit' buttons for each session in case the user becomes overwhelmed.
-- Add a filtering system for the incorrectly answered questions if user is using the 'random' category, and colour differentiate to mark the different categories in the tabs side of the revision panel. 
+- To allow the user as much control over their learning enviornments as possible and appropriate - ensure they can pick what kind of arithmetic they want (Add-Subtract, Multiplication, Division, or Random), include 'Skip' and 'Exit Game' buttons for each session in case the user becomes overwhelmed.
+- Colour differentiate the wrongly answered questions in a tab system for the revision game to mark the different categories.
 - Make sure the UI maintains its focus on content by excluding all unnecessary information. 
 - Where colours are used, they are to be used for the purpose of highlighting or differentiating one element from another. 
 
@@ -24,9 +24,10 @@ The structure of the 'Revise Maths' game is as follows:
     - Subtitle
     - Name Input field
 - Arithmetic category selection 
-    - addition&subtraction, 
-    - multiplication,
-    - division
+    - Add-Subtract, 
+    - Multiplication,
+    - Division,
+    - Random
 - Footer
     - Copyright
     - Terms and Conditions
@@ -35,16 +36,20 @@ The structure of the 'Revise Maths' game is as follows:
         - GitHub
         - Instagram
 
-## Page 2 (from left to right, top to bottom)
+## Page 2
 - Intro
     - Title of game
-    - User greeting
-- Game area
-- Buttons for user control
-- Score tracking
-    - right answers
-    - wrong answers -> + revision area for all answers answered incorrectly with filtering system. 
-- 'Exit' button for returning to home page. 
+    - Time Bar
+    - Score Tracking
+        - right answers
+        - wrong answers -> Logged as tabs to revision area. 
+    - Main Game
+        - User Points Tracking
+        - Game area
+    - Revision Game
+        - Tabs with incorrect questions
+- Buttons for user control 'skip' and 'submit' on each page.
+- 'Exit' button for returning to home page on each page. 
 - Footer (same content as _Page 1_). 
 
 # Scope of Application
@@ -85,7 +90,36 @@ This application is intended to be used primarily on laptop, but actively consid
 ![application wireframe](docs/images/wireframe.png)
 
 # Aesthetics
+The UI is kept simple for the purpose of diirecting user attention to specific areas in the app. As the main maths game is time-based, the UI is designed minimal (in colour and decoration), so as to not distract the user from the game. 
+
+Colour is added to the tabs displaying the wrongly-answered questions in the revision game field. The purpose of the colour differentiations in mostly in the add-subtract game, and in the random mix of questions. The tabs serve as a visual aid for the user to see how many questions you got wrong in what categories, and as a method of adding a bit of colour to the UI, since the revision game in not timed and users can now take their time in revising the questions. 
+
 # Features
+- First Page (login)
+The first page serves as an introduction to the game. It is split into two sections, viewed from left to right. On the left, is a login for the game where the user is required to enter their name using letters only (a-zA-Z) and no spaces. This is later used in on the second page. After the name input field, the user must select the category they wish to play - Add/Subtract, Multiplication, Division, or Random. On the right is a comprehensive instructions manual for first-time users. 
+
+- Second Page (main game)
+The main game begins after the user has entered their name and selected a category to play. Their are two fields (main game and revision). The revision field is hidden and displays automatically after the user's time runs out to play the main game (30 seconds). 
+
+The main game has several features: 
+- Heading (to keep a similar pattern in the UI throughout).
+- Time progress bar (for the user to be able to monitor their time). 
+- Score Tracking (right and wrong answers are logged here). 
+- Points system (this is mostly to add a more game-like feel to the game). This is also where the user's name (entered on the login field) is re-used. 
+- Main Game field with randomly generated questions (but in keeping with the selected category). 
+- Button field with 'skip', 'submit', and 'exit game'. These work as expected. 
+
+After 30 seconds (or when the progress bar fills up as javascript as a language seems to be a little inaccurate with timing), the main game disappears and the revision field is displayed. 
+
+The revision game also has similar features: 
+- Heading
+- Time progress bar (which now underlines the heading as emphasis instead of being re-used). 
+- Visible Scores. 
+- Tabs : These are key to the game. They hold the values of the questions the user got wrong, and display the wrong questions in order on 'Enter' or 'submit'. The user also has the option to click the tabs out of order, and it will display the relevant questions. The clicked or active tab changes its UI slightly to visually indicate which is clicked (turns a different colour and translates to a different height). 
+- Tab Validation : on 'Enter' or submit, the tabs are validated for the correct answer. If answered correctly, the tab colour changes to green. If answered incorrectly, the tab is greyed out. 
+- Buttons (these buttons are re-used from the main game but handle slightly different logic in the revision field).
+- An alert after all tabs have been attempted to tell the user they have finished the game and to exit. 
+
 # Technologies
 # Testing & Debugging
 # Accessibility & Performance
@@ -119,5 +153,11 @@ Cloning a repository essentially means downloading a copy of your repository tha
 4. Open a terminal within your VSC (or whatever IDE you choose to use). 
 5. In the terminal type 'git clone' and paste the URL. 
 6. Press Enter - you now have a cloned version of your github repository.
+
 # Credits
+Some code was taken from CodeAcademy's lovemaths project. It is referenced in the relevant areas in the javascript file. 
+The code for the progress bar was taken from W3Schools and can be found here: https://www.w3schools.com/howto/howto_js_progressbar.asp
+Stack overflow was occasionally used to double-check functionalities through the entire project. 
+
 # Acknowledgements
+A big thank you to Harry Dhillon who pushed me to incorporate more functionality into the project and encouraged me when I was having a hard time with the project. 

@@ -14,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function (){
 });
 
 /**
- * This function validates the name the user inputs 
- * into the 'name' input field on the first page.
- * This is later used on the second page of the game 
- * as a greeting.
+ * This function validates the name the user inputs into the 'name' input field on the first page.
+ * This is later used on the second page of the game as a greeting.
  */
 function nameValidator(){
     let userName = document.getElementById('name').value;
@@ -39,8 +37,7 @@ function nameValidator(){
 
 /**
  * This function handles category selection through user interaction.
- * The selected button (category) displays the type or arithemetic game
- * on the second page.
+ * The selected button (category) displays the type or arithemetic game on the second page.
  */
 function categorySelection(){
     // this returns an array of the category buttons

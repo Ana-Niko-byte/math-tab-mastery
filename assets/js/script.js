@@ -454,6 +454,7 @@ function createTab(parameterOne, parameterTwo){
 
     // step 2 : assign the innerHTML of the tab to the operator + styles.
     tab.innerText = `${currentOperator}`;
+    // sets the background colour as the tab is created.
     setBackgroundColor(tab, currentOperator);
 
     // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.

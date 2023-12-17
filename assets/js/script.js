@@ -151,6 +151,7 @@ function revisionSwitch(){
     // if it is empty (i.e. all answers were correct or user didn't play).
     if (tabLength === 0){
         alert('well done! You got everything right. Try a different category :)');
+        exitGame();
     } else {
         mainField.style.display = 'none';
         revisionField.style.display = 'block';
@@ -288,39 +289,43 @@ function userButtonActions(){
             }
 
             if (this.getAttribute('data-type') === 'exit'){
-                // reset the page displays.
-                let firstPage = document.getElementById('first-page');
-                let secondPage = document.getElementById('second-page');
-                secondPage.style.display = 'none';
-                firstPage.style.display = 'flex';
-
-                // remove the user's entered name in the 'name' input field.
-                document.getElementById('name').value = '';
-                document.getElementById('name').focus();
-                // remove any user value from the main game input field.
-                document.getElementById('answer-box').value = '';
-                // remove any user value from the revision input field.
-                document.getElementById('revision-answer-box').value = '';
-
-                // reset score and point values to 0.
-                document.getElementById('right-answer').innerText = 0;
-                document.getElementById('wrong-answer').innerText = 0;
-                document.getElementById('points').innerText = 0;
-
-                // empty tabs array.
-                tabValues = [];
-                // empty tabs appearing in UI side too (live HTML).
-                let tabContainer = document.getElementsByClassName('revision-tabs')[0];
-                while (tabContainer.firstChild){
-                    tabContainer.removeChild(tabContainer.firstChild);
-                }
-
-                // reset timebar width + clear 'timed'.
-                clearInterval(timed);
-                document.getElementById('time-progress').style.width = '1%';
+                exitGame();
             }
         });
     }
+}
+
+function exitGame(){
+    // reset the page displays.
+    let firstPage = document.getElementById('first-page');
+    let secondPage = document.getElementById('second-page');
+    secondPage.style.display = 'none';
+    firstPage.style.display = 'flex';
+
+    // remove the user's entered name in the 'name' input field.
+    document.getElementById('name').value = '';
+    document.getElementById('name').focus();
+    // remove any user value from the main game input field.
+    document.getElementById('answer-box').value = '';
+    // remove any user value from the revision input field.
+    document.getElementById('revision-answer-box').value = '';
+
+    // reset score and point values to 0.
+    document.getElementById('right-answer').innerText = 0;
+    document.getElementById('wrong-answer').innerText = 0;
+    document.getElementById('points').innerText = 0;
+
+    // empty tabs array.
+    tabValues = [];
+    // empty tabs appearing in UI side too (live HTML).
+    let tabContainer = document.getElementsByClassName('revision-tabs')[0];
+    while (tabContainer.firstChild){
+        tabContainer.removeChild(tabContainer.firstChild);
+    }
+
+    // reset timebar width + clear 'timed'.
+    clearInterval(timed);
+    document.getElementById('time-progress').style.width = '1%';
 }
 
 /**

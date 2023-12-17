@@ -166,6 +166,22 @@ The other warning - a lacking heading tag in the two 'section' tags was left as 
 ![css validation report](docs/images/second-css-validation.png)
 A test was ran on [W3C CSS Validation Service by Jigsaw](https://jigsaw.w3.org/css-validator/). There were no errors or warnings at the time of this report (after all functionality was implemented).
 
+### JSHint Validation
+Tests on [JSHint](https://jshint.com/) were ran regularly while the project was being developed. The final report was as follows: 
+
+![JSHint full report](docs/images/jshint-report.png)
+As there were no errors in the final report, nothing was changed in the actual javascript file as this would require some significant reconfiguring (in the case of the first two errors). One thing to note is my userButtonActions function is quite large and could probably be broken up into two more separate functions, with each being called inside this function (as in the exitGame function). After codeInstutute, I will reconfigure the script to be more organised and maintainable. Here is an overall breakdown: 
+
+![loops in functions](docs/images/loop-in-function.png)
+As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 49, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game.
+
+![similar warning with loop in function](docs/images/similar-loop-in-function.png)
+Similarly, in line 264, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. 
+
+![expression warning](docs/images/expression-warning.png)
+![similar expression warning](docs/images/similar-expression-warning.png)
+In lines 362 and 568, I am getting similar errors in my expressions due to the fact that I am using ternary operators. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space). 
+
 # Deployment
 The application is deployed on Gitpages through github, and is available for viewing in the link at the top of this README.md document. To deploy a github repository, follow the following steps: 
 
@@ -179,7 +195,6 @@ The application is deployed on Gitpages through github, and is available for vie
 7. The site you want to deploy is given a URL, available above the source section, as in the image above. It might take a while for this link to become visible and active. 
 
 ### Forking a Github Repository
-
 If you want to make changes to your repository (or part of it) without affecting it, you can 'fork' it (make a copy of it). This ensures the original repository remains unchanged. To fork a github repository, follow the following steps: 
 
 1. Click into the github repository you want to fork. 

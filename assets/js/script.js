@@ -102,11 +102,9 @@ function beginGame(category){
         displayMultiplication(numOne, numTwo);
     } else if (category === 'division'){
         displayDivision(numOne, numTwo);
-    } else if (category === 'random'){
-        displayRandom(numOne, numTwo);
     } else {
-        alert('Unknown gametype. Please try again later.')
-        throw('Unknown gametype. Please try again later.')
+        alert('Unknown gametype. Please try again later.');
+        throw('Unknown gametype. Please try again later.');
     }
 }
 
@@ -279,7 +277,7 @@ function userButtonActions(){
                 } else if (revisionActive){
                     changeTab();
                 }
-            };
+            }
 
             if (this.getAttribute('data-type') === 'submit'){
                 if (mainGameActive){
@@ -287,7 +285,7 @@ function userButtonActions(){
                 } else if (revisionActive){
                     validateRevision();
                 }
-            };
+            }
 
             if (this.getAttribute('data-type') === 'exit'){
                 // reset the page displays.
@@ -320,7 +318,7 @@ function userButtonActions(){
                 // reset timebar width + clear 'timed'.
                 clearInterval(timed);
                 document.getElementById('time-progress').style.width = '1%';
-            };
+            }
         });
     }
 }
@@ -353,10 +351,8 @@ function validateAnswer(){
     let userAnswer = parseInt(document.getElementById('answer-box').value);
     // variable stores the returned value from computeAnswer() function.
     let correctAnswer = computeAnswer();
-    console.log(correctAnswer);
     // sets the value of correctly based on true or false evaluation.
     let correctly = userAnswer === correctAnswer[0];
-    console.log(correctly);
 
     (correctly) ? addScore() : addIncorrectScore();
     beginGame(correctAnswer[1]);

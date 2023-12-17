@@ -150,7 +150,7 @@ function revisionSwitch(){
     let tabLength = tabValues.length;
     // if it is empty (i.e. all answers were correct or user didn't play).
     if (tabLength === 0){
-        alert('well done! You got everything right. Try a different category :)');
+        alert('Well done! Now have a go at a different category :)');
         exitGame();
     } else {
         mainField.style.display = 'none';
@@ -527,6 +527,7 @@ function changeTab(){
 
     if (currentSelectedIndex === tabs.length - 1){
         alert('Revision complete! Well done, now have a go at a different category.');
+        exitGame();
     } else {
         // gets the next element's index.
         let nextTabIndex = currentSelectedIndex + 1;

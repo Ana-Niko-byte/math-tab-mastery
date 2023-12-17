@@ -1,13 +1,11 @@
 /* _____ override default css margins & paddings + set font-family */
 :root {
     --white: rgb(249, 249, 249);
-    --hover: #0033366;
-    --main-background: #002347;
-    --instructions: #ffffff;
     --right-score: rgb(48, 145, 48);
     --wrong-score: rgb(189, 0, 0);
     --wrong-revision: rgb(196, 196, 196);
-    --points: rgb(255, 162, 0);
+    --points: rgb(255, 232, 22);
+    --dark-font-color: rgb(20, 20, 20);
 }
 *{
     margin: 0;
@@ -58,7 +56,7 @@ a{
 }
 
 a:hover{
-    color: rgb(0, 0, 47);
+    color: rgb(114, 132, 159);
 }
 
 #first-section, #second-section{
@@ -91,7 +89,7 @@ a:hover{
 /* _____ start of instructions section design */
 
 #instructions{
-    background-color: var(--instructions);
+    background-color: white;
     border-radius: 10px;
     width: 300px;
     padding: 20px;
@@ -99,7 +97,7 @@ a:hover{
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-items: center;
-    color: rgb(32, 32, 32);
+    color: var(--dark-font-color)
 }
 
 #instructions h3{
@@ -196,7 +194,7 @@ li{
 }
 
 .category{
-    padding: 40px;
+    padding: 40px 30px;
 }
 
 .category button{
@@ -240,6 +238,16 @@ li{
 .second-page{
     display: none;
     height: 600px;
+    box-shadow: 8px 8px 5px rgb(54, 54, 54);
+}
+
+#category-note{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+#category{
+    font-weight: 600;
 }
 
 .content{
@@ -303,7 +311,7 @@ li{
     padding: 5px;
     outline: none;
     border: 2px solid var(--white);
-    border-bottom: 2px solid rgb(37, 37, 37);
+    border-bottom: 2px solid var(--dark-font-color);
 }
 
 .time-bar{
@@ -316,7 +324,7 @@ li{
 #time-progress{
     width: 1%;
     height: 10px;
-    background-color: rgb(255, 45, 17);
+    background-color: var(--wrong-score);
 }
 
 .user-controls{
@@ -371,7 +379,6 @@ button[data-type = submit], button[data-type = exit]{
 /* _____ start of revision area styling */
 
 #revision-game{
-    display: flex;
     display: none;
     justify-content: center;
     align-items: center;
@@ -405,11 +412,12 @@ button[data-type = submit], button[data-type = exit]{
 }
 
 .revision-tabs{
-    width: 100%;
+    max-width: 700px;
     min-height: 60px;
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
+    justify-content: center;
     margin-top: 0.5em;
 }
 
@@ -419,7 +427,6 @@ button[data-type = submit], button[data-type = exit]{
     margin: 2px;
     height: 30px;
     width: 30px;
-    flex-grow: 1;
     border-radius: 7px;
     text-align: center;
     transition: height 0.2s, transform 0.2s;

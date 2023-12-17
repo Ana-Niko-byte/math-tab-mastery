@@ -77,7 +77,9 @@ function beginGame(category){
     let user = document.getElementById('name').value;
     let capitalisedUser = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
     let placeholder = document.getElementById('user-name');
+    let gameCategory = document.getElementById('category');
     placeholder.innerText = `${capitalisedUser}`;
+    gameCategory.innerText = `${category}`;
 
     // add some comfort in use (code taken from Love Maths by CodeInstitute):
     // remove any value from the box set previously
@@ -100,6 +102,11 @@ function beginGame(category){
         displayMultiplication(numOne, numTwo);
     } else if (category === 'division'){
         displayDivision(numOne, numTwo);
+    } else if (category === 'random'){
+        displayRandom(numOne, numTwo);
+    } else {
+        alert('Unknown gametype. Please try again later.')
+        throw('Unknown gametype. Please try again later.')
     }
 }
 
@@ -141,30 +148,36 @@ function timeProgress(){
 function revisionSwitch(){
     let revisionField = document.getElementById('revision-game');
     let mainField = document.getElementById('game-field');
+    // get the length of the tabValues array storing all the wrongly-answered questions.
+    let tabLength = tabValues.length;
+    // if it is empty (i.e. all answers were correct or user didn't play).
+    if (tabLength === 0){
+        alert('well done! You got everything right. Try a different category :)');
+    } else {
+        mainField.style.display = 'none';
+        revisionField.style.display = 'block';
+        // scale elements for visual emphasis of game being finished.
+        mainField.style.transform = 'scale(0.75)';
+        revisionField.style.transform = 'scale(1.25)';
+        revisionField.style.zIndex = 99;
 
-    mainField.style.display = 'none';
-    revisionField.style.display = 'block';
-    // scale elements for visual emphasis of game being finished.
-    mainField.style.transform = 'scale(0.75)';
-    revisionField.style.transform = 'scale(1.25)';
-    revisionField.style.zIndex = 99;
+        // add disabled attribute to main game input field.
+        document.getElementById('answer-box').setAttribute('disabled', 'disabled');
+        // disable the attribute in the revision field. 
+        document.getElementById('revision-answer-box').disabled = false;
 
-    // add disabled attribute to main game input field.
-    document.getElementById('answer-box').setAttribute('disabled', 'disabled');
-    // disable the attribute in the revision field. 
-    document.getElementById('revision-answer-box').disabled = false;
+        // set the first question to be the first wrongly-answered question.
+        let firstWrongQuestion = tabValues[0];
+        let firstTab = document.getElementsByClassName('tab')[0];
 
-    // set the first question to be the first wrongly-answered question.
-    let firstWrongQuestion = tabValues[1];
-    let firstTab = document.getElementsByClassName('tab')[0];
+        firstTab.classList.add('selected');
+        firstTab.style.backgroundColor = '#EAE2B7';
 
-    firstTab.classList.add('selected');
-    firstTab.style.backgroundColor = '#EAE2B7';
-
-    // set the values of the object firstWrongQuestion to the revision field operands.
-    document.getElementById('revision-first-operand').innerText = firstWrongQuestion.revOperandOne;
-    document.getElementById('revision-second-operand').innerText = firstWrongQuestion.revOperandTwo;
-    document.getElementById('revision-operator').innerText = firstWrongQuestion.revOperator;
+        // set the values of the object firstWrongQuestion to the revision field operands.
+        document.getElementById('revision-first-operand').innerText = firstWrongQuestion.revOperandOne;
+        document.getElementById('revision-second-operand').innerText = firstWrongQuestion.revOperandTwo;
+        document.getElementById('revision-operator').innerText = firstWrongQuestion.revOperator;
+    }
 }
 
 /**
@@ -262,7 +275,7 @@ function userButtonActions(){
                         beginGame('multiplication');
                     } else if (currentOperator === '/'){
                         beginGame('division');
-                    }
+                    } 
                 } else if (revisionActive){
                     changeTab();
                 }
@@ -281,7 +294,7 @@ function userButtonActions(){
                 let firstPage = document.getElementById('first-page');
                 let secondPage = document.getElementById('second-page');
                 secondPage.style.display = 'none';
-                firstPage.style.display = 'block';
+                firstPage.style.display = 'flex';
 
                 // remove the user's entered name in the 'name' input field.
                 document.getElementById('name').value = '';
@@ -340,8 +353,10 @@ function validateAnswer(){
     let userAnswer = parseInt(document.getElementById('answer-box').value);
     // variable stores the returned value from computeAnswer() function.
     let correctAnswer = computeAnswer();
+    console.log(correctAnswer);
     // sets the value of correctly based on true or false evaluation.
     let correctly = userAnswer === correctAnswer[0];
+    console.log(correctly);
 
     (correctly) ? addScore() : addIncorrectScore();
     beginGame(correctAnswer[1]);
@@ -487,6 +502,7 @@ function handleFirstAnswers(event){
         let currentOperandTwo = document.getElementById('second-operand').textContent;
 
         if (!validateAnswer()) {
+            console.log('wrong answer');
             tabValues.push({
                 revOperandOne: currentOperandOne,
                 revOperator: currentOperator,
@@ -507,26 +523,25 @@ function changeTab(){
     // gets its index.
     let currentSelectedIndex = tabs.indexOf(currentSelected);
 
-    if (currentSelectedIndex <= tabs.length - 1){
-            // gets the next element's index.
-            let nextTabIndex = currentSelectedIndex + 1;
-            // removes the class 'selected' from the first element. 
-            tabs[currentSelectedIndex].classList.remove('selected');
-            // adds the class 'selected' to the next element.
-            tabs[nextTabIndex].classList.add('selected');
-            tabs[nextTabIndex].style.backgroundColor = '#EAE2B7';
-
-            let nextValues = tabValues[nextTabIndex];
-
-            // assign to innerText of the revision operands
-            document.getElementById('revision-first-operand').innerText = nextValues.revOperandOne;
-            document.getElementById('revision-second-operand').innerText = nextValues.revOperandTwo;
-            document.getElementById('revision-operator').innerText = nextValues.revOperator;
+    if (currentSelectedIndex === tabs.length - 1){
+        alert('Revision complete! Well done, now have a go at a different category.');
     } else {
-        alert ('nein');
+        // gets the next element's index.
+        let nextTabIndex = currentSelectedIndex + 1;
+        // removes the class 'selected' from the first element. 
+        tabs[currentSelectedIndex].classList.remove('selected');
+        // adds the class 'selected' to the next element.
+        tabs[nextTabIndex].classList.add('selected');
+        tabs[nextTabIndex].style.backgroundColor = 'rgb(173, 38, 71)';
+
+        let nextValues = tabValues[nextTabIndex];
+
+        // assign to innerText of the revision operands
+        document.getElementById('revision-first-operand').innerText = nextValues.revOperandOne;
+        document.getElementById('revision-second-operand').innerText = nextValues.revOperandTwo;
+        document.getElementById('revision-operator').innerText = nextValues.revOperator;
     }
 }
-
 /**
  * This function handles the revision input field when a user presses the 'enter' key.
  * It will validate, clear the revision input field value, and go onto the next tab. 

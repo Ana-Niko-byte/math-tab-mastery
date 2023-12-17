@@ -121,8 +121,51 @@ The revision game also has similar features:
 - An alert after all tabs have been attempted to tell the user they have finished the game and to exit. 
 
 # Technologies
+The application was made possible using the following technologies:
+
+HTML5 - Used for structuring and content.
+CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
+Vanilla Javascript - To add the interactivity, validation and page display toggling for the application to work.
+FontAwesome - used for icons.
+Firefox Developer Tools - used for debugging the website during production.
+Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
+GitHub - For code storage,version control and deployment.
+Git - For commiting through terminal and pushing to Github for storage.
+VSC - The IDE I developed the project in.
+Balsamiq - For a clear understanding of the structure I wanted my application to follow. The project has since deviated slightly from the design for improved user experience.
+Color Contrast Accessibility Validator - check legibility of my text on different backgrounds for better accessibility.
+W3C Markup Validation Service - to validate my HTML for potential errors.
+W3C CSS Validation Service - to validate my CSS code for potential errors.
+Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
+AmIResponsive - to create the responsive image.
+Looka.com - for logo ideas (Ai tool).
+
 # Testing & Debugging
+
 # Accessibility & Performance
+### Lighthouse
+![lighthouse first test](docs/images/lighthouse-one.png)
+These are the results of the first lighthouse test. While overall, I am quite happy with them - it is worth noting that there are no images and limited icons being used on the site, thus the results above were quite easy to achieve. Accessibility, however, was a cause for concern and was addressed immediately after the first test. The second test results are shown below. 
+
+![lighthouse second test]()
+
+### Colour Accessibility Validator 
+The colour accessibility validator used to text the application can be found [here](https://color.a11y.com/)
+![colour accessibility report](docs/images/colour-validation.png).
+While these results are satisfactory, it is worth noting that due to the nature of the application, the validation scope did not take into account the various layout shifts (and associated colours), as in the main game and revision fields. As such, these were validated by eye and by getting feedback from external eyes.
+
+### HTML Validation
+![first html validation report](docs/images/first-html-validation.png)
+After running a test on [W3C Markup Validation Service](https://validator.w3.org/), there appeared to be a few warnings to address. The first of these (the favicon), was fixed by removing a '/' from the end of the link tag. 
+
+The other warning - a lacking heading tag in the two 'section' tags was left as is as there is no need for a heading based on the game's UI. The game is given a heading using a logo image generated on looka.ai. The fields (main game and revison), change and have the relevant headings associated with them. If this was an error, instead of a warning, I would have refactored the code accordingly. As such, HTML validation was left with one warning and no errors: 
+
+![second html validation](docs/images/second-html-validation.png)
+
+### CSS Validation
+![css validation report](docs/images/second-css-validation.png)
+A test was ran on [W3C CSS Validation Service by Jigsaw](https://jigsaw.w3.org/css-validator/). There were no errors or warnings at the time of this report (after all functionality was implemented).
+
 # Deployment
 The application is deployed on Gitpages through github, and is available for viewing in the link at the top of this README.md document. To deploy a github repository, follow the following steps: 
 

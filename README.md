@@ -147,7 +147,7 @@ Looka.com - for logo ideas (Ai tool).
 ![lighthouse first test](docs/images/lighthouse-one.png)
 These are the results of the first lighthouse test. While overall, I am quite happy with them - it is worth noting that there are no images and limited icons being used on the site, thus the results above were quite easy to achieve. Accessibility, however, was a cause for concern and was addressed immediately after the first test. The second test results are shown below. 
 
-![lighthouse second test]()
+![lighthouse second test](docs/images/second-lighthouse-report.png)
 
 ### Colour Accessibility Validator 
 The colour accessibility validator used to text the application can be found [here](https://color.a11y.com/)

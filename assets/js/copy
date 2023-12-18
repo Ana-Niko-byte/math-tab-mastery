@@ -102,8 +102,6 @@ function beginGame(category){
         displayMultiplication(numOne, numTwo);
     } else if (category === 'division'){
         displayDivision(numOne, numTwo);
-    } else if (category === 'random'){
-        displayRandom(numOne, numTwo);
     } else {
         alert('Unknown gametype. Please try again later.');
         throw('Unknown gametype. Please try again later.');
@@ -238,7 +236,7 @@ function displayDivision(operandOne, operandTwo){
     if (operandOne % operandTwo !== 0) {
         for (let i = 2; i <= operandOne; i++) {
             if (operandOne % i === 0) {
-                operandTwo = i;
+                operandTwo = i; //this is a variable
                 document.getElementById('second-operand').textContent = i;
                 break;
             }
@@ -248,33 +246,6 @@ function displayDivision(operandOne, operandTwo){
     document.getElementById('first-operand').textContent = operandOne;
     document.getElementById('second-operand').textContent = operandTwo;
     document.getElementById('operator').textContent = '/';
-}
-
-let globalOperator = '';
-function displayRandom(operandOne, operandTwo){
-    let determined = Math.floor(Math.random() *4);
-
-    switch (determined){
-        case 0:
-            globalOperator = '+';
-            displayAddSubtract(operandOne, operandTwo);
-            break;
-        case 1:
-            globalOperator = '-';
-            displayAddSubtract(operandOne, operandTwo);
-            break;
-        case 2:
-            globalOperator = 'x';
-            displayMultiplication(operandOne, operandTwo);
-            break;
-        case 3:
-            globalOperator = '/';
-            displayDivision(operandOne, operandTwo);
-            break;
-        default:
-            alert('Unable to determine operator. Aborting! :(');
-            throw('Unable to determined operator. Aborting!');
-    }
 }
 
 /**
@@ -294,21 +265,16 @@ function userButtonActions(){
             if (this.getAttribute('data-type') === 'skip'){
                 if (mainGameActive){
                     // need to set condition to check type of game before restarting the game
-                    let category = document.getElementById('category').innerText;
+                    let currentOperator = document.getElementById('operator').innerText;
                     let points = parseInt(document.getElementById('points').innerText);
                     document.getElementById('points').innerText = points - 25;
-                    if (category === 'random'){
-                        beginGame(category);
-                        console.log('starting random');
-                    } else {
-                        if ((globalOperator === '+') || (globalOperator === '-')){
-                            beginGame('add-subtract');
-                        } else if (globalOperator === 'x'){
-                            beginGame('multiplication');
-                        } else if (globalOperator === '/'){
-                            beginGame('division');
-                        } 
-                    }
+                    if ((currentOperator === '+') || (currentOperator === '-')){
+                        beginGame('add-subtract');
+                    } else if (currentOperator === 'x'){
+                        beginGame('multiplication');
+                    } else if (currentOperator === '/'){
+                        beginGame('division');
+                    } 
                 } else if (revisionActive){
                     changeTab();
                 }
@@ -369,14 +335,15 @@ function exitGame(){
 function computeAnswer(){
     let firstOperand = parseInt(document.getElementById('first-operand').innerText);
     let secondOperand = parseInt(document.getElementById('second-operand').innerText);
+    let currentOperator = document.getElementById('operator').innerText;
 
-    if (globalOperator === '+'){
+    if (currentOperator === '+'){
         return [firstOperand + secondOperand, 'add-subtract'];
-    } else if (globalOperator === '-'){
+    } else if (currentOperator === '-'){
         return [firstOperand - secondOperand, 'add-subtract'];
-    } else if (globalOperator === 'x'){
+    } else if (currentOperator === 'x'){
         return [firstOperand * secondOperand, 'multiplication'];
-    } else if (globalOperator === '/'){
+    } else if (currentOperator === '/'){
         return [firstOperand / secondOperand, 'division'];
     }
 }
@@ -393,13 +360,7 @@ function validateAnswer(){
     let correctly = userAnswer === correctAnswer[0];
 
     (correctly) ? addScore() : addIncorrectScore();
-    // check which category the user is playing to know which game to display.
-    let category = document.getElementById('category').innerText;
-    if (category === 'random'){
-        beginGame('random');
-    } else {
-        beginGame(correctAnswer[1]);
-    }
+    beginGame(correctAnswer[1]);
     // returns a boolean indicating whether the answer was right or wrong (TRUE or FALSE).
     // this is used in the createTab function.
     return correctly;
@@ -543,6 +504,7 @@ function handleFirstAnswers(event){
         let currentOperandTwo = document.getElementById('second-operand').textContent;
 
         if (!validateAnswer()) {
+            console.log('wrong answer');
             tabValues.push({
                 revOperandOne: currentOperandOne,
                 revOperator: currentOperator,

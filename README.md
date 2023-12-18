@@ -1,6 +1,10 @@
 # Revise Maths
 This maths game is designed as a fun and engaging way of helping young kids study and get better at mental arithmetic. This game was created purely for educational purposes. 
 
+The application is available for viewing [here]()
+
+![reponsive UI](docs/images/responsive.png)
+
 # Business/Social Goals
 - Create a fun and engaging platform for young kids to learn arithmetic and help them develop an interest in mathematics and logical thinking. 
 - Add a competitive edge to the game by using a timer for each arithmetic session - this will allow the user to either compete against peers or themselves in the amount of questions they answer correctly within 30 seconds. 
@@ -142,6 +146,10 @@ Looka.com - for logo ideas (Ai tool).
 
 # Testing & Debugging
 
+### Debugging
+![debugging code](docs/images/debugging-code.png)
+![debugging code using browser console](docs/images/debugging-browser.png)
+
 # Accessibility & Performance
 ### Lighthouse
 ![lighthouse first test](docs/images/lighthouse-one.png)
@@ -173,14 +181,14 @@ Tests on [JSHint](https://jshint.com/) were ran regularly while the project was 
 As there were no errors in the final report, nothing was changed in the actual javascript file as this would require some significant reconfiguring (in the case of the first two errors). One thing to note is my userButtonActions function is quite large and could probably be broken up into two more separate functions, with each being called inside this function (as in the exitGame function). After codeInstutute, I will reconfigure the script to be more organised and maintainable. Here is an overall breakdown: 
 
 ![loops in functions](docs/images/loop-in-function.png)
-As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 49, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game.
+As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 49, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game. One way to fix this would be to add 'id's to these buttons and attach event listeners to them separately. This way, the buttons would include their own functions and I wouldn't need to use loops. However, this would require more code in the script and wouldn't look as clean. 
 
 ![similar warning with loop in function](docs/images/similar-loop-in-function.png)
-Similarly, in line 264, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. 
+Similarly, in line 264, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. Same as the last loop, this can be avoided using ids and event listeners. However, for the sake of getting comfortable with loops, I decided to use this method instead, as this particular app's performance is not significantly impacted. For larger applications, I will consider using alternative methods. 
 
 ![expression warning](docs/images/expression-warning.png)
 ![similar expression warning](docs/images/similar-expression-warning.png)
-In lines 362 and 568, I am getting similar errors in my expressions due to the fact that I am using ternary operators. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space). 
+In lines 362 and 568, I am getting similar errors in my expressions due to the fact that I am using ternary expressions. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space and lets me practice).
 
 # Deployment
 The application is deployed on Gitpages through github, and is available for viewing in the link at the top of this README.md document. To deploy a github repository, follow the following steps: 
@@ -211,6 +219,11 @@ Cloning a repository essentially means downloading a copy of your repository tha
 4. Open a terminal within your VSC (or whatever IDE you choose to use). 
 5. In the terminal type 'git clone' and paste the URL. 
 6. Press Enter - you now have a cloned version of your github repository.
+
+# Future Development
+This was a consideration for the initial project but required some code reconfiguring to be more maintainable so I decided to leave it for later. I would like to add a 'random' button to the game, which would use existing game logic to generate questions from the existing game categories at random. These would be validated as needed and displayed as tabs, as in the existing game. 
+
+Another consideration would be the UI - while I want to keep a minimal interface, there is room for improvement with regards to user interaction and project scope.
 
 # Credits
 Some code was taken from CodeAcademy's lovemaths project. It is referenced in the relevant areas in the javascript file. 

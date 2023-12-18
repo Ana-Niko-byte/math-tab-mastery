@@ -6,6 +6,11 @@
     --wrong-revision: rgb(196, 196, 196);
     --points: rgb(255, 232, 22);
     --dark-font-color: rgb(20, 20, 20);
+
+    --addition: rgb(249, 189, 116);
+    --subtract: rgb(253, 83, 83);
+    --multiply: rgb(255, 168, 168);
+    --division: rgb(226, 235, 134);
 }
 *{
     margin: 0;
@@ -224,6 +229,27 @@ li{
     text-transform: capitalize;
 }
 
+/* _____ code for gradient buttons gotten from W3C */
+button[data-type = 'add-subtract']{
+    background-image: linear-gradient(to right, var(--addition) , var(--subtract));
+}
+
+button[data-type = 'multiplication']{
+    background-color: var(--multiply);
+}
+
+button[data-type = 'division']{
+    background-color: var(--division);
+}
+
+button[data-type = 'random']{
+    background-image: linear-gradient(30deg , var(--addition) , var(--subtract) , var(--multiply) , var(--division));
+}
+
+button:hover{
+    filter: invert(1);
+}
+
 .operator{
     margin-top: 12px;
     transform: scale(1.2);
@@ -386,7 +412,7 @@ button[data-type = submit], button[data-type = exit]{
     width: 400px;
     max-height: 75px;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
 }
 
@@ -502,6 +528,7 @@ footer{
 
     .terms-conditions{
         margin-left: 0px;
+        font-size: 0.8rem;
     }
 
     .terms-conditions h4, .copyright h4{
@@ -509,8 +536,10 @@ footer{
     }
 
     .copyright h4{
-        margin-top: 10px;
+        margin: 10px;
+        font-size: 0.8rem;
         font-weight: 600;
+        text-align: center;
     }
 
     .terms-conditions{
@@ -533,6 +562,11 @@ footer{
         font-size: 0.9rem;
     }
 
+    #category-note{
+        font-size: 1rem;
+        text-align: center;
+    }
+
     .name-input-field label{
         font-size: 0.9rem;
     }
@@ -552,8 +586,17 @@ footer{
 
     /* page 2 styling */
 
+    #second-page{
+        min-height: 650px;
+        margin: 10px 0;
+    }
+
     .content{
         justify-content: center;
+    }
+
+    #second-section{
+        padding: 0;
     }
     
     .game-field{
@@ -562,12 +605,31 @@ footer{
         align-items: center;
     }
 
+    #game-field{
+        top: 0px;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .game-intro{
+        font-size: 1rem;
+        margin: 0;
+    }
+
     .panel{
         max-width: 300px;
+        margin: 15px;
+        box-shadow: none;
+    }
+
+    .revision-panel-field{
+        position: relative;
+        align-items: center;
+        top: 20px;
     }
 
     .game-task, .revision-panel{
-        padding: 5px;
+        padding: 5px 0;
         width: 300px;
         display: flex;
         align-items: center;
@@ -575,9 +637,10 @@ footer{
     }
 
     .question-area, .revision-task{
-        max-width: 280px;
-        padding: 5px;
+        width: 100%;
+        padding: 5px 0;
         font-size: 1rem;
+        justify-content: space-around;
     }
 
     .score-tracking{
@@ -589,6 +652,21 @@ footer{
 
     .scores{
         font-size: 0.9rem;
+    }
+
+    .user-control-buttons{
+        flex-flow: column nowrap;
+        justify-content: center;
+        margin-top: 190px;
+        height: 100%;
+    }
+
+    .user-control-buttons button{
+        margin: 5px 0;
+    }
+
+    button[data-type='exit']{
+        margin-top: 40px;
     }
 }
 /* _____ end of media queries */

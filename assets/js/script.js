@@ -285,31 +285,30 @@ function userButtonActions(){
     // gets user buttons as an array
     let buttons = document.getElementsByClassName('user-control-buttons');
 
-    // gets states of current games.
-    let mainGameActive = document.getElementById('game-field').style.display !== 'none';
-    let revisionActive = document.getElementById('revision-game').style.display !== 'none';
-
     for (let button of buttons){
         button.addEventListener('click', function(){
-            let category = document.getElementById('category').innerText;
+            // gets states of current games.
+            let mainGameActive = document.getElementById('game-field').style.display !== 'none';
+            let revisionActive = document.getElementById('revision-game').style.display === 'block';
             if (this.getAttribute('data-type') === 'skip'){
                 if (mainGameActive){
                     // need to set condition to check type of game before restarting the game
+                    let category = document.getElementById('category').innerText;
                     let points = parseInt(document.getElementById('points').innerText);
                     document.getElementById('points').innerText = points - 25;
                     if (category === 'random'){
                         beginGame(category);
-                        console.log('starting random');
                     } else {
-                        if ((globalOperator === '+') || (globalOperator === '-')){
+                        if (category === 'add-subtract'){
                             beginGame('add-subtract');
-                        } else if (globalOperator === 'x'){
+                        } else if (category === 'multiplication'){
                             beginGame('multiplication');
-                        } else if (globalOperator === '/'){
+                        } else if (category === 'division'){
                             beginGame('division');
                         } 
                     }
                 } else if (revisionActive){
+                    console.log('revision active');
                     changeTab();
                 }
             }
@@ -317,7 +316,6 @@ function userButtonActions(){
             if (this.getAttribute('data-type') === 'submit'){
                 if (mainGameActive){
                     validateAnswer();
-                    console.log('game');
                 } else if (revisionActive){
                     validateRevision();
                 }
@@ -328,6 +326,10 @@ function userButtonActions(){
             }
         });
     }
+}
+
+function skipQuestion(){
+
 }
 
 function exitGame(){
@@ -559,12 +561,10 @@ function handleFirstAnswers(event){
  */
 function changeTab(){
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
-
     // selects the first element with class 'selected'.
     let currentSelected = document.getElementsByClassName('selected')[0];
     // gets its index.
     let currentSelectedIndex = tabs.indexOf(currentSelected);
-
     if (currentSelectedIndex === tabs.length - 1){
         alert('Revision complete! Well done, now have a go at a different category.');
         exitGame();

@@ -229,6 +229,7 @@ Another consideration would be the UI - while I want to keep a minimal interface
 Some code was taken from CodeAcademy's lovemaths project. It is referenced in the relevant areas in the javascript file. 
 The code for the progress bar was taken from W3Schools and can be found here: https://www.w3schools.com/howto/howto_js_progressbar.asp
 Stack overflow was occasionally used to double-check functionalities through the entire project. 
+Gradient Button logic taken from [W3C](https://www.w3schools.com/css/css3_gradients.asp)
 
 # Acknowledgements
 A big thank you to Harry Dhillon who pushed me to incorporate more functionality into the project and encouraged me when I was having a hard time with the project. 

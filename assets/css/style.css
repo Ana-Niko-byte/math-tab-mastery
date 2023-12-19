@@ -247,7 +247,7 @@ button[data-type = 'random']{
 }
 
 button:hover{
-    filter: invert(1);
+    border: 3px solid white;
 }
 
 .operator{

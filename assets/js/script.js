@@ -291,10 +291,10 @@ function userButtonActions(){
 
     for (let button of buttons){
         button.addEventListener('click', function(){
+            let category = document.getElementById('category').innerText;
             if (this.getAttribute('data-type') === 'skip'){
                 if (mainGameActive){
                     // need to set condition to check type of game before restarting the game
-                    let category = document.getElementById('category').innerText;
                     let points = parseInt(document.getElementById('points').innerText);
                     document.getElementById('points').innerText = points - 25;
                     if (category === 'random'){
@@ -317,6 +317,7 @@ function userButtonActions(){
             if (this.getAttribute('data-type') === 'submit'){
                 if (mainGameActive){
                     validateAnswer();
+                    console.log('game');
                 } else if (revisionActive){
                     validateRevision();
                 }
@@ -369,14 +370,15 @@ function exitGame(){
 function computeAnswer(){
     let firstOperand = parseInt(document.getElementById('first-operand').innerText);
     let secondOperand = parseInt(document.getElementById('second-operand').innerText);
+    let operator = document.getElementById('operator').innerText;
 
-    if (globalOperator === '+'){
+    if (operator === '+'){
         return [firstOperand + secondOperand, 'add-subtract'];
-    } else if (globalOperator === '-'){
+    } else if (operator === '-'){
         return [firstOperand - secondOperand, 'add-subtract'];
-    } else if (globalOperator === 'x'){
+    } else if (operator === 'x'){
         return [firstOperand * secondOperand, 'multiplication'];
-    } else if (globalOperator === '/'){
+    } else if (operator === '/'){
         return [firstOperand / secondOperand, 'division'];
     }
 }
@@ -621,6 +623,9 @@ function amendCorrectTabs(){
 function amendIncorrectTabs(){
     let selectedTab = document.getElementsByClassName('selected')[0];
     selectedTab.style.backgroundColor = 'rgb(166, 166, 166)';
+    // tell the user the correct answer.
+    let computedRevision = computeRevisionAnswer();
+    alert(`The correct answer was ${computedRevision}`);
 }
 
 userButtonActions();

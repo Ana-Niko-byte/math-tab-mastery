@@ -260,10 +260,11 @@ button:hover{
 /* _____ end of first page styling */
 /* _____ start of second page styling */
 
-.second-page{
+#second-page{
     display: none;
     height: 600px;
-    box-shadow: 8px 8px 5px rgb(54, 54, 54);
+    align-items: center;
+    justify-content: center;
 }
 
 #category-note{
@@ -447,7 +448,7 @@ button[data-type = submit], button[data-type = exit]{
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
-    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 .tab{
@@ -600,7 +601,6 @@ footer{
     /* page 2 styling */
 
     #second-page{
-        min-height: 700px;
         margin: 20px 0;
         transform: none;
         box-shadow: none;
@@ -708,7 +708,7 @@ footer{
     }
 
     button[data-type='exit']{
-        margin-top: 40px;
+        margin: 40px 0;
     }
 
     footer{

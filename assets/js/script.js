@@ -135,9 +135,6 @@ function timeProgress(){
         timeBar.style.width = width + "%";
         // starts the revision game. 
         revisionSwitch();
-        // amend height of main layout.
-        document.getElementById('second-page').style.height = '800px';
-        document.getElementById('user-buttons').style.marginTop = '60px';
       } else {
         width++;
         timeBar.style.width = width + "%";
@@ -160,7 +157,11 @@ function revisionSwitch(){
         exitGame();
     } else {
         mainField.style.display = 'none';
-        revisionField.style.display = 'block';
+        revisionField.style.display = 'flex';
+
+        // amend height of main layout in mobile.
+        document.getElementById('second-page').style.height = '750px';
+
         // scale elements for visual emphasis of game being finished.
         mainField.style.transform = 'scale(0.75)';
         revisionField.style.transform = 'scale(1.25)';

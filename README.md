@@ -40,6 +40,8 @@ The structure of the 'Revise Maths' game is as follows:
         - GitHub
         - Instagram
 
+![first page]()
+
 ## Page 2
 - Intro
     - Title of game
@@ -55,6 +57,9 @@ The structure of the 'Revise Maths' game is as follows:
 - Buttons for user control 'skip' and 'submit' on each page.
 - 'Exit' button for returning to home page on each page. 
 - Footer (same content as _Page 1_). 
+
+![second page main game]()
+![second page revision game]()
 
 # Scope of Application
 
@@ -91,7 +96,7 @@ It is the goal of this application to create a dynamic, intuitive, and simple in
 - Visual score tracking system using red for wrong answers and green for correct answers + large numbers for amount of wrong/right answers recorded. 
 - Recognisable tab system (often used in school folders) for recording incorrect answers for easy recognition. 
 
-This application is intended to be used primarily on laptop, but actively considers visual appeal and usability on phones through media queries and content placement/spacing. 
+This application is intended to be used primarily on laptops, but actively considers visual appeal and usability on phones through media queries and content placement/spacing. 
 
 # Wireframes
 ![application wireframe](docs/images/wireframe.png)
@@ -129,8 +134,13 @@ Colour is also added to the tabs displaying the wrongly-answered questions in th
 - First Page (login)
 The first page serves as an introduction to the game. It is split into two sections, viewed from left to right. On the left, is a login for the game where the user is required to enter their name using letters only (a-zA-Z) and no spaces. This is later used in on the second page. After the name input field, the user must select the category they wish to play - Add/Subtract, Multiplication, Division, or Random. On the right is a comprehensive instructions manual for first-time users. 
 
+![first page]()
+
 - Second Page (main game)
 The main game begins after the user has entered their name and selected a category to play. Their are two fields (main game and revision). The revision field is hidden and displays automatically after the user's time runs out to play the main game (30 seconds). 
+
+![second page main game]()
+![second page revision game]()
 
 The main game has several features: 
 - Heading (to keep a similar pattern in the UI throughout).
@@ -173,13 +183,14 @@ The application was made possible using the following technologies:
 17. Looka.com - for logo ideas (Ai tool).
 
 # Testing & Debugging
-
 ### Debugging
 Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 
 
 In the images below, I am logging my code to check that each variable stores the expected output, and checking the console for the relevant logs.
 ![debugging code](docs/images/debugging-code.png)
 ![debugging code using browser console](docs/images/debugging-browser.png)
+
+Testing was done using Chrome's developer tools and the built-in responsive environment (avaiable by pressing 'Ctrl' + 'M'). 
 
 # Accessibility & Performance
 ### Lighthouse

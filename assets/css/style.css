@@ -9,8 +9,8 @@
 
     --addition: rgb(249, 189, 116);
     --subtract: rgb(253, 83, 83);
-    --multiply: rgb(255, 168, 168);
-    --division: rgb(226, 235, 134);
+    --multiply: rgb(242, 242, 64);
+    --division: rgb(43, 227, 218);
 }
 *{
     margin: 0;
@@ -213,10 +213,6 @@ li{
     transition: background-color 0.1s ease;
 }
 
-.category button:hover{
-    background-color: rgb(193, 193, 193);
-}
-
 .category button:active{
     border: 2px solid rgb(154, 176, 196);
 }
@@ -230,6 +226,10 @@ li{
 }
 
 /* _____ code for gradient buttons gotten from W3C */
+.button-category button{
+    transition: background-color 0.2s ease;
+}
+
 button[data-type = 'add-subtract']{
     background-image: linear-gradient(to right, var(--addition) , var(--subtract));
 }
@@ -243,11 +243,12 @@ button[data-type = 'division']{
 }
 
 button[data-type = 'random']{
-    background-image: linear-gradient(30deg , var(--addition) , var(--subtract) , var(--multiply) , var(--division));
+    background-image: linear-gradient(to right, var(--addition) , var(--subtract) , var(--multiply) , var(--division));
 }
 
 button:hover{
-    border: 3px solid white;
+    box-shadow: 0px 5px 5px rgb(92, 111, 133);
+    transform: scale(1.05);
 }
 
 .operator{
@@ -335,7 +336,6 @@ button:hover{
     padding: 5px;
     outline: none;
     border: 2px solid var(--white);
-    border-bottom: 2px solid var(--dark-font-color);
 }
 
 .time-bar{
@@ -356,7 +356,7 @@ button:hover{
     display: flex;
     align-items: end;
     position: absolute;
-    top: 80px;
+    top: 140px;
 }
 
 .user-controls button{
@@ -365,6 +365,7 @@ button:hover{
     border: 1px solid var(--white);
     border-radius: 5px;
     font-size: 1rem;
+    margin-bottom: 40px;
 }
 
 /* submit button styling */
@@ -406,18 +407,23 @@ button[data-type = submit], button[data-type = exit]{
     display: none;
     justify-content: center;
     align-items: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .revision-panel-field{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     max-height: 75px;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .revision-task{
-    width: 100%;
+    width: calc(100% - 20px);
 }
 
 .revision-panel{
@@ -432,25 +438,27 @@ button[data-type = submit], button[data-type = exit]{
     text-align: center;
     font-weight: 600;
     font-size: 1.2rem;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .revision-tabs{
-    max-width: 700px;
-    min-height: 60px;
+    max-width: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
     margin-top: 0.5em;
 }
 
 .tab{
+    /* default background-color */
     background-color: rgb(38, 67, 57);
-    color: var(--white);
+    color: var(--dark-font-color);
     margin: 2px;
     height: 30px;
-    width: 30px;
+    border: 1px solid black;
+    /* so users can touch comfortably */
+    min-width: 30px;
     border-radius: 7px;
     text-align: center;
     transition: height 0.2s, transform 0.2s;
@@ -553,6 +561,11 @@ footer{
 @media all and (max-width: 700px){
 
     /* page 1 styling */
+    #first-page{
+        margin: 20px 0;
+        transform: none;
+        box-shadow: none;
+    }
 
     .logo{
         width: 300px;
@@ -587,8 +600,10 @@ footer{
     /* page 2 styling */
 
     #second-page{
-        min-height: 650px;
-        margin: 10px 0;
+        min-height: 700px;
+        margin: 20px 0;
+        transform: none;
+        box-shadow: none;
     }
 
     .content{
@@ -612,25 +627,38 @@ footer{
     }
 
     .game-intro{
-        font-size: 1rem;
-        margin: 0;
+        font-size: 1.1rem;
+        margin: 30px 0;
+    }
+
+    .answer-box{
+        margin-right: 15px;
+    }
+
+    .revision-area-container{
+        justify-content: center;
+        align-items: center;
     }
 
     .panel{
-        max-width: 300px;
-        margin: 15px;
+        max-width: 280px;
+        margin: 15px 0;
         box-shadow: none;
     }
 
     .revision-panel-field{
-        position: relative;
         align-items: center;
-        top: 20px;
+        width: 280px;
+    }
+
+    .revision-tabs{
+        max-width: 280px;
+        margin-bottom: 15px;
     }
 
     .game-task, .revision-panel{
         padding: 5px 0;
-        width: 300px;
+        width: 250px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -641,6 +669,10 @@ footer{
         padding: 5px 0;
         font-size: 1rem;
         justify-content: space-around;
+    }
+
+    #revision-answer-box{
+        margin: 0;
     }
 
     .score-tracking{
@@ -657,8 +689,8 @@ footer{
     .user-control-buttons{
         flex-flow: column nowrap;
         justify-content: center;
-        margin-top: 190px;
-        height: 100%;
+        position: relative;
+        bottom: 0;
     }
 
     .user-control-buttons button{
@@ -667,6 +699,11 @@ footer{
 
     button[data-type='exit']{
         margin-top: 40px;
+    }
+
+    footer{
+        margin: 0;
+        padding-bottom: 20px;
     }
 }
 /* _____ end of media queries */

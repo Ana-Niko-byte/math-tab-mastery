@@ -134,6 +134,9 @@ function timeProgress(){
         timeBar.style.width = width + "%";
         // starts the revision game. 
         revisionSwitch();
+        // amend height of main layout.
+        document.getElementById('second-page').style.height = '800px';
+        document.getElementById('user-buttons').style.marginTop = '60px';
       } else {
         width++;
         timeBar.style.width = width + "%";
@@ -289,7 +292,7 @@ function userButtonActions(){
         button.addEventListener('click', function(){
             // gets states of current games.
             let mainGameActive = document.getElementById('game-field').style.display !== 'none';
-            let revisionActive = document.getElementById('revision-game').style.display === 'block';
+            let revisionActive = document.getElementById('revision-game').style.display === 'flex';
             if (this.getAttribute('data-type') === 'skip'){
                 if (mainGameActive){
                     // need to set condition to check type of game before restarting the game
@@ -466,16 +469,16 @@ function computeRevisionAnswer(){
 function setBackgroundColor(tab, operator){
     switch (operator){
         case '+':
-            tab.style.backgroundColor = '#FF5003';
+            tab.style.backgroundColor = 'rgb(249, 189, 116)';
             break;
         case '-':
-            tab.style.backgroundColor = '#ff1403';
+            tab.style.backgroundColor = 'rgb(253, 83, 83)';
             break;
         case 'x':
-            tab.style.backgroundColor = '#FD7702';
+            tab.style.backgroundColor = 'rgb(242, 242, 64)';
             break;
         case '/':
-            tab.style.backgroundColor = '#FF8E00';
+            tab.style.backgroundColor = 'rgb(43, 227, 218)';
             break;
         default:
             tab.style.backgroundColor = 'rgb(104, 104, 104)';
@@ -485,7 +488,7 @@ function setBackgroundColor(tab, operator){
 /**
  * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
  */
-function createTab(parameterOne, parameterTwo){
+function createTab(){
     // get the first element of the tabs array + add one tab at a time.
     let tabs = document.getElementsByClassName('revision-tabs')[0];
     let tab = document.createElement('div');
@@ -501,8 +504,8 @@ function createTab(parameterOne, parameterTwo){
     setBackgroundColor(tab, currentOperator);
 
     // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
-    parameterOne = document.getElementById('first-operand').textContent;
-    parameterTwo = document.getElementById('second-operand').textContent;
+    let parameterOne = document.getElementById('first-operand').textContent;
+    let parameterTwo = document.getElementById('second-operand').textContent;
 
     // step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
@@ -517,7 +520,7 @@ function createTab(parameterOne, parameterTwo){
 
         // add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
-        this.style.backgroundColor = '#EAE2B7';
+        this.style.backgroundColor = '#EAE2C4';
 
         // assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
@@ -566,8 +569,11 @@ function changeTab(){
     // gets its index.
     let currentSelectedIndex = tabs.indexOf(currentSelected);
     if (currentSelectedIndex === tabs.length - 1){
-        alert('Revision complete! Well done, now have a go at a different category.');
-        exitGame();
+        alert('Revision complete! Well done, now have a go at a different category. The game will automatically exit in 3 seconds :)');
+        // apply a small delay of 3 secs so the user can see if their tab validated correctly or not.
+        setTimeout(function() {
+            exitGame();
+        }, 3000);
     } else {
         // gets the next element's index.
         let nextTabIndex = currentSelectedIndex + 1;

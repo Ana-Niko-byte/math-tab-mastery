@@ -1,7 +1,7 @@
 # Revise Maths
 This maths game is designed as a fun and engaging way of helping young kids study and get better at mental arithmetic. This game was created purely for educational purposes. 
 
-The application is available for viewing [here]()
+The application is available for viewing [here](https://ana-niko-byte.github.io/math-tab-mastery/)
 
 ![reponsive UI](docs/images/responsive.png)
 
@@ -62,10 +62,13 @@ The scope of this application is as follows:
 1. This is a front end application, created to help young users with mental arithmetic and logical thinking. 
 2. A heading with the name of the application and a short description on the first 'login' page. Wording is kept to the bare minimum after this to ensure attention is directed towards necessary fields only - the game field, and later the revision field. 
 3. Category selection - so users can pick the type of arithmetic they would like to practice. This works as a type of difficulty selection. 
-4. The game field contains a small introduction with the user's name and the task they are to solve. 
-5. 'Submit' and 'Skip' buttons below the field. Additional logic is implemented to handle 'Enter' keypress instead of 'Submit'. 'Skip' skips one question. 
+4. The game field contains a points system with the user's name to keep track of their scores :
+    - each right answer is worth 100pts.
+    - each wrong answer deducts 50pts.
+    - if the user skips a question, the points will deduct by 25pts.
+5. 'Submit' and 'Skip' buttons below the field. Additional logic is implemented to handle 'Enter' keypress instead of 'Submit'. 'Skip' skips one question in the main game, and moves onto the next tab in the revision game. 
 6. Score tracking for answered questions. 
-7. A revision field for incorrectly answered questions. Tabs at the edge of this field record the incorrectly answered questions for revision later. 
+7. A revision field for incorrectly answered questions. Tabs at the top of this field record the incorrectly answered questions for revision later. When a user clicks on one of these tabs, the question is displayed again. If answered correctly, the tab turns green. If incorrect, an alert appears with the correct answer, and the tab turns grey.  
 8. 'Exit' button to end the session. 
 9. Footer containing copyright, t&c, and links to social platforms (LinkedIn, GitHub, and Instagram). 
 
@@ -96,7 +99,31 @@ This application is intended to be used primarily on laptop, but actively consid
 # Aesthetics
 The UI is kept simple for the purpose of diirecting user attention to specific areas in the app. As the main maths game is time-based, the UI is designed minimal (in colour and decoration), so as to not distract the user from the game. 
 
-Colour is added to the tabs displaying the wrongly-answered questions in the revision game field. The purpose of the colour differentiations in mostly in the add-subtract game, and in the random mix of questions. The tabs serve as a visual aid for the user to see how many questions you got wrong in what categories, and as a method of adding a bit of colour to the UI, since the revision game in not timed and users can now take their time in revising the questions. 
+Colours are organised at the top of the CSS file as such: 
+:root {
+    --white: rgb(249, 249, 249);
+    --right-score: rgb(48, 145, 48);
+    --wrong-score: rgb(189, 0, 0);
+    --wrong-revision: rgb(196, 196, 196);
+    --points: rgb(255, 232, 22);
+    --dark-font-color: rgb(20, 20, 20);
+
+    --addition: rgb(249, 189, 116);
+    --subtract: rgb(253, 83, 83);
+    --multiply: rgb(242, 242, 64);
+    --division: rgb(43, 227, 218);
+}
+
+Colour is added to the category buttons:
+    - add-subtract (orange to red as gradient).
+    - multiplication (green).
+    - division (blue).
+    -random (gradient of all categories previous). 
+
+This is designed to indicate that the random category is a mix of all the previous categories, as well as a colourful element in the game. 
+
+Colour is also added to the tabs displaying the wrongly-answered questions in the revision game field. The purpose of the colour differentiations in mostly in the 'add-subtract' and 'random' games. The tabs serve as a visual aid for the user to see how many questions you got wrong in what categories, and as a method of adding a bit of colour to the UI. The colours allow the user to easily differentiate between the categories. For instance, from a brief glance in the image below, the user can quickly come to the conclusion that they need to work on their arithmetic in 'division'. 
+![revision tab colouring](docs/images/tabs.png)
 
 # Features
 - First Page (login)
@@ -127,26 +154,30 @@ The revision game also has similar features:
 # Technologies
 The application was made possible using the following technologies:
 
-HTML5 - Used for structuring and content.
-CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
-Vanilla Javascript - To add the interactivity, validation and page display toggling for the application to work.
-FontAwesome - used for icons.
-Firefox Developer Tools - used for debugging the website during production.
-Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
-GitHub - For code storage,version control and deployment.
-Git - For commiting through terminal and pushing to Github for storage.
-VSC - The IDE I developed the project in.
-Balsamiq - For a clear understanding of the structure I wanted my application to follow. The project has since deviated slightly from the design for improved user experience.
-Color Contrast Accessibility Validator - check legibility of my text on different backgrounds for better accessibility.
-W3C Markup Validation Service - to validate my HTML for potential errors.
-W3C CSS Validation Service - to validate my CSS code for potential errors.
-Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
-AmIResponsive - to create the responsive image.
-Looka.com - for logo ideas (Ai tool).
+1. HTML5 - Used for structuring and content.
+2. CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
+3. Vanilla Javascript - To add the interactivity, validation and page display toggling for the application to work.
+4. FontAwesome - used for icons.
+5. Firefox Developer Tools - used for debugging the website during production.
+6. Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
+7. GitHub - For code storage,version control and deployment.
+8. Git - For commiting through terminal and pushing to Github for storage.
+9. VSC - The IDE I developed the project in.
+10. Balsamiq - For a clear understanding of the structure I wanted my application to follow. The project has since deviated slightly from the design for improved user experience.
+11. Color Contrast Accessibility Validator - check legibility of my text on different backgrounds for better accessibility.
+12. W3C Markup Validation Service - to validate my HTML for potential errors.
+13. W3C CSS Validation Service - to validate my CSS code for potential errors.
+14. JSHint - for checking and validating my JS code. 
+15. Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
+16. AmIResponsive - to create the responsive image.
+17. Looka.com - for logo ideas (Ai tool).
 
 # Testing & Debugging
 
 ### Debugging
+Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 
+
+In the images below, I am logging my code to check that each variable stores the expected output, and checking the console for the relevant logs.
 ![debugging code](docs/images/debugging-code.png)
 ![debugging code using browser console](docs/images/debugging-browser.png)
 
@@ -221,15 +252,15 @@ Cloning a repository essentially means downloading a copy of your repository tha
 6. Press Enter - you now have a cloned version of your github repository.
 
 # Future Development
-This was a consideration for the initial project but required some code reconfiguring to be more maintainable so I decided to leave it for later. I would like to add a 'random' button to the game, which would use existing game logic to generate questions from the existing game categories at random. These would be validated as needed and displayed as tabs, as in the existing game. 
+The time progress bar - as it stands, the timer begins immediately as the main game loads. I would like to delay it by a few seconds so the user has time to gather themselves before the game starts. While I could to this now by setting a setTimeOut function, I would like to add a visual 3...2...1... effect so the user knows what's happening. 
 
-Another consideration would be the UI - while I want to keep a minimal interface, there is room for improvement with regards to user interaction and project scope.
+Another consideration would be the UI - while I want to keep a minimal interface, there is room for improvement with regards to aesthetics if the game is focused on a younger audience. 
 
 # Credits
-Some code was taken from CodeAcademy's lovemaths project. It is referenced in the relevant areas in the javascript file. 
-The code for the progress bar was taken from W3Schools and can be found here: https://www.w3schools.com/howto/howto_js_progressbar.asp
-Stack overflow was occasionally used to double-check functionalities through the entire project. 
-Gradient Button logic taken from [W3C](https://www.w3schools.com/css/css3_gradients.asp)
+1. Some code was taken from CodeAcademy's lovemaths project. It is referenced in the relevant areas in the javascript file. 
+2. The code for the progress bar was taken from W3Schools and can be found here: https://www.w3schools.com/howto/howto_js_progressbar.asp
+3. Stack overflow was occasionally used to double-check functionalities through the entire project. 
+4. Gradient Button logic taken from [W3C](https://www.w3schools.com/css/css3_gradients.asp)
 
 # Acknowledgements
-A big thank you to Harry Dhillon who pushed me to incorporate more functionality into the project and encouraged me when I was having a hard time with the project. 
+A big thank you to Harry Dhillon who encouraged me and pushed me to incorporate more functionality into the project. 

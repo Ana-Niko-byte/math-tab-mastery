@@ -620,6 +620,12 @@ footer{
         align-items: center;
     }
 
+    .game-task{
+        padding: 0;
+        border: 1px solid green;
+        width: 300px;
+    }
+
     #game-field{
         top: 0px;
         padding: 0;
@@ -631,8 +637,11 @@ footer{
         margin: 30px 0;
     }
 
-    .answer-box{
-        margin-right: 15px;
+    #game-panel{
+        width: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .revision-area-container{
@@ -658,21 +667,22 @@ footer{
 
     .game-task, .revision-panel{
         padding: 5px 0;
-        width: 250px;
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
-    }
-
-    .question-area, .revision-task{
-        width: 100%;
-        padding: 5px 0;
-        font-size: 1rem;
         justify-content: space-around;
     }
 
-    #revision-answer-box{
+    .question-area, .revision-task{
+        width: 280px;
+        padding: 5px 0;
+        font-size: 1rem;
+        justify-content: center;
         margin: 0;
+    }
+
+    #answer-box, #revision-answer-box{
+        margin-left: 15px;
     }
 
     .score-tracking{

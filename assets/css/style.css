@@ -267,6 +267,18 @@ button:hover{
     justify-content: center;
 }
 
+.content{
+    display: flex;
+    justify-content: center;
+}
+
+#second-section{
+    height: 560px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
 #category-note{
     font-size: 1.2rem;
     font-weight: 400;
@@ -278,16 +290,14 @@ button:hover{
 
 .content{
     padding: 1%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    height: 100%;
 }
 
 .field{
-    padding: 20px;
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 /* accessed and modified in javascript */
@@ -297,25 +307,33 @@ button:hover{
 }
 
 #game-field{
+    width: 400px;
     position: absolute;
+    top: 230px;
     z-index: 10;
 }
 
-.game-intro, .revision-field h3{
+.game-intro, .revision-heading h4{
     font-size: 1.6rem;
     font-weight: 600;
     text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
 }
 
 #points{
     color: var(--points);
 }
 
-.game-section{
-    margin: 20px 0;
+.game-field{
+    margin-top: 50px;
 }
 
-.panel{
+.panel, .revision-field {
+    width: 100%;
+}
+
+.panel {
     background-color: var(--white);
     border-radius: 3px;
     box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
@@ -323,12 +341,25 @@ button:hover{
 
 .game-task{
     padding: 20px;
-    width: 500px;
+}
+
+.question-area{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 }
 
 .question-area, .revision-task{
     font-size: 2rem;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.question-area-container{
+    width: 100px;
+    display: flex;
+    flex-flow: row nowrap;
     align-items: center;
     justify-content: space-around;
 }
@@ -353,20 +384,18 @@ button:hover{
 }
 
 .user-controls{
-    height: 250px;
     display: flex;
     align-items: end;
-    position: absolute;
-    top: 140px;
 }
 
 .user-controls button{
     width: 110px;
     padding: 15px;
-    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: rgb(20, 57, 83);
+    border: 2px solid transparent;
     border-radius: 5px;
     font-size: 1rem;
-    margin-bottom: 40px;
 }
 
 /* submit button styling */
@@ -382,6 +411,7 @@ button[data-type = submit], button[data-type = exit]{
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 10px 0;
     background-color: var(--white);
 }
 
@@ -405,41 +435,24 @@ button[data-type = submit], button[data-type = exit]{
 /* _____ start of revision area styling */
 
 #revision-game{
+    width: 100%;
     display: none;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    flex-flow: column nowrap;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-}
-
-.revision-panel-field{
-    width: 100%;
-    max-width: 400px;
-    max-height: 75px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-}
-
-.revision-task{
-    width: calc(100% - 20px);
-}
-
-.revision-panel{
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .revision-heading h4{
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin: 15px 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.revision-task{
+    padding: 5px;
+}
+
+.revision-area-container{
+    width: 120px;
 }
 
 .revision-tabs{
@@ -562,6 +575,7 @@ footer{
 @media all and (max-width: 700px){
 
     /* page 1 styling */
+
     #first-page{
         margin: 20px 0;
         transform: none;
@@ -600,36 +614,31 @@ footer{
 
     /* page 2 styling */
 
-    #second-page{
-        margin: 20px 0;
-        transform: none;
+    .content{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #game-field{
+        max-width: 280px;
+        position: absolute;
+        top: 200px;
+    }
+
+    .panel{
         box-shadow: none;
     }
 
-    .content{
-        justify-content: center;
-    }
-
-    #second-section{
-        padding: 0;
-    }
-    
-    .game-field{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .question-area, .revision-task{
+        font-size: 1rem;
+        flex-flow: row nowrap;
     }
 
     .game-task{
         padding: 0;
-        border: 1px solid green;
         width: 300px;
-    }
-
-    #game-field{
-        top: 0px;
-        padding: 0;
-        margin-top: 20px;
     }
 
     .game-intro{
@@ -637,52 +646,9 @@ footer{
         margin: 30px 0;
     }
 
-    #game-panel{
-        width: 320px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .revision-area-container{
-        justify-content: center;
-        align-items: center;
-    }
-
-    .panel{
-        max-width: 280px;
-        margin: 15px 0;
-        box-shadow: none;
-    }
-
-    .revision-panel-field{
-        align-items: center;
-        width: 280px;
-    }
-
     .revision-tabs{
         max-width: 280px;
         margin-bottom: 15px;
-    }
-
-    .game-task, .revision-panel{
-        padding: 5px 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .question-area, .revision-task{
-        width: 280px;
-        padding: 5px 0;
-        font-size: 1rem;
-        justify-content: center;
-        margin: 0;
-    }
-
-    #answer-box, #revision-answer-box{
-        margin-left: 15px;
     }
 
     .score-tracking{
@@ -696,11 +662,13 @@ footer{
         font-size: 0.9rem;
     }
 
+    #revision-field{
+        margin-bottom: 60px;
+    }
+
     .user-control-buttons{
         flex-flow: column nowrap;
         justify-content: center;
-        position: relative;
-        bottom: 0;
     }
 
     .user-control-buttons button{

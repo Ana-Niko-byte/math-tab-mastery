@@ -40,7 +40,7 @@ The structure of the 'Revise Maths' game is as follows:
         - GitHub
         - Instagram
 
-![first page]()
+![first page](docs/images/page-one.png)
 
 ## Page 2
 - Intro
@@ -58,11 +58,11 @@ The structure of the 'Revise Maths' game is as follows:
 - 'Exit' button for returning to home page on each page. 
 - Footer (same content as _Page 1_). 
 
-![second page main game]()
-![second page revision game]()
+![second page main game](docs/images/second-page.png)
+![second page revision game](docs/images/second-page-revision.png)
+Note: These images do not show the footer.
 
 # Scope of Application
-
 The scope of this application is as follows: 
 1. This is a front end application, created to help young users with mental arithmetic and logical thinking. 
 2. A heading with the name of the application and a short description on the first 'login' page. Wording is kept to the bare minimum after this to ensure attention is directed towards necessary fields only - the game field, and later the revision field. 
@@ -99,6 +99,7 @@ It is the goal of this application to create a dynamic, intuitive, and simple in
 This application is intended to be used primarily on laptops, but actively considers visual appeal and usability on phones through media queries and content placement/spacing. 
 
 # Wireframes
+
 ![application wireframe](docs/images/wireframe.png)
 
 # Aesthetics
@@ -128,19 +129,26 @@ Colour is added to the category buttons:
 This is designed to indicate that the random category is a mix of all the previous categories, as well as a colourful element in the game. 
 
 Colour is also added to the tabs displaying the wrongly-answered questions in the revision game field. The purpose of the colour differentiations in mostly in the 'add-subtract' and 'random' games. The tabs serve as a visual aid for the user to see how many questions you got wrong in what categories, and as a method of adding a bit of colour to the UI. The colours allow the user to easily differentiate between the categories. For instance, from a brief glance in the image below, the user can quickly come to the conclusion that they need to work on their arithmetic in 'division'. 
+
 ![revision tab colouring](docs/images/tabs.png)
 
 # Features
 - First Page (login)
 The first page serves as an introduction to the game. It is split into two sections, viewed from left to right. On the left, is a login for the game where the user is required to enter their name using letters only (a-zA-Z) and no spaces. This is later used in on the second page. After the name input field, the user must select the category they wish to play - Add/Subtract, Multiplication, Division, or Random. On the right is a comprehensive instructions manual for first-time users. 
 
-![first page]()
+![first page](docs/images/page-one.png)
+
+The name input fields are validated based on input. The user must use only English letters, with no spacing. The examples below demonstrate violations.
+
+![name validation error](docs/images/validation-name.png)
+![name validation error](docs/images/validation-name-two.png)
 
 - Second Page (main game)
 The main game begins after the user has entered their name and selected a category to play. Their are two fields (main game and revision). The revision field is hidden and displays automatically after the user's time runs out to play the main game (30 seconds). 
 
-![second page main game]()
-![second page revision game]()
+![second page main game](docs/images/second-page.png)
+![second page revision game](docs/images/second-page-revision.png)
+Note: These images do not show the footer.
 
 The main game has several features: 
 - Heading (to keep a similar pattern in the UI throughout).
@@ -187,6 +195,7 @@ The application was made possible using the following technologies:
 Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 
 
 In the images below, I am logging my code to check that each variable stores the expected output, and checking the console for the relevant logs.
+
 ![debugging code](docs/images/debugging-code.png)
 ![debugging code using browser console](docs/images/debugging-browser.png)
 
@@ -195,17 +204,21 @@ Testing was done using Chrome's developer tools and the built-in responsive envi
 # Accessibility & Performance
 ### Lighthouse
 ![lighthouse first test](docs/images/lighthouse-one.png)
+
 These are the results of the first lighthouse test. While overall, I am quite happy with them - it is worth noting that there are no images and limited icons being used on the site, thus the results above were quite easy to achieve. Accessibility, however, was a cause for concern and was addressed immediately after the first test. The second test results are shown below. 
 
 ![lighthouse second test](docs/images/second-lighthouse-report.png)
 
 ### Colour Accessibility Validator 
 The colour accessibility validator used to text the application can be found [here](https://color.a11y.com/)
-![colour accessibility report](docs/images/colour-validation.png).
+
+![colour accessibility report](docs/images/colour-validation.png)
+
 While these results are satisfactory, it is worth noting that due to the nature of the application, the validation scope did not take into account the various layout shifts (and associated colours), as in the main game and revision fields. As such, these were validated by eye and by getting feedback from external eyes.
 
 ### HTML Validation
 ![first html validation report](docs/images/first-html-validation.png)
+
 After running a test on [W3C Markup Validation Service](https://validator.w3.org/), there appeared to be a few warnings to address. The first of these (the favicon), was fixed by removing a '/' from the end of the link tag. 
 
 The other warning - a lacking heading tag in the two 'section' tags was left as is as there is no need for a heading based on the game's UI. The game is given a heading using a logo image generated on looka.ai. The fields (main game and revison), change and have the relevant headings associated with them. If this was an error, instead of a warning, I would have refactored the code accordingly. As such, HTML validation was left with one warning and no errors: 
@@ -214,22 +227,27 @@ The other warning - a lacking heading tag in the two 'section' tags was left as 
 
 ### CSS Validation
 ![css validation report](docs/images/second-css-validation.png)
+
 A test was ran on [W3C CSS Validation Service by Jigsaw](https://jigsaw.w3.org/css-validator/). There were no errors or warnings at the time of this report (after all functionality was implemented).
 
 ### JSHint Validation
 Tests on [JSHint](https://jshint.com/) were ran regularly while the project was being developed. The final report was as follows: 
 
 ![JSHint full report](docs/images/jshint-report.png)
+
 As there were no errors in the final report, nothing was changed in the actual javascript file as this would require some significant reconfiguring (in the case of the first two errors). One thing to note is my userButtonActions function is quite large and could probably be broken up into two more separate functions, with each being called inside this function (as in the exitGame function). After codeInstutute, I will reconfigure the script to be more organised and maintainable. Here is an overall breakdown: 
 
 ![loops in functions](docs/images/loop-in-function.png)
+
 As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 49, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game. One way to fix this would be to add 'id's to these buttons and attach event listeners to them separately. This way, the buttons would include their own functions and I wouldn't need to use loops. However, this would require more code in the script and wouldn't look as clean. 
 
 ![similar warning with loop in function](docs/images/similar-loop-in-function.png)
+
 Similarly, in line 264, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. Same as the last loop, this can be avoided using ids and event listeners. However, for the sake of getting comfortable with loops, I decided to use this method instead, as this particular app's performance is not significantly impacted. For larger applications, I will consider using alternative methods. 
 
 ![expression warning](docs/images/expression-warning.png)
 ![similar expression warning](docs/images/similar-expression-warning.png)
+
 In lines 362 and 568, I am getting similar errors in my expressions due to the fact that I am using ternary expressions. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space and lets me practice).
 
 # Deployment
@@ -274,4 +292,4 @@ Another consideration would be the UI - while I want to keep a minimal interface
 4. Gradient Button logic taken from [W3C](https://www.w3schools.com/css/css3_gradients.asp)
 
 # Acknowledgements
-A big thank you to Harry Dhillon who encouraged me and pushed me to incorporate more functionality into the project. 
+A big thank you to Harry Dhillon who encouraged me and pushed me to incorporate more functionality into the project.

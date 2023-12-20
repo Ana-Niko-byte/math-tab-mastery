@@ -145,6 +145,10 @@ function timeProgress(){
 /**
  * This function handles the UI side of the game - after 30 seconds, the revision field is displayed and the main game field hidden.
  */
+// get the user's screen width. 
+let screenWidth = screen.width;
+console.log(screenWidth);
+
 function revisionSwitch(){
     let revisionField = document.getElementById('revision-game');
     let mainField = document.getElementById('game-field');
@@ -160,7 +164,9 @@ function revisionSwitch(){
         revisionField.style.display = 'flex';
 
         // amend height of main layout in mobile.
-        document.getElementById('second-page').style.height = '750px';
+        if (screenWidth <= 700){
+            document.getElementById('second-page').style.height = '750px';
+        }
 
         // scale elements for visual emphasis of game being finished.
         mainField.style.transform = 'scale(0.75)';

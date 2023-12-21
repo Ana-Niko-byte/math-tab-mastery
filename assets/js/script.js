@@ -356,6 +356,11 @@ function exitGame() {
     secondPage.style.display = 'none';
     firstPage.style.display = 'flex';
 
+    let revisionGame = document.getElementById('revision-game');
+    let mainGame = document.getElementById('game-field');
+    revisionGame.style.display = 'none';
+    mainGame.style.display = 'flex';
+
     // remove the user's entered name in the 'name' input field.
     document.getElementById('name').value = '';
     document.getElementById('name').focus();

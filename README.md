@@ -101,6 +101,7 @@ This application is intended to be used primarily on laptops, but actively consi
 # Wireframes
 
 ![application wireframe](docs/images/wireframe.png)
+Please note: The design has deviated from this slightly for better UX and UI. 
 
 # Aesthetics
 The UI is kept simple for the purpose of diirecting user attention to specific areas in the app. As the main maths game is time-based, the UI is designed minimal (in colour and decoration), so as to not distract the user from the game. 

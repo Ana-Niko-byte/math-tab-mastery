@@ -463,6 +463,16 @@ button[data-type=exit] {
 	margin-bottom: 20px;
 }
 
+.revision-panel-field {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.revision-panel {
+    width: 300px;
+}
+
 .revision-task {
 	padding: 5px;
 }
@@ -678,10 +688,6 @@ footer {
 		font-size: 1.1rem;
 		margin: 30px 0;
 	}
-
-    .revision-heading h4 {
-        padding-top: 20px;
-    }
 
 	.revision-tabs {
 		max-width: 280px;

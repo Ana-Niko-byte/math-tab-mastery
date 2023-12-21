@@ -1,687 +1,706 @@
 /* _____ override default css margins & paddings + set font-family */
 :root {
-    --white: rgb(249, 249, 249);
-    --right-score: rgb(48, 145, 48);
-    --wrong-score: rgb(189, 0, 0);
-    --wrong-revision: rgb(196, 196, 196);
-    --points: rgb(255, 232, 22);
-    --dark-font-color: rgb(20, 20, 20);
+	--white: rgb(249, 249, 249);
+	--right-score: rgb(48, 145, 48);
+	--wrong-score: rgb(189, 0, 0);
+	--wrong-revision: rgb(196, 196, 196);
+	--points: rgb(255, 232, 22);
+	--dark-font-color: rgb(20, 20, 20);
 
-    --addition: rgb(249, 189, 116);
-    --subtract: rgb(253, 83, 83);
-    --multiply: rgb(242, 242, 64);
-    --division: rgb(43, 227, 218);
-}
-*{
-    margin: 0;
-    padding:0;
+	--addition: rgb(249, 189, 116);
+	--subtract: rgb(253, 83, 83);
+	--multiply: rgb(242, 242, 64);
+	--division: rgb(43, 227, 218);
 }
 
-html, body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column nowrap;
-    position: relative;
-    flex: 1;
+html,
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column nowrap;
+	position: relative;
+	flex: 1;
 }
 
 /* _____ start of common-across-all-sections styling */
 
-.page{
-    width: 80%;
-    border-radius: 10px;
-    background-color: rgb(158, 174, 198);
-    padding: 30px;
-    transition: transform 0.4s, max-width 0.3s ease-in, box-shadow 0.4s;
+.page {
+	width: 80%;
+	border-radius: 10px;
+	background-color: rgb(158, 174, 198);
+	padding: 30px;
+	transition: transform 0.4s, max-width 0.3s ease-in, box-shadow 0.4s;
 }
 
-.first-page:hover{
-    transform: scale(1.08);
-    box-shadow: 8px 8px 2px rgb(66, 66, 66);
+.first-page:hover {
+	transform: scale(1.08);
+	box-shadow: 8px 8px 2px rgb(66, 66, 66);
 }
 
-.first-page{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+.first-page {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
 }
 
-a{
-    text-decoration: none;
-    color: var(--white);
-    transition: color 0.2s;
+a {
+	text-decoration: none;
+	color: var(--white);
+	transition: color 0.2s;
 }
 
-a:hover{
-    color: rgb(114, 132, 159);
+a:hover {
+	color: rgb(114, 132, 159);
 }
 
-#first-section, #second-section{
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    flex-flow: column nowrap;
+#first-section,
+#second-section {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	flex-flow: column nowrap;
 }
+
 /* _____ end of common-across-all-sections styling */
 /* _____ start of first page styling */
 
-.headings{
-    text-align: center;
+.headings {
+	text-align: center;
 }
 
-.logo{
-    width: 600px;
+.logo {
+	width: 600px;
 }
 
-.sub-heading{
-    font-size: 1.3rem;
+.sub-heading {
+	font-size: 1.3rem;
 }
 
 /* _____ start of instructions section design */
 
-#instructions{
-    background-color: white;
-    border-radius: 10px;
-    width: 300px;
-    padding: 20px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-items: center;
-    color: var(--dark-font-color)
+#instructions {
+	background-color: white;
+	border-radius: 10px;
+	width: 300px;
+	padding: 20px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
+	justify-items: center;
+	color: var(--dark-font-color)
 }
 
-#instructions h3{
-    margin: 10px 0;
-    font-size: 2rem;
-    text-decoration: underline;
-    font-weight: 600;
-    width: 100%;
-    text-align: center;
+#instructions h3 {
+	margin: 10px 0;
+	font-size: 2rem;
+	text-decoration: underline;
+	font-weight: 600;
+	width: 100%;
+	text-align: center;
 }
 
-#instructions h4{
-    width: 100%;
-    text-align: center;
-    margin: 10px 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-decoration: underline;
+#instructions h4 {
+	width: 100%;
+	text-align: center;
+	margin: 10px 0;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-decoration: underline;
 }
 
-#instructions p{
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-    text-align: center;
+#instructions p {
+	font-size: 0.8rem;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
-#instructions .instructions-end{
-    margin-top: 15px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+#instructions .instructions-end {
+	margin-top: 15px;
+	font-size: 1.3rem;
+	font-weight: 700;
+	letter-spacing: 1px;
 }
 
-.instructions-end{
-    width: 100%;
+.instructions-end {
+	width: 100%;
 }
 
-#instructions ul{
-    padding: 0 20px;
+#instructions ul {
+	padding: 0 20px;
 }
 
-ol{
-    padding: 0 20px;
+ol {
+	padding: 0 20px;
 }
 
-li{
-    font-size: 0.8rem;
-    margin: 5px 0;
-    padding: 0 5px;
+li {
+	font-size: 0.8rem;
+	margin: 5px 0;
+	padding: 0 5px;
 }
+
 /* _____ end of instructions section design */
 /* _____ start of name input styling */
 
-.name-input-field{
-    margin: 90px 0;
-    display: flex;
-    flex-flow: column nowrap;
+.name-input-field {
+	margin: 90px 0;
+	display: flex;
+	flex-flow: column nowrap;
 }
 
-.name-input{
-    display: flex;
-    align-items: center;
+.name-input {
+	display: flex;
+	align-items: center;
 }
 
-.name-input-field label{
-    font-size: 1.2rem;
-    font-weight: 500;
+.name-input-field label {
+	font-size: 1.2rem;
+	font-weight: 500;
 }
 
-#name{
-    padding: 8px;
-    margin-left: 15px;
-    font-size: 0.8rem;
-    outline: none;
-    border: 2px solid var(--white);
-    border-radius: 2px;
-    transition: all 0.3s ease;
+#name {
+	padding: 8px;
+	margin-left: 15px;
+	font-size: 0.8rem;
+	outline: none;
+	border: 2px solid var(--white);
+	border-radius: 2px;
+	transition: all 0.3s ease;
 }
 
-#name:focus, #answer-box:focus, #revision-answer-box:focus{
-    border: 2px solid rgb(22, 47, 89);
+#name:focus,
+#answer-box:focus,
+#revision-answer-box:focus {
+	border: 2px solid rgb(22, 47, 89);
 }
 
-.error{
-    font-size: 0.9rem;
-    height: 20px;
-    text-align: end;
-    color: var(--white);
-    margin-top: 5px;
+.error {
+	font-size: 0.9rem;
+	height: 20px;
+	text-align: end;
+	color: var(--white);
+	margin-top: 5px;
 }
 
 /* _____ end of name input styling */
 /* _____ start of button category styling */
 
-.categories{
-    display: flex;
-    flex-flow: row wrap;
+.categories {
+	display: flex;
+	flex-flow: row wrap;
 }
 
-.category{
-    padding: 40px 30px;
+.category {
+	padding: 40px 30px;
 }
 
-.category button{
-    width: 80px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--white);
-    border: 2px solid rgb(24, 24, 63);
-    transition: background-color 0.1s ease;
+.category button {
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--white);
+	border: 2px solid rgb(24, 24, 63);
+	transition: background-color 0.1s ease;
 }
 
-.category button:active{
-    border: 2px solid rgb(154, 176, 196);
+.category button:active {
+	border: 2px solid rgb(154, 176, 196);
 }
 
-.button-category::after{
-    content: attr(id);
-    position: relative;
-    top: 2.2em;
-    font-weight: 500;
-    text-transform: capitalize;
+.button-category::after {
+	content: attr(id);
+	position: relative;
+	top: 2.2em;
+	font-weight: 500;
+	text-transform: capitalize;
 }
 
 /* _____ code for gradient buttons gotten from W3C */
-.button-category button{
-    transition: background-color 0.2s ease;
+.button-category button {
+	transition: background-color 0.2s ease;
 }
 
-button[data-type = 'add-subtract']{
-    background-image: linear-gradient(to right, var(--addition) , var(--subtract));
+button[data-type='add-subtract'] {
+	background-image: linear-gradient(to right, var(--addition), var(--subtract));
 }
 
-button[data-type = 'multiplication']{
-    background-color: var(--multiply);
+button[data-type='multiplication'] {
+	background-color: var(--multiply);
 }
 
-button[data-type = 'division']{
-    background-color: var(--division);
+button[data-type='division'] {
+	background-color: var(--division);
 }
 
-button[data-type = 'random']{
-    background-image: linear-gradient(to right, var(--addition) , var(--subtract) , var(--multiply) , var(--division));
+button[data-type='random'] {
+	background-image: linear-gradient(to right, var(--addition), var(--subtract), var(--multiply), var(--division));
 }
 
-button:hover{
-    box-shadow: 0px 5px 5px rgb(92, 111, 133);
-    transform: scale(1.05);
+button:hover {
+	box-shadow: 0px 5px 5px rgb(92, 111, 133);
+	transform: scale(1.05);
 }
 
-.operator{
-    margin-top: 12px;
-    transform: scale(1.2);
+.operator {
+	margin-top: 12px;
+	transform: scale(1.2);
 }
 
 /* _____end of button category styling */
 /* _____ end of first page styling */
 /* _____ start of second page styling */
 
-#second-page{
-    display: none;
-    height: 600px;
-    align-items: center;
-    justify-content: center;
+#second-page {
+	display: none;
+	height: 600px;
+	align-items: center;
+	justify-content: center;
 }
 
-.content{
-    display: flex;
-    justify-content: center;
+.content {
+	display: flex;
+	justify-content: center;
 }
 
-#second-section{
-    height: 560px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+#second-section {
+	height: 560px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
 }
 
-#category-note{
-    font-size: 1.2rem;
-    font-weight: 400;
+#category-note {
+	font-size: 1.2rem;
+	font-weight: 400;
 }
 
-#category{
-    font-weight: 600;
+#category {
+	font-weight: 600;
 }
 
-.content{
-    padding: 1%;
-    height: 100%;
+.content {
+	padding: 1%;
+	height: 100%;
 }
 
-.field{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
+.field {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
 }
 
 /* accessed and modified in javascript */
 
-#game-field, #revision-field{
-    transition: transform 0.6s ease;
+#game-field,
+#revision-field {
+	transition: transform 0.6s ease;
 }
 
-#game-field{
-    width: 400px;
-    position: absolute;
-    top: 230px;
-    z-index: 10;
+#game-field {
+	width: 400px;
+	position: absolute;
+	top: 230px;
+	z-index: 10;
 }
 
-.game-intro, .revision-heading h4{
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
+.game-intro,
+.revision-heading h4 {
+	font-size: 1.6rem;
+	font-weight: 600;
+	text-align: center;
+	padding: 20px 0;
+	margin-top: 30px;
 }
 
-#points{
-    color: var(--points);
+#points {
+	color: var(--points);
 }
 
-.game-field{
-    margin-top: 50px;
+.game-field {
+	margin-top: 50px;
 }
 
-.panel, .revision-field {
-    width: 100%;
+.panel,
+.revision-field {
+	width: 100%;
 }
 
 .panel {
-    background-color: var(--white);
-    border-radius: 3px;
-    box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
+	background-color: var(--white);
+	border-radius: 3px;
+	box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
 }
 
-.game-task{
-    padding: 20px;
+.game-task {
+	padding: 20px;
 }
 
-.question-area{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
+.question-area {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
 }
 
-.question-area, .revision-task{
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.question-area,
+.revision-task {
+	font-size: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.question-area-container{
-    width: 100px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-around;
+.question-area-container {
+	width: 100px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.answer-box{
-    padding: 5px;
-    outline: none;
-    border: 2px solid var(--white);
+.answer-box {
+	padding: 5px;
+	outline: none;
+	border: 2px solid var(--white);
 }
 
-.time-bar{
-    margin-top: 30px;
-    background-color: var(--white);
-    height: 10px;
-    width: 100%;
+.time-bar {
+	margin-top: 30px;
+	background-color: var(--white);
+	height: 10px;
+	width: 100%;
 }
 
-#time-progress{
-    width: 1%;
-    height: 10px;
-    background-color: var(--wrong-score);
+#time-progress {
+	width: 1%;
+	height: 10px;
+	background-color: var(--wrong-score);
 }
 
-.user-controls{
-    display: flex;
-    align-items: end;
+.user-controls {
+	display: flex;
+	align-items: end;
 }
 
-.user-controls button{
-    width: 110px;
-    padding: 15px;
-    color: var(--white);
-    background-color: rgb(20, 57, 83);
-    border: 2px solid transparent;
-    border-radius: 5px;
-    font-size: 1rem;
+.user-controls button {
+	width: 110px;
+	padding: 15px;
+	color: var(--white);
+	background-color: rgb(20, 57, 83);
+	border: 2px solid transparent;
+	border-radius: 5px;
+	font-size: 1rem;
 }
 
 /* submit button styling */
 
-button[data-type = submit], button[data-type = exit]{
-    margin-left: 30px;
+button[data-type=submit],
+button[data-type=exit] {
+	margin-left: 30px;
 }
 
-.score-tracking{
-    height: 50px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--white);
+.score-tracking {
+	height: 50px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 10px 0;
+	background-color: var(--white);
 }
 
-.scores{
-    padding: 0 20px;
-    font-size: 1.2rem;
+.scores {
+	padding: 0 20px;
+	font-size: 1.2rem;
 }
 
-#right-answer{
-    color: var(--right-score);
+#right-answer {
+	color: var(--right-score);
 }
 
-#wrong-answer{
-    color: var(--wrong-score);
+#wrong-answer {
+	color: var(--wrong-score);
 }
 
-.score-span{
-    font-weight: 600;
+.score-span {
+	font-weight: 600;
 }
 
 /* _____ start of revision area styling */
 
-#revision-game{
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+#revision-game {
+	width: 100%;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.revision-heading h4{
-    padding: 0;
-    margin-bottom: 20px;
+.revision-heading h4 {
+	padding: 0;
+	margin-bottom: 20px;
 }
 
-.revision-task{
-    padding: 5px;
+.revision-task {
+	padding: 5px;
 }
 
-.revision-area-container{
-    width: 120px;
+.revision-area-container {
+	width: 120px;
 }
 
-.revision-tabs{
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    margin-bottom: 1em;
+.revision-tabs {
+	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	margin-bottom: 1em;
 }
 
-.tab{
-    /* default background-color */
-    background-color: rgb(38, 67, 57);
-    color: var(--dark-font-color);
-    margin: 2px;
-    height: 30px;
-    border: 1px solid black;
-    /* so users can touch comfortably */
-    min-width: 30px;
-    border-radius: 7px;
-    text-align: center;
-    transition: height 0.2s, transform 0.2s;
+.tab {
+	/* default background-color */
+	background-color: rgb(38, 67, 57);
+	color: var(--dark-font-color);
+	margin: 2px;
+	height: 30px;
+	border: 1px solid black;
+	/* so users can touch comfortably */
+	min-width: 30px;
+	border-radius: 7px;
+	text-align: center;
+	transition: height 0.2s, transform 0.2s;
 }
 
-.selected{
-    height: 40px;
+.selected {
+	height: 40px;
 }
+
 /* _____ end of revision area styling */
 /* _____ end of second page styling */
 /* _____ start of footer styling */
 
-footer{
-    height: 80px;
-    background-color: rgb(18, 31, 43);
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+footer {
+	height: 80px;
+	background-color: rgb(18, 31, 43);
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
 }
 
-.footer-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--white);
+.footer-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--white);
 }
 
-.terms-conditions{
-    margin-left: 20px;
+.terms-conditions {
+	margin-left: 20px;
 }
 
-.terms-conditions h4, .copyright h4{
-    font-size: 1rem;
-    font-weight: 400;
+.terms-conditions h4,
+.copyright h4 {
+	font-size: 1rem;
+	font-weight: 400;
 }
 
-.socials{
-    margin-right: 20px;
+.socials {
+	margin-right: 20px;
 }
 
-.socials a{
-    width: 20px;
-    height: 20px;
-    padding: 20px;
+.socials a {
+	width: 20px;
+	height: 20px;
+	padding: 20px;
 }
+
 /* _____ end of footer styling */
 /* _____ start of media queries */
 
-@media all and (max-width: 1230px){
-    #first-page{
-        flex-flow: column nowrap;
-        align-items: center;
-        max-width: calc(100% - 50px);
-        margin: 10px;
-    }
+@media all and (max-width: 1230px) {
+	#first-page {
+		flex-flow: column nowrap;
+		align-items: center;
+		max-width: calc(100% - 50px);
+		margin: 10px;
+	}
 
-    #instructions{
-        width: calc(100% - 50px);
-        align-items: center;
-    }
+	#instructions {
+		width: calc(100% - 50px);
+		align-items: center;
+	}
 
-    #instructions h4{
-        margin-top: 35px;
-    }
+	#instructions h4 {
+		margin-top: 35px;
+	}
 }
 
-@media all and (max-width: 950px){
+@media all and (max-width: 950px) {
 
-    /* footer styling */
+	/* footer styling */
 
-    footer{
-        flex-flow: column nowrap;
-        height: 110px;
-    }
+	footer {
+		flex-flow: column nowrap;
+		height: 110px;
+	}
 
-    .terms-conditions{
-        margin-left: 0px;
-        font-size: 0.8rem;
-    }
+	.terms-conditions {
+		margin-left: 0px;
+		font-size: 0.8rem;
+	}
 
-    .terms-conditions h4, .copyright h4{
-        font-size: 0.9rem;
-    }
+	.terms-conditions h4,
+	.copyright h4 {
+		font-size: 0.9rem;
+	}
 
-    .copyright h4{
-        margin: 10px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-align: center;
-    }
+	.copyright h4 {
+		margin: 10px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-align: center;
+	}
 
-    .terms-conditions{
-        margin-top: 10px;
-    }
+	.terms-conditions {
+		margin-top: 10px;
+	}
 
-    .socials a{
-        padding: 0 10px;
-    }
+	.socials a {
+		padding: 0 10px;
+	}
 }
-@media all and (max-width: 700px){
 
-    /* page 1 styling */
+@media all and (max-width: 700px) {
 
-    #first-page{
-        margin: 20px 0;
-        transform: none;
-        box-shadow: none;
-    }
+	/* page 1 styling */
 
-    .logo{
-        width: 300px;
-    }
+	#first-page {
+		margin: 20px 0;
+		transform: none;
+		box-shadow: none;
+	}
 
-    .sub-heading{
-        font-size: 0.9rem;
-    }
+	.logo {
+		width: 300px;
+	}
 
-    #category-note{
-        font-size: 1rem;
-        text-align: center;
-    }
+	.sub-heading {
+		font-size: 0.9rem;
+	}
 
-    .name-input-field label{
-        font-size: 0.9rem;
-    }
+	#category-note {
+		font-size: 1rem;
+		text-align: center;
+	}
 
-    .name-input-field{
-        margin: 40px 0;
-    }
+	.name-input-field label {
+		font-size: 0.9rem;
+	}
 
-    .categories{
-        flex-flow: column nowrap;
-        padding: 0;
-    }
+	.name-input-field {
+		margin: 40px 0;
+	}
 
-    .category{
-        padding: 25px;
-    }
+	.categories {
+		flex-flow: column nowrap;
+		padding: 0;
+	}
 
-    /* page 2 styling */
+	.category {
+		padding: 25px;
+	}
 
-    .content{
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: space-between;
-    }
+	/* page 2 styling */
 
-    #game-field{
-        max-width: 280px;
-        position: absolute;
-        top: 200px;
-    }
+	.content {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: space-between;
+	}
 
-    .panel{
-        box-shadow: none;
-    }
+	#game-field {
+		max-width: 280px;
+		position: absolute;
+		top: 200px;
+	}
 
-    .question-area, .revision-task{
-        font-size: 1rem;
-        flex-flow: row nowrap;
-    }
+	.panel {
+		box-shadow: none;
+	}
 
-    .game-task{
-        padding: 0;
-        width: 300px;
-    }
+	.question-area,
+	.revision-task {
+		font-size: 1rem;
+		flex-flow: row nowrap;
+	}
 
-    .game-intro{
-        font-size: 1.1rem;
-        margin: 30px 0;
-    }
+	.game-task {
+		padding: 0;
+		width: 300px;
+	}
 
-    .revision-tabs{
-        max-width: 280px;
-        margin-bottom: 15px;
-    }
+	.game-intro {
+		font-size: 1.1rem;
+		margin: 30px 0;
+	}
 
-    .score-tracking{
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px 0;
-    }
+	.revision-tabs {
+		max-width: 280px;
+		margin-bottom: 15px;
+	}
 
-    .scores{
-        font-size: 0.9rem;
-    }
+	.score-tracking {
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: space-around;
+		padding: 10px 0;
+	}
 
-    #revision-field{
-        margin-bottom: 60px;
-    }
+	.scores {
+		font-size: 0.9rem;
+	}
 
-    .user-control-buttons{
-        flex-flow: column nowrap;
-        justify-content: center;
-    }
+	#revision-field {
+		margin-bottom: 60px;
+	}
 
-    .user-control-buttons button{
-        margin: 5px 0;
-    }
+	.user-control-buttons {
+		flex-flow: column nowrap;
+		justify-content: center;
+	}
 
-    button[data-type='exit']{
-        margin: 40px 0;
-    }
+	.user-control-buttons button {
+		margin: 5px 0;
+	}
 
-    footer{
-        margin: 0;
-        padding-bottom: 20px;
-    }
+	button[data-type='exit'] {
+		margin: 40px 0;
+	}
+
+	footer {
+		margin: 0;
+		padding-bottom: 20px;
+	}
 }
+
 /* _____ end of media queries */

@@ -187,6 +187,7 @@ The application was made possible using the following technologies:
 13. W3C CSS Validation Service - to validate my CSS code for potential errors.
 14. JSHint - for checking and validating my JS code. 
 15. Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
+16. Beautifier.io - to beautify my JS. 
 16. AmIResponsive - to create the responsive image.
 17. Looka.com - for logo ideas (Ai tool).
 
@@ -259,7 +260,7 @@ The application is deployed on Gitpages through github, and is available for vie
 4. Select 'Pages' from the menu on the left. 
 5. Ensure the 'Source' section is set to 'Deploy from a branch'.
 6. Ensure you deploy from the main branch in your root directory. The screen should look something like this: 
-![github pages]()
+![github pages](docs/images/github-one.png)
 7. The site you want to deploy is given a URL, available above the source section, as in the image above. It might take a while for this link to become visible and active. 
 
 ### Forking a Github Repository
@@ -274,7 +275,7 @@ Cloning a repository essentially means downloading a copy of your repository tha
 
 1. Click into the github repository you want to clone. 
 2. Press the 'Code' button. This should open a section similar to the one below. 
-![Clone Code Button Dropdown]()
+![Clone Code Button Dropdown](docs/images/github-two.png)
 3. Copy the link in this dropdown
 4. Open a terminal within your VSC (or whatever IDE you choose to use). 
 5. In the terminal type 'git clone' and paste the URL. 

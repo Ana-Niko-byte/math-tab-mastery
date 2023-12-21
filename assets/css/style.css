@@ -343,7 +343,7 @@ button:hover {
 	width: 100%;
 }
 
-.panel {
+.panel, .question-area {
 	background-color: var(--white);
 	border-radius: 3px;
 	box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
@@ -631,6 +631,14 @@ footer {
 
 	/* page 2 styling */
 
+    #second-page {
+        height: 750px;
+    }
+
+    #second-section {
+        height: 710px;
+    }
+
 	.content {
 		display: flex;
 		flex-flow: column nowrap;
@@ -652,6 +660,7 @@ footer {
 	.revision-task {
 		font-size: 1rem;
 		flex-flow: row nowrap;
+        padding: 10px;
 	}
 
 	.game-task {
@@ -659,15 +668,32 @@ footer {
 		width: 300px;
 	}
 
-	.game-intro {
+	.game-intro, .revision-heading h4 {
 		font-size: 1.1rem;
 		margin: 30px 0;
 	}
+
+    .revision-heading h4 {
+        padding-top: 20px;
+    }
 
 	.revision-tabs {
 		max-width: 280px;
 		margin-bottom: 15px;
 	}
+
+    .revision-task {
+        width: 200px;
+        border-radius: 5px;
+    }
+
+    .revision-area-container {
+        font-size: 0.9rem;
+    }
+
+    #revision-answer-box {
+        width: 100px;
+    }
 
 	.score-tracking {
 		flex-flow: column nowrap;
@@ -686,7 +712,7 @@ footer {
 
 	.user-control-buttons {
 		flex-flow: column nowrap;
-		justify-content: center;
+		justify-content: flex-end;
 	}
 
 	.user-control-buttons button {
@@ -694,7 +720,7 @@ footer {
 	}
 
 	button[data-type='exit'] {
-		margin: 40px 0;
+		margin: 30px 0;
 	}
 
 	footer {

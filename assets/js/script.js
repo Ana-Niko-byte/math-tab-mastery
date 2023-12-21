@@ -148,7 +148,6 @@ function timeProgress() {
  */
 // get the user's screen width. 
 let screenWidth = screen.width;
-console.log(screenWidth);
 
 function revisionSwitch() {
     let revisionField = document.getElementById('revision-game');

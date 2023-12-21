@@ -196,6 +196,19 @@ The application was made possible using the following technologies:
 
 ![testing on screens](docs/images/screens.jpg)
 
+Note: When tested on Android devices, the application works as expected. However, when tested on an iPhone 11 pro max, the application shows up with blue wording, and unexpected scaling when clicked into an input (perhaps an iPhone feature for better user comfort). Images shown below. 
+
+![iphone testing](docs/images/iphone-colours.jpg)
+
+An attempt was made to fix this by adding a fixed _color_ property to the buttons and _::after_ text. 
+
+The images below show a before and after of the main game. The first image shows the application as it is meant to be displayed. The second shows what happens when the user clicks into the input field. 
+
+![iphone testing](docs/images/iphone-pre-scaling.jpg)
+![iphone testing](docs/images/iphone-scaling.jpg)
+
+As this application is intended to be used on laptop, this bug was left as is as it is inherent to iPhone users only.
+
 ### Debugging
 Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 
 

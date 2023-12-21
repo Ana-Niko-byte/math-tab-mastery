@@ -346,7 +346,10 @@ button:hover {
 .panel, .question-area {
 	background-color: var(--white);
 	border-radius: 3px;
-	box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
+}
+
+.panel {
+    box-shadow: 5px 5px rgba(45, 45, 45, 0.8);
 }
 
 .game-task {
@@ -465,6 +468,8 @@ button[data-type=exit] {
 
 .revision-area-container {
 	width: 120px;
+    font-size: 1rem;
+    padding-left: 15px;
 }
 
 .revision-tabs {

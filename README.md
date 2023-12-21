@@ -193,6 +193,9 @@ The application was made possible using the following technologies:
 17. Looka.com - for logo ideas (Ai tool).
 
 # Testing & Debugging
+
+![testing on screens](docs/images/screens.jpg)
+
 ### Debugging
 Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 
 

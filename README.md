@@ -257,16 +257,16 @@ As there were no errors in the final report, nothing was changed in the actual j
 
 ![loops in functions](docs/images/loop-in-function.png)
 
-As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 49, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game. One way to fix this would be to add 'id's to these buttons and attach event listeners to them separately. This way, the buttons would include their own functions and I wouldn't need to use loops. However, this would require more code in the script and wouldn't look as clean. 
+As I now know, loops are incredibly expensive when it comes to javascript performance. While they are quite handy, I should avoid using them within functions where possible. In line 47, I am using a loop to iterate over my buttons and add a 'click' event listener so that I can get the data-type associated with each button and start the relevant game. One way to fix this would be to add 'id's to these buttons and attach event listeners to them separately. This way, the buttons would include their own functions and I wouldn't need to use loops. However, this would require more code in the script and wouldn't look as clean. 
 
 ![similar warning with loop in function](docs/images/similar-loop-in-function.png)
 
-Similarly, in line 264, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. Same as the last loop, this can be avoided using ids and event listeners. However, for the sake of getting comfortable with loops, I decided to use this method instead, as this particular app's performance is not significantly impacted. For larger applications, I will consider using alternative methods. 
+Similarly, in line 286, I am using a loop inside a function to iterate over my user-control buttons and get the data-type associated with each button. This particular function is quite large and could probably be broken up. Same as the last loop, this can be avoided using ids and event listeners. However, for the sake of getting comfortable with loops, I decided to use this method instead, as this particular app's performance is not significantly impacted. For larger applications, I will consider using alternative methods. 
 
 ![expression warning](docs/images/expression-warning.png)
 ![similar expression warning](docs/images/similar-expression-warning.png)
 
-In lines 362 and 568, I am getting similar errors in my expressions due to the fact that I am using ternary expressions. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space and lets me practice).
+In lines 418 and 639, I am getting similar errors in my expressions due to the fact that I am using ternary expressions. I could address these warning by switching to ordinary condition checking, like an 'if' statement. However, as the application works fine the way it is with no errors in console, I have decided to leave it as is (it also saves a bit of space and lets me practice).
 
 # Deployment
 The application is deployed on Gitpages through github, and is available for viewing in the link at the top of this README.md document. To deploy a github repository, follow the following steps: 

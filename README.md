@@ -200,7 +200,9 @@ Note: When tested on Android devices, the application works as expected. However
 
 ![iphone testing](docs/images/iphone-colours.jpg)
 
-An attempt was made to fix this by adding a fixed _color_ property to the buttons and _::after_ text. 
+An attempt was made to fix this by adding a fixed _color_ property to the buttons and _::after_ text. See image below:
+
+![iphone colours fixed](docs/images/fix-colours.jpg)
 
 The images below show a before and after of the main game. The first image shows the application as it is meant to be displayed. The second shows what happens when the user clicks into the input field. 
 
@@ -208,6 +210,14 @@ The images below show a before and after of the main game. The first image shows
 ![iphone testing](docs/images/iphone-scaling.jpg)
 
 As this application is intended to be used on laptop, this bug was left as is as it is inherent to iPhone users only.
+
+#### Issues
+The most noteworthy issue encountered had to do with tab click and submit logic (including change of state). Initially, it was the goal of the project to avoid using global variables/state, as they are known for causing potential issues in larger programmes. However, as I needed to access the _tabValues_ array in multiple functions, it was more efficient and maintainable (for the time being) to use a global variable to store the array. Similarly, a global variable is used to store the timeframe for the progress bar in _timed_, and in _globalOperator_ for the random category game. 
+
+A brief breakdown of the necessary logic is shown in the image below. (I was in a cafe at the time and had no paper). 
+
+![tab logic breakdown on tissue](docs/images/tissue-logic.jpg)
+Note: this breakdown was constructed prior to the decision to switch to a global variable so it was changed slightly since then.
 
 ### Debugging
 Debugging was mainly done using a series of console.log statements when writing and calling functions, and checking for any errors logged to the console by the appliation. 

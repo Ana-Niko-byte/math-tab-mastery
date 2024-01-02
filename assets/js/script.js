@@ -1,12 +1,12 @@
-// javascript script for the math-tab-mastery game.
+// Javascript script for the math-tab-mastery game.
 document.addEventListener('DOMContentLoaded', function() {
-    // on DOM content load, remove the default error message under name input field.
+    // On DOM content load, remove the default error message under name input field.
     let initialMessage = document.getElementsByClassName('error')[0];
     initialMessage.innerText = '';
 
     document.getElementById('name').value = '';
 
-    // immediately direct attention to the input field.
+    // Immediately direct attention to the input field.
     document.getElementById('name').focus();
 
 });
@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function nameValidator() {
     let userName = document.getElementById('name').value;
     let error = document.getElementsByTagName('span')[0];
-    // regex format acquired from url:https://stackoverflow.com/questions/18042133/check-if-input-is-number-or-letter-javascript. 
+    // Regex format acquired from url:https://stackoverflow.com/questions/18042133/check-if-input-is-number-or-letter-javascript. 
     let regex = /^[a-zA-Z]+$/;
 
-    // if 'name' input has no value, add an error message. 
-    // otherwise, remove the text in the error message.
+    // If 'name' input has no value, add an error message. 
+    // Otherwise, remove the text in the error message.
     if (!userName) {
         error.innerText = 'name required';
     } else if (!userName.match(regex)) {
-        // this will also show if there is a space before or after the name input.
+        // This will also show if there is a space before or after the name input.
         error.innerText = 'please use letters only';
     } else {
         error.innerText = '';
@@ -39,21 +39,21 @@ function nameValidator() {
  * The selected button (category) displays the type or arithemetic game on the second page.
  */
 function categorySelection() {
-    // this returns an array of the category buttons.
+    // This returns an array of the category buttons.
     let buttons = document.getElementsByClassName('button-category');
 
     for (let button of buttons) {
-        // on click, it takes note of the value of the 'data-type' attribute on each of the buttons.
+        // On click, it takes note of the value of the 'data-type' attribute on each of the buttons.
         button.addEventListener('click', function() {
             let chosenCategory = this.getAttribute('data-type');
 
-            // this will return either true or false depending on whether there is a value in the name input field.
+            // This will return either true or false depending on whether there is a value in the name input field.
             let nameValidated = nameValidator();
 
-            // the game will only begin if the name field is valid.
+            // The game will only begin if the name field is valid.
             if (nameValidated) {
                 beginGame(chosenCategory);
-                // the timer begins as soon as the main game loads. 
+                // The timer begins as soon as the main game loads. 
                 timeProgress();
             }
         });
@@ -71,7 +71,7 @@ function beginGame(category) {
     firstPage.style.display = 'none';
     secondPage.style.display = 'block';
 
-    // set the user's input name into the greeting + capitalise first letter and lowercase the rest.
+    // Set the user's input name into the greeting + capitalise first letter and lowercase the rest.
     let user = document.getElementById('name').value;
     let capitalisedUser = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
     let placeholder = document.getElementById('user-name');
@@ -84,14 +84,14 @@ function beginGame(category) {
     document.getElementById('answer-box').focus();
 
 
-    // set a base range for the operators in the game area (these are changed in some of the categories).
+    // Set a base range for the operators in the game area (these are changed in some of the categories).
     let numOne = Math.floor(Math.random() * 30) + 1;
     let numTwo = Math.floor(Math.random() * 30) + 1;
 
     document.getElementById('first-operand').innerText = numOne;
     document.getElementById('second-operand').innerText = numTwo;
 
-    // set conditional logic for the type of game.
+    // Set conditional logic for the type of game.
     if (category === 'add-subtract') {
         displayAddSubtract(numOne, numTwo);
     } else if (category === 'multiplication') {
@@ -107,27 +107,27 @@ function beginGame(category) {
 }
 
 let timed;
-// code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
+// Code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
 /**
  * This function handles the logic for the time bar (30seconds). 
  * Its global variable 'timed' is also used in the exitGame function.
  */
 function timeProgress() {
-    // reset the interval when the function is called - addressing a bug noticed when setting exit button logic.
+    // Reset the interval when the function is called - addressing a bug noticed when setting exit button logic.
     clearInterval(timed);
 
     let timeBar = document.getElementById('time-progress');
-    // the 1% specified in CSS width.
+    // The 1% specified in CSS width.
     let width = 1;
     timed = setInterval(frame, 300);
 
     function frame() {
         if (width >= 100) {
-            // resets the interval if width is at 100% or more.
+            // Resets the interval if width is at 100% or more.
             clearInterval(timed);
-            // sets the new width.
+            // Sets the new width.
             timeBar.style.width = width + "%";
-            // starts the revision game. 
+            // Starts the revision game. 
             revisionSwitch();
         } else {
             width++;
@@ -144,30 +144,30 @@ function revisionSwitch() {
     let revisionField = document.getElementById('revision-game');
     let mainField = document.getElementById('game-field');
     document.getElementById('revision-answer-box').value = '';
-    // get the length of the tabValues array storing all the wrongly-answered questions.
+    // Get the length of the tabValues array storing all the wrongly-answered questions.
     let tabLength = tabValues.length;
-    // if it is empty (i.e. all answers were correct or user didn't play).
+    // If it is empty (i.e. all answers were correct or user didn't play).
     if (tabLength === 0) {
         alert('Well done! Now have a go at a different category :)');
-        // brings the user back to the intro page straight away to encourage them to play again.
+        // Brings the user back to the intro page straight away to encourage them to play again.
         exitGame();
     } else {
         mainField.style.display = 'none';
         revisionField.style.display = 'flex';
 
-        // scale elements for visual emphasis of game being finished.
+        // Scale elements for visual emphasis of game being finished.
         mainField.style.transform = 'scale(0.75)';
         revisionField.style.transform = 'scale(1.25)';
         revisionField.style.zIndex = 99;
 
-        // set the first question to be the first wrongly-answered question.
+        // Set the first question to be the first wrongly-answered question.
         let firstWrongQuestion = tabValues[0];
         let firstTab = document.getElementsByClassName('tab')[0];
 
         firstTab.classList.add('selected');
         firstTab.style.backgroundColor = '#EAE2B7';
 
-        // set the values of the object firstWrongQuestion to the revision field operands.
+        // Set the values of the object firstWrongQuestion to the revision field operands.
         document.getElementById('revision-first-operand').innerText = firstWrongQuestion.revOperandOne;
         document.getElementById('revision-second-operand').innerText = firstWrongQuestion.revOperandTwo;
         document.getElementById('revision-operator').innerText = firstWrongQuestion.revOperator;
@@ -179,7 +179,7 @@ function revisionSwitch() {
  * This function works alongside the validateAnswer function.
  */
 function displayAddSubtract(operandOne, operandTwo) {
-    // make sure operands don't give a negative answer during validation.
+    // Make sure operands don't give a negative answer during validation.
     if (operandTwo > operandOne) {
         let box = operandOne;
         operandOne = operandTwo;
@@ -189,7 +189,7 @@ function displayAddSubtract(operandOne, operandTwo) {
     document.getElementById('first-operand').textContent = operandOne;
     document.getElementById('second-operand').textContent = operandTwo;
 
-    //logic for determining whether 'operator' will be '+' or '-'.
+    //Logic for determining whether 'operator' will be '+' or '-'.
     let determined = Math.round(Math.random());
     document.getElementById('operator').textContent = (determined === 1) ? '+' : '-';
 }
@@ -199,7 +199,7 @@ function displayAddSubtract(operandOne, operandTwo) {
  * This function works alongside the validateAnswer function.
  */
 function displayMultiplication(operandOne, operandTwo) {
-    // set smaller range so sum answers are manageable - (max 13 x 13).
+    // Set smaller range so sum answers are manageable - (max 13 x 13).
     operandOne = Math.floor(Math.random() * 12) + 1;
     operandTwo = Math.floor(Math.random() * 12) + 1;
 
@@ -213,11 +213,11 @@ function displayMultiplication(operandOne, operandTwo) {
  * This function works alongside the validateAnswer function.
  */
 function displayDivision(operandOne, operandTwo) {
-    // set a bigger range for a larger scope of user answers.
+    // Set a bigger range for a larger scope of user answers.
     operandOne = Math.floor(Math.random() * 144) + 1;
     operandTwo = Math.floor(Math.random() * 144) + 1;
 
-    // logic ensuring operandOne will always be bigger than operandTwo.
+    // Logic ensuring operandOne will always be bigger than operandTwo.
     if (operandTwo > operandOne) {
         let box = operandOne;
         operandOne = operandTwo;
@@ -226,7 +226,7 @@ function displayDivision(operandOne, operandTwo) {
         document.getElementById('first-operand').textContent = operandTwo;
     }
 
-    // logic for ensuring operandOne is evenly divisible by operandTwo.
+    // Logic for ensuring operandOne is evenly divisible by operandTwo.
     if (operandOne % operandTwo !== 0) {
         for (let i = 2; i <= operandOne; i++) {
             if (operandOne % i === 0) {
@@ -242,18 +242,18 @@ function displayDivision(operandOne, operandTwo) {
     document.getElementById('operator').textContent = '/';
 }
 
-// global variable so that random category can use logic from other functions and operator can be tracked from anywhere. 
+// Global variable so that random category can use logic from other functions and operator can be tracked from anywhere. 
 let globalOperator = '';
 
 function displayRandom(operandOne, operandTwo) {
-    // to determine the operator and game type.
+    // To determine the operator and game type.
     let determined = Math.floor(Math.random() * 4);
 
     switch (determined) {
         case 0:
-            // update global operator variable.
+            // Update global operator variable.
             globalOperator = '+';
-            // use existing game logic.
+            // Use existing game logic.
             displayAddSubtract(operandOne, operandTwo);
             break;
         case 1:
@@ -279,20 +279,20 @@ function displayRandom(operandOne, operandTwo) {
  * These vary slightly depending on whether the user is playing 'main game' or 'revision'.
  */
 function userButtonActions() {
-    // gets user buttons as an array.
+    // Gets user buttons as an array.
     let buttons = document.getElementsByClassName('user-control-buttons');
 
     for (let button of buttons) {
         button.addEventListener('click', function() {
-            // gets states of current games.
+            // Gets states of current games.
             let mainGameActive = document.getElementById('game-field').style.display !== 'none';
             let revisionActive = document.getElementById('revision-game').style.display === 'flex';
-            // skip button logic. 
+            // Skip button logic. 
             if (this.getAttribute('data-type') === 'skip') {
-                // if main game, the skip button will generate new questions. 
+                // If main game, the skip button will generate new questions. 
                 if (mainGameActive) {
                     skipQuestion();
-                    // if revision game, the skip button moves onto the next tab.
+                    // If revision game, the skip button moves onto the next tab.
                 } else if (revisionActive) {
                     changeTab();
                     document.getElementById('revision-answer-box').value = '';
@@ -300,17 +300,17 @@ function userButtonActions() {
             }
 
             if (this.getAttribute('data-type') === 'submit') {
-                // if main game, submit will validate answer and make tabs.
+                // If main game, submit will validate answer and make tabs.
                 if (mainGameActive) {
                     validateAnswer();
-                    // if revision, tabs will change states based on user answer.  
+                    // If revision, tabs will change states based on user answer.  
                 } else if (revisionActive) {
                     validateRevision();
                 }
             }
 
             if (this.getAttribute('data-type') === 'exit') {
-                // separate function which works the same everywhere.
+                // Separate function which works the same everywhere.
                 exitGame();
             }
         });
@@ -322,10 +322,10 @@ function userButtonActions() {
  * It is called in the userButtonActions function. 
  */
 function skipQuestion() {
-    // need to set condition to check type of game before restarting the game (generating next question).
+    // Need to set condition to check type of game before restarting the game (generating next question).
     let category = document.getElementById('category').innerText;
 
-    // to update points system. 
+    // To update points system. 
     let points = parseInt(document.getElementById('points').innerText);
     document.getElementById('points').innerText = points - 25;
     if (category === 'random') {
@@ -345,7 +345,7 @@ function skipQuestion() {
  * This function exits the second page of the application, resets values, and brings the user to the first page of the game. 
  */
 function exitGame() {
-    // reset the page displays.
+    // Reset the page displays.
     let firstPage = document.getElementById('first-page');
     let secondPage = document.getElementById('second-page');
     secondPage.style.display = 'none';
@@ -356,29 +356,29 @@ function exitGame() {
     revisionGame.style.display = 'none';
     mainGame.style.display = 'flex';
 
-    // remove the user's entered name in the 'name' input field.
+    // Remove the user's entered name in the 'name' input field.
     document.getElementById('name').value = '';
     document.getElementById('name').focus();
-    // remove any user value from the main game input field.
+    // Remove any user value from the main game input field.
     document.getElementById('answer-box').value = '';
-    // remove any user value from the revision input field.
+    // Remove any user value from the revision input field.
     document.getElementById('revision-answer-box').value = '';
 
-    // reset score and points to 0.
+    // Reset score and points to 0.
     document.getElementById('right-answer').innerText = 0;
     document.getElementById('wrong-answer').innerText = 0;
     document.getElementById('points').innerText = 0;
 
-    // empty tabs array.
+    // Empty tabs array.
     tabValues = [];
-    // empty tabs appearing in UI side too (live HTML).
+    // Empty tabs appearing in UI side too (live HTML).
     let tabContainer = document.getElementsByClassName('revision-tabs')[0];
-    // while there is a child in the tabContainer element, delete the element. 
+    // While there is a child in the tabContainer element, delete the element. 
     while (tabContainer.firstChild) {
         tabContainer.removeChild(tabContainer.firstChild);
     }
 
-    // reset timebar width + clear global 'timed' variable.
+    // Reset timebar width + clear global 'timed' variable.
     clearInterval(timed);
     document.getElementById('time-progress').style.width = '1%';
 }
@@ -407,24 +407,24 @@ function computeAnswer() {
  * This function validates the user's answer against the computed answer in the computeAnswer function. 
  */
 function validateAnswer() {
-    // ensures the value we get from the DOM is a number.
+    // Ensures the value we get from the DOM is a number.
     let userAnswer = parseInt(document.getElementById('answer-box').value);
-    // variable stores the returned value from computeAnswer() function.
+    // Variable stores the returned value from computeAnswer() function.
     let correctAnswer = computeAnswer();
 
     let correctly = userAnswer === correctAnswer[0];
 
-    // boolean 
+    // Boolean 
     (correctly) ? addScore(): addIncorrectScore();
 
-    // check which category the user is playing to know which game to display.
+    // Check which category the user is playing to know which game to display.
     let category = document.getElementById('category').innerText;
     if (category === 'random') {
         beginGame('random');
     } else {
         beginGame(correctAnswer[1]);
     }
-    // returns a boolean indicating whether the answer was right or wrong. Used in the createTab function.
+    // Returns a boolean indicating whether the answer was right or wrong. Used in the createTab function.
     return correctly;
 }
 
@@ -451,12 +451,12 @@ function addIncorrectScore() {
     let points = parseInt(document.getElementById('points').innerText);
     document.getElementById('points').innerText = points - 50;
 
-    // create a new tab for the revision section when a user gives a wrong answer. 
+    // Create a new tab for the revision section when a user gives a wrong answer. 
     createTab();
 }
 
 // ______________ From here starts the javascript code for handling the revision side of the game.
-// an empty global array to hold the values of wrongly answered questions.
+// An empty global array to hold the values of wrongly answered questions.
 let tabValues = [];
 /**
  * This function calculates the answer for the revision field based on the current operand.
@@ -504,41 +504,41 @@ function setBackgroundColor(tab, operator) {
  * This function creates revision tabs and appends them to the DOM element with class - 'revision-tabs'.
  */
 function createTab() {
-    // get the first element of the tabs array + add one tab at a time.
+    // Get the first element of the tabs array + add one tab at a time.
     let tabs = document.getElementsByClassName('revision-tabs')[0];
     let tab = document.createElement('div');
     tab.classList.add('tab');
 
-    // logic for storing the incorrectly-answered question parameters.
-    // step 1 : get current operator.
+    // Logic for storing the incorrectly-answered question parameters.
+    // Step 1 : get current operator.
     let currentOperator = document.getElementById('operator').textContent;
 
-    // step 2 : assign the innerHTML of the tab to the operator + styles.
+    // Step 2 : assign the innerHTML of the tab to the operator + styles.
     tab.innerText = `${currentOperator}`;
-    // sets the background colour as the tab is created.
+    // Sets the background colour as the tab is created.
     setBackgroundColor(tab, currentOperator);
 
-    // step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
+    // Step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
     let parameterOne = document.getElementById('first-operand').textContent;
     let parameterTwo = document.getElementById('second-operand').textContent;
 
-    // step 4 : append the new tab to the tabs container.
+    // Step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
 
-    // add an event listener property to each created tab. 
+    // Add an event listener property to each created tab. 
     tab.addEventListener('click', function() {
         let allTabs = document.getElementsByClassName('tab');
-        // class 'selected' is added to all elements on click so we iterate through them and remove it first.
+        // Class 'selected' is added to all elements on click so we iterate through them and remove it first.
         for (let tab of allTabs) {
             tab.classList.remove('selected');
         }
         tab.style.backgroundColor = setBackgroundColor(tab, currentOperator);
 
-        // add the class to one element - i.e. the one that has been clicked on.
+        // Add the class to one element - i.e. the one that has been clicked on.
         this.classList.add('selected');
         this.style.backgroundColor = '#EAE2C4';
 
-        // assign to innerText of the revision operands
+        // Assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = parameterOne;
         document.getElementById('revision-second-operand').innerText = parameterTwo;
         document.getElementById('revision-operator').innerText = currentOperator;
@@ -561,13 +561,13 @@ eventListenerSetUp();
  */
 function handleFirstAnswers(event) {
     if (event.key === 'Enter') {
-        // gets the current values of the question being displayed and stores them in a variable. 
+        // Gets the current values of the question being displayed and stores them in a variable. 
         let currentOperandOne = document.getElementById('first-operand').textContent;
         let currentOperator = document.getElementById('operator').textContent;
         let currentOperandTwo = document.getElementById('second-operand').textContent;
 
         if (!validateAnswer()) {
-            // if the answer is wrong, these values are pushed into the global array tabValues. 
+            // If the answer is wrong, these values are pushed into the global array tabValues. 
             tabValues.push({
                 revOperandOne: currentOperandOne,
                 revOperator: currentOperator,
@@ -582,36 +582,36 @@ function handleFirstAnswers(event) {
  */
 function changeTab() {
     let tabs = Array.from(document.getElementsByClassName('revision-tabs')[0].children);
-    // selects the first element with class 'selected'.
+    // Selects the first element with class 'selected'.
     let currentSelected = document.getElementsByClassName('selected')[0];
-    // gets its index.
+    // Gets its index.
     let currentSelectedIndex = tabs.indexOf(currentSelected);
     if (currentSelectedIndex === tabs.length - 1) {
-        alert('Revision complete! Well done, try a different category! The game will automatically exit in 3 seconds :)');
-        // apply a small delay of 3 secs so the user can see if their tab validated correctly or not.
+        alert('Revision complete! Well done, try a different category! The game will automatically exit in 2 seconds :)');
+        // Apply a small delay of 2 secs so the user can see if their tab validated correctly or not.
         setTimeout(function() {
             exitGame();
-        }, 3000);
+        }, 2000);
     } else {
-        // gets the next element's index.
+        // Gets the next element's index.
         let nextTabIndex = currentSelectedIndex + 1;
-        // removes the class 'selected' from the first element. 
+        // Removes the class 'selected' from the first element. 
         tabs[currentSelectedIndex].classList.remove('selected');
-        // adds the class 'selected' to the next element.
+        // Adds the class 'selected' to the next element.
         tabs[nextTabIndex].classList.add('selected');
         tabs[nextTabIndex].style.backgroundColor = 'rgb(173, 38, 71)';
 
         let tabLength = tabValues.length - 1;
         let nextValues;
 
-        // ensure nextValues has a set index to fall on. 
+        // Ensure nextValues has a set index to fall on. 
         if (tabValues[tabLength] == nextValues){
             nextValues = tabValues[tabLength];
         } else {
             nextValues = tabValues[nextTabIndex];
         }
 
-        // assign to innerText of the revision operands
+        // Assign to innerText of the revision operands
         document.getElementById('revision-first-operand').innerText = nextValues.revOperandOne;
         document.getElementById('revision-second-operand').innerText = nextValues.revOperandTwo;
         document.getElementById('revision-operator').innerText = nextValues.revOperator;
@@ -639,6 +639,7 @@ function validateRevision() {
     (correctRevision) ? amendCorrectTabs(): amendIncorrectTabs();
     changeTab();
     document.getElementById('revision-answer-box').value = '';
+    document.getElementById('revision-answer-box').focus();
     return correctRevision;
 }
 
@@ -656,7 +657,7 @@ function amendCorrectTabs() {
 function amendIncorrectTabs() {
     let selectedTab = document.getElementsByClassName('selected')[0];
     selectedTab.style.backgroundColor = 'rgb(166, 166, 166)';
-    // tell the user the correct answer.
+    // Tell the user the correct answer.
     let computedRevision = computeRevisionAnswer();
     alert(`The correct answer was ${computedRevision}`);
 }

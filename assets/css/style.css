@@ -1,4 +1,4 @@
-/* _____ override default css margins & paddings + set font-family */
+/* _____ Override default css margins & paddings + set font-family */
 :root {
 	--white: rgb(249, 249, 249);
 	--right-score: rgb(48, 145, 48);
@@ -35,7 +35,7 @@ main {
 	flex: 1;
 }
 
-/* _____ start of common-across-all-sections styling */
+/* _____ Start of common-across-all-sections styling */
 
 .page {
 	width: 80%;
@@ -74,8 +74,8 @@ a:hover {
 	flex-flow: column nowrap;
 }
 
-/* _____ end of common-across-all-sections styling */
-/* _____ start of first page styling */
+/* _____ End of common-across-all-sections styling */
+/* _____ Start of first page styling */
 
 .headings {
 	text-align: center;
@@ -89,7 +89,7 @@ a:hover {
 	font-size: 1.3rem;
 }
 
-/* _____ start of instructions section design */
+/* _____ Start of instructions section design */
 
 #instructions {
 	background-color: white;
@@ -152,8 +152,8 @@ li {
 	padding: 0 5px;
 }
 
-/* _____ end of instructions section design */
-/* _____ start of name input styling */
+/* _____ End of instructions section design */
+/* _____ Start of name input styling */
 
 .name-input-field {
 	margin: 90px 0;
@@ -195,8 +195,8 @@ li {
 	margin-top: 5px;
 }
 
-/* _____ end of name input styling */
-/* _____ start of button category styling */
+/* _____ End of name input styling */
+/* _____ Start of button category styling */
 
 .categories {
 	display: flex;
@@ -234,7 +234,7 @@ li {
 	text-transform: capitalize;
 }
 
-/* _____ code for gradient buttons gotten from W3C */
+/* _____ Code for gradient buttons gotten from W3C */
 .button-category button {
 	transition: background-color 0.2s ease;
 }
@@ -265,9 +265,8 @@ button:hover {
 	transform: scale(1.2);
 }
 
-/* _____end of button category styling */
-/* _____ end of first page styling */
-/* _____ start of second page styling */
+/* _____ End of first page styling + button category styling*/
+/* _____ Start of second page styling */
 
 #second-page {
 	display: none;
@@ -309,7 +308,7 @@ button:hover {
 	justify-content: center;
 }
 
-/* accessed and modified in javascript */
+/* Accessed and modified in javascript */
 
 #game-field,
 #revision-field {
@@ -415,7 +414,7 @@ button:hover {
     text-align: center;
 }
 
-/* submit button styling */
+/* Submit button styling */
 
 button[data-type=submit],
 button[data-type=exit] {
@@ -450,7 +449,7 @@ button[data-type=exit] {
 	font-weight: 600;
 }
 
-/* _____ start of revision area styling */
+/* _____ Start of revision area styling */
 
 #revision-game {
 	width: 100%;
@@ -495,13 +494,13 @@ button[data-type=exit] {
 }
 
 .tab {
-	/* default background-color */
+	/* Default background-color */
 	background-color: rgb(38, 67, 57);
 	color: var(--dark-font-color);
 	margin: 2px;
 	height: 30px;
 	border: 1px solid black;
-	/* so users can touch comfortably */
+	/* So users can touch comfortably */
 	min-width: 30px;
 	border-radius: 7px;
 	text-align: center;
@@ -512,8 +511,7 @@ button[data-type=exit] {
 	height: 40px;
 }
 
-/* _____ end of revision area styling */
-/* _____ end of second page styling */
+/* _____ end of second page styling + revision area styling */
 /* _____ start of footer styling */
 
 footer {
@@ -551,8 +549,8 @@ footer {
 	padding: 20px;
 }
 
-/* _____ end of footer styling */
-/* _____ start of media queries */
+/* _____ End of footer styling */
+/* _____ Start of media queries */
 
 @media all and (max-width: 1230px) {
 	#first-page {
@@ -609,7 +607,7 @@ footer {
 
 @media all and (max-width: 700px) {
 
-	/* page 1 styling */
+	/* Page 1 styling */
 
 	#first-page {
 		margin: 20px 0;
@@ -626,7 +624,8 @@ footer {
 	}
 
 	#category-note {
-		font-size: 1rem;
+		margin-top: 10px;
+		font-size: 1.1rem;
 		text-align: center;
 	}
 
@@ -647,10 +646,11 @@ footer {
 		padding: 25px;
 	}
 
-	/* page 2 styling */
+	/* Page 2 styling */
 
     #second-page {
         height: 750px;
+		margin: 20px 0;
     }
 
     #second-section {
@@ -674,11 +674,19 @@ footer {
 		box-shadow: none;
 	}
 
+	.revision-panel{
+		width: 280px;
+	}
+
 	.question-area,
 	.revision-task {
-		font-size: 1rem;
+		font-size: 1.2rem;
 		flex-flow: row nowrap;
-        padding: 10px;
+        padding: 10px 0;
+	}
+
+	.revision-task{
+		width: 260px;
 	}
 
 	.game-task {
@@ -697,17 +705,25 @@ footer {
 	}
 
     .revision-task {
-        width: 200px;
+		width: 280px;
         border-radius: 5px;
     }
 
     .revision-area-container {
+		width: 90px;
         font-size: 0.9rem;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
     }
 
-    #revision-answer-box {
+    .answer-box {
         width: 100px;
     }
+
+	#revision-answer-box{
+		font-size: 10px;
+	}
 
 	.score-tracking {
 		flex-flow: column nowrap;

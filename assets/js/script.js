@@ -44,7 +44,7 @@ function nameValidator() {
  */
 function categorySelection() {
     // This returns an array of the category buttons.
-    let buttons = document.getElementsByClassName('button-category');
+    const buttons = document.getElementsByClassName('button-category');
 
     for (let button of buttons) {
         // On click, it takes note of the value of the 'data-type' attribute on each of the buttons.
@@ -69,8 +69,8 @@ function categorySelection() {
  * This function begins the game with the chosen category from the user. 
  */
 function beginGame(category) {
-    let firstPage = document.getElementById('first-page');
-    let secondPage = document.getElementById('second-page');
+    const firstPage = document.getElementById('first-page');
+    const secondPage = document.getElementById('second-page');
 
     firstPage.style.display = 'none';
     secondPage.style.display = 'block';
@@ -81,7 +81,7 @@ function beginGame(category) {
     let placeholder = document.getElementById('user-name');
     placeholder.innerText = `${capitalisedUser}`;
 
-    let gameCategory = document.getElementById('category');
+    const gameCategory = document.getElementById('category');
     gameCategory.innerText = `${category}`;
 
     document.getElementById('answer-box').value = '';
@@ -119,7 +119,7 @@ function timeProgress() {
     // Reset the interval when the function is called - addressing a bug noticed when setting exit button logic.
     clearInterval(timed);
 
-    let timeBar = document.getElementById('time-progress');
+    const timeBar = document.getElementById('time-progress');
     // The 1% specified in CSS width.
     let width = 1;
     timed = setInterval(frame, 300);
@@ -142,13 +142,12 @@ function timeProgress() {
 /**
  * This function handles the UI side of the game - after 30 seconds, the revision field is displayed and the main game field hidden.
  */
-
 function revisionSwitch() {
-    let revisionField = document.getElementById('revision-game');
-    let mainField = document.getElementById('game-field');
+    const revisionField = document.getElementById('revision-game');
+    const mainField = document.getElementById('game-field');
     document.getElementById('revision-answer-box').value = '';
     // Get the length of the tabValues array storing all the wrongly-answered questions.
-    let tabLength = tabValues.length;
+    const tabLength = tabValues.length;
     // If it is empty (i.e. all answers were correct or user didn't play).
     if (tabLength === 0) {
         alert('Well done! Now have a go at a different category :)');
@@ -247,7 +246,7 @@ function displayDivision(operandOne, operandTwo) {
 
 function displayRandom(operandOne, operandTwo) {
     // To determine the operator and game type.
-    let determined = Math.floor(Math.random() * 4);
+    const determined = Math.floor(Math.random() * 4);
 
     switch (determined) {
         case 0:
@@ -280,13 +279,13 @@ function displayRandom(operandOne, operandTwo) {
  */
 function userButtonActions() {
     // Gets user buttons as an array.
-    let buttons = document.getElementsByClassName('user-control-buttons');
+    const buttons = document.getElementsByClassName('user-control-buttons');
 
     for (let button of buttons) {
         button.addEventListener('click', function() {
             // Gets states of current games.
-            let mainGameActive = document.getElementById('game-field').style.display !== 'none';
-            let revisionActive = document.getElementById('revision-game').style.display === 'flex';
+            const mainGameActive = document.getElementById('game-field').style.display !== 'none';
+            const revisionActive = document.getElementById('revision-game').style.display === 'flex';
             // Skip button logic. 
             if (this.getAttribute('data-type') === 'skip') {
                 // If main game, the skip button will generate new questions. 
@@ -346,13 +345,13 @@ function skipQuestion() {
  */
 function exitGame() {
     // Reset the page displays.
-    let firstPage = document.getElementById('first-page');
-    let secondPage = document.getElementById('second-page');
+    const firstPage = document.getElementById('first-page');
+    const secondPage = document.getElementById('second-page');
     secondPage.style.display = 'none';
     firstPage.style.display = 'flex';
 
-    let revisionGame = document.getElementById('revision-game');
-    let mainGame = document.getElementById('game-field');
+    const revisionGame = document.getElementById('revision-game');
+    const mainGame = document.getElementById('game-field');
     revisionGame.style.display = 'none';
     mainGame.style.display = 'flex';
     // Reset scaled elements.
@@ -467,7 +466,7 @@ let tabValues = [];
 function computeRevisionAnswer() {
     let firstOperand = parseInt(document.getElementById('revision-first-operand').innerText);
     let secondOperand = parseInt(document.getElementById('revision-second-operand').innerText);
-    let currentOperator = document.getElementById('revision-operator').innerText;
+    const currentOperator = document.getElementById('revision-operator').innerText;
 
     if (currentOperator === '+') {
         return firstOperand + secondOperand;
@@ -508,13 +507,13 @@ function setBackgroundColor(tab, operator) {
  */
 function createTab() {
     // Get the first element of the tabs array + add one tab at a time.
-    let tabs = document.getElementsByClassName('revision-tabs')[0];
-    let tab = document.createElement('div');
+    const tabs = document.getElementsByClassName('revision-tabs')[0];
+    const tab = document.createElement('div');
     tab.classList.add('tab');
 
     // Logic for storing the incorrectly-answered question parameters.
     // Step 1 : get current operator.
-    let currentOperator = document.getElementById('operator').textContent;
+    const currentOperator = document.getElementById('operator').textContent;
 
     // Step 2 : assign the innerHTML of the tab to the operator + styles.
     tab.innerText = `${currentOperator}`;
@@ -522,8 +521,8 @@ function createTab() {
     setBackgroundColor(tab, currentOperator);
 
     // Step 3 : assign the innerHTML of the revision field operators to the operators of the current wrong answer operators.
-    let parameterOne = document.getElementById('first-operand').textContent;
-    let parameterTwo = document.getElementById('second-operand').textContent;
+    const parameterOne = document.getElementById('first-operand').textContent;
+    const parameterTwo = document.getElementById('second-operand').textContent;
 
     // Step 4 : append the new tab to the tabs container.
     tabs.appendChild(tab);
@@ -650,7 +649,7 @@ function validateRevision() {
  * This function handles logic for tab changes if the revision question was answered correctly.
  */
 function amendCorrectTabs() {
-    let selectedTab = document.getElementsByClassName('selected')[0];
+    const selectedTab = document.getElementsByClassName('selected')[0];
     selectedTab.style.backgroundColor = 'rgb(48, 145, 48)';
 }
 
@@ -658,7 +657,7 @@ function amendCorrectTabs() {
  * This function handles logic for tab changes if the revision question was answered incorrectly.
  */
 function amendIncorrectTabs() {
-    let selectedTab = document.getElementsByClassName('selected')[0];
+    const selectedTab = document.getElementsByClassName('selected')[0];
     selectedTab.style.backgroundColor = 'rgb(166, 166, 166)';
     // Tell the user the correct answer.
     let computedRevision = computeRevisionAnswer();

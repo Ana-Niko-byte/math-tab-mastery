@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Global variable so that random category can use logic from other functions and operator can be tracked from anywhere. 
+let globalOperator = '';
+let timed;
+
 /**
  * This function validates the name the user inputs into the 'name' input field on the first page.
  * This is used in the main game as a greeting in the point tracking element.
@@ -106,7 +110,6 @@ function beginGame(category) {
     }
 }
 
-let timed;
 // Code for functionality partially taken from https://www.w3schools.com/howto/howto_js_progressbar.asp
 /**
  * This function handles the logic for the time bar (30seconds). 
@@ -242,9 +245,6 @@ function displayDivision(operandOne, operandTwo) {
     document.getElementById('operator').textContent = '/';
 }
 
-// Global variable so that random category can use logic from other functions and operator can be tracked from anywhere. 
-let globalOperator = '';
-
 function displayRandom(operandOne, operandTwo) {
     // To determine the operator and game type.
     let determined = Math.floor(Math.random() * 4);
@@ -355,6 +355,9 @@ function exitGame() {
     let mainGame = document.getElementById('game-field');
     revisionGame.style.display = 'none';
     mainGame.style.display = 'flex';
+    // Reset scaled elements.
+    mainGame.style.transform = 'scale(1.10)';
+    revisionGame.style.transform = 'scale(0.75)';
 
     // Remove the user's entered name in the 'name' input field.
     document.getElementById('name').value = '';

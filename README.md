@@ -1,4 +1,4 @@
-# Revise Maths
+# Math Tab Mastery
 This maths game is designed as a fun and engaging way of helping young kids study and get better at mental arithmetic. This game was created purely for educational purposes. 
 
 The application is available for viewing [here](https://ana-niko-byte.github.io/math-tab-mastery/)
@@ -20,7 +20,7 @@ The application is available for viewing [here](https://ana-niko-byte.github.io/
 - Where colours are used, they are to be used for the purpose of highlighting or differentiating one element from another. 
 
 # Structure 
-The structure of the 'Revise Maths' game is as follows: 
+The structure of the 'Math Tab Mastery' game is as follows: 
 
 ## Page 1
 - Intro
